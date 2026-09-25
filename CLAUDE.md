@@ -55,7 +55,7 @@ One caravan leaves at dusk and is watched by the one left behind until dawn; rad
 4. Low moon behind the figure; long shadows; the mahmal's shadow is a lying cypress, the figure's shadow reaches after it.
 5. The mahmal's trailing cloth smooths the tracks; the figure's footprints fill in with wind.
 6. The beloved looks back from the mahmal, then turns away; coals kindle inside the seated lover's silhouette and smoke rises from their head.
-7. The tent's pegs pull out of the sand and it falls; one ember keeps glowing.
+7. Where the mahmal's camel knelt, the wind smooths every print away except the beloved's one footprint, which the lover kneels and shelters with a hand and a little wall of sand.
 8. A whirlwind rises from the ground to the sky; the figure shades their eyes.
 9. Night rider on the camel tracks, reins slipping loose; someone at the caravanserai waves them back.
 10. Rain; one camel sinks in the mud and the caravan halts, then pulls free and goes on.

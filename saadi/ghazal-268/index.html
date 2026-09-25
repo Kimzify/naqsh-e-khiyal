@@ -279,7 +279,7 @@ const POEM=[
  ["مَحمل بدار ای ساروان! تندی مکن با کاروان","کز عشق آن سرو روان، گویی روانم می‌رود","Stop the litter, camel driver, do not drive the caravan so hard: for love of that walking cypress, it is as if my soul were going.","The Long Shadows"],
  ["او می‌رود دامن‌کشان، من زَهرِ تنهایی‌چشان","دیگر مپرس از من نشان‌، کز دل، نشانم می‌رود","My love goes, trailing a hem, and I taste the poison of being alone. Ask me no more for a trace of me: my own trace is leaving my heart.","The Trailing Hem"],
  ["برگشت یار سرکشم، بگذاشت عیش ناخوشم","چون مجمری پُرآتشم، کز سر دخانم می‌رود","My headstrong love turned away and left me a bitter life. I am like a brazier full of fire, with smoke going up from its head.","The Brazier"],
- ["با آن همه بیداد او، وین عهد بی‌بنیاد او","در سینه دارم یاد او، یا بر زبانم می‌رود","For all that cruelty, and that promise with no foundation, I keep the memory in my breast, or it goes onto my tongue.","The Tent"],
+ ["با آن همه بیداد او، وین عهد بی‌بنیاد او","در سینه دارم یاد او، یا بر زبانم می‌رود","For all that cruelty, and that promise with no foundation, I keep the memory in my breast, or it goes onto my tongue.","The Footprint"],
  ["بازآی و بر چشمم نشین، ای دلسِتان نازنین!","کآشوب و فریاد از زمین، بر آسمانم می‌رود","Come back and sit upon my eye, my dear heart-stealer, for my turmoil and my cry go up from the earth to the sky.","The Whirlwind"],
  ["شب تا سحر می‌نَغنَوَم، واندرز کس می‌نَشنَوَم","وین ره نه قاصد می‌روم، کز کف عنانم می‌رود","From night till dawn I do not sleep, and I listen to no one's advice. I do not take this road by choice: the reins are slipping from my hand.","The Loose Reins"],
  ["گفتم بگریم تا اِبِل، چون خَر فرو ماند به گِل","وین نیز نتوانم که دل، با کاروانم می‌رود","I said I would weep until the camels stuck fast, like a donkey in mud. I cannot do even this, for my heart is going with the caravan.","The Rain"],
@@ -461,19 +461,7 @@ function r5(c,t,W,H){const S=Math.min(W,H),hz=H*.36,gy=H*.6;
 /* 6. The lover is the brazier. Night; the caravan has stopped a little way off. In the open mahmal the beloved looks back once,
       then turns away, and the caravan moves on. The one who stays sits still, and inside their dark shape coals begin to glow,
       brighter and brighter, until smoke rises from their head and drifts after the caravan: «چون مجمری پرآتشم کز سر دخانم می‌رود». */
-const COAL=randArr(6606,26,3),EMB6=randArr(6607,22,4);
-function brazier(c,x,y,s,t,heat){const by=y-s*.38,R=s*.3;
-  c.strokeStyle="rgb(96,68,34)";c.lineWidth=Math.max(1.4,s*.025);c.lineCap="round";[[-.7,-.9],[0,-.1],[.7,.9]].forEach(([a,b])=>{c.beginPath();c.moveTo(x+a*R*.6,by+R*.35);c.lineTo(x+b*R*.9,y);c.stroke()});
-  glow(c,x,by-R*.1,s*1.1,[255,140,70],.28*heat);
-  // coals heaped in the bowl
-  c.fillStyle="rgb(30,16,12)";c.beginPath();c.ellipse(x,by,R*.94,R*.28,0,Math.PI,TAU);c.fill();
-  for(const k of COAL){const u=(k[0]-.5)*1.7,v=k[1];const px=x+u*R*.9*(1-v*.3),py=by-R*.05-v*R*.18*(1-Math.abs(u)),f=.55+.45*Math.sin(t*(1.3+k[2]*2)+k[0]*20);const hot=k[2]<heat;
-    c.fillStyle=hot?rgba(mix([200,60,24],[255,170,80],f),1):"rgb(70,62,58)";c.beginPath();c.ellipse(px,py,R*.11,R*.07,k[1]*2,0,TAU);c.fill()}
-  const bg2=c.createLinearGradient(x-R,0,x+R,0);bg2.addColorStop(0,"rgb(90,58,26)");bg2.addColorStop(.45,"rgb(196,142,64)");bg2.addColorStop(1,"rgb(80,50,22)");c.fillStyle=bg2;
-  c.beginPath();c.ellipse(x,by,R,R*.28,0,0,Math.PI);c.bezierCurveTo(x-R*.95,by+R*.55,x+R*.95,by+R*.55,x+R,by);c.closePath();c.fill();
-  c.beginPath();c.moveTo(x-R,by);c.bezierCurveTo(x-R*.95,by+R*.62,x+R*.95,by+R*.62,x+R,by);c.lineTo(x+R,by+R*.02);c.ellipse(x,by,R,R*.28,0,0,Math.PI);c.fill();
-  c.strokeStyle="rgba(255,210,130,.5)";c.lineWidth=1;c.beginPath();c.ellipse(x,by,R,R*.28,0,0,Math.PI);c.stroke();
-  return[x,by-R*.2]}
+const EMB6=randArr(6607,22,4);
 const SMOKE=randArr(6608,46,3);
 function smoke(c,x,y,S,t,a,drift){for(let j=0;j<SMOKE.length;j++){const r=SMOKE[j],age=(t/7+j/SMOKE.length+r[0]*.02)%1;
   const px=x+drift*S*.34*age*age+Math.sin(age*5+r[1]*6+t*.4)*S*.025*age,py=y-age*S*.6,rad=S*(.012+.06*age);glow(c,px,py,rad,[150,142,146],a*.16*Math.sin(age*Math.PI)*(1-age*.4))}}
@@ -499,31 +487,38 @@ function r6(c,t,W,H){const S=Math.min(W,H),gy=H*.55,turn=ss(3.2,5,t),heat=ss(5,1
   smoke(c,top[0],top[1],S*.8,t,ss(7,11,t),1.2);
 }
 
-/* 7. The tent without foundation. By the brazier, now almost ash, the one who stays warms their hands at a single ember.
-      A gust pulls the tent's pegs out of the sand one by one, and the tent folds and falls: a promise with no footing.
-      The ember keeps glowing: the memory kept in the breast. */
-function r7(c,t,W,H){const S=Math.min(W,H),gy=H*.56;
-  bg(c,W,H,[[0,[5,7,18]],[.5,[16,18,34]],[1,[10,9,12]]]);stars(c,W,H,t,.8,.52);
-  hillLayer(c,W,H,gy,S*.02,[22,22,34],61);ground(c,W,H,gy+S*.01,[34,30,38],[16,14,18]);
-  const gusts=[2.8,4.9,6.9,11],env=g=>{const q=t-g;return q<0?0:q<.4?q/.4:Math.exp(-(q-.4)*1.4)},wind=clamp(gusts.reduce((a,g)=>a+env(g),0));
-  // the tent
-  const tx=W*.66,base=H*.6,w=S*.36,h=S*.17,p1=ss(4.9,5.4,t),p2=ss(6.9,7.4,t),fall=easeInOut(ss(7.2,10.5,t)),shake=wind*(1-fall)*Math.sin(t*14)*S*.003;
-  const a1=fall*1.35+p1*.08,a2=fall*1.25,poleL=[tx-w*.28,base],poleR=[tx+w*.28,base];
-  const top1=[poleL[0]-Math.sin(a1)*h+shake,base-Math.cos(a1)*h],top2=[poleR[0]-Math.sin(a2)*h+shake,base-Math.cos(a2)*h];
-  const pegL0=[tx-w*.85,base+S*.012],pegR0=[tx+w*.85,base+S*.012];
-  const pegL=[lerp(pegL0[0],tx-w*.6,p1),pegL0[1]-Math.sin(p1*Math.PI)*S*.05],pegR=[lerp(pegR0[0],tx+w*.3,p2)-p2*fall*S*.1,pegR0[1]-Math.sin(p2*Math.PI)*S*.05];
-  c.strokeStyle="rgba(150,130,110,.6)";c.lineWidth=1;[[top1,pegL,p1],[top2,pegR,p2]].forEach(([a,b,sl])=>{c.beginPath();c.moveTo(a[0],a[1]);c.quadraticCurveTo((a[0]+b[0])/2,(a[1]+b[1])/2+sl*S*.05,b[0],b[1]);c.stroke()});
-  [pegL,pegR].forEach(p=>{c.fillStyle="rgb(90,70,50)";c.fillRect(p[0]-1,p[1]-S*.012,2,S*.012)});
-  const sag=S*.02+fall*S*.01;c.fillStyle="rgb(28,22,26)";c.beginPath();c.moveTo(tx-w*.5-fall*S*.06,base);c.lineTo(top1[0],top1[1]);c.quadraticCurveTo((top1[0]+top2[0])/2,(top1[1]+top2[1])/2+sag,top2[0],top2[1]);c.lineTo(tx+w*.5-fall*S*.04,base);c.closePath();c.fill();
-  c.strokeStyle="rgba(120,100,90,.35)";c.lineWidth=1;for(let i=1;i<5;i++){const u=i/5;c.beginPath();c.moveTo(lerp(tx-w*.5-fall*S*.06,tx+w*.5-fall*S*.04,u),base);c.lineTo(lerp(top1[0],top2[0],u),lerp(top1[1],top2[1],u)+Math.sin(u*Math.PI)*sag);c.stroke()}
-  if(fall<.6){c.fillStyle=rgba([6,4,6],1-fall/.6);c.beginPath();c.moveTo(tx-w*.08,base);c.lineTo(lerp(tx,top1[0]+w*.28,.1),lerp(base-h*.7,top1[1]+S*.02,.5));c.lineTo(tx+w*.08,base);c.closePath();c.fill()}
-  c.strokeStyle="rgb(60,44,32)";c.lineWidth=Math.max(1.2,S*.005);[[poleL,top1],[poleR,top2]].forEach(([a,b])=>{c.beginPath();c.moveTo(a[0],a[1]);c.lineTo(b[0],b[1]);c.stroke()});
-  // the brazier gone to ash but for one ember, and the hands held to it
-  const bx=W*.3,by=H*.61,bs=S*.2;const top=brazier(c,bx,by,bs,t,.12);
-  const pulse=.75+.25*Math.sin(t*1.6);glow(c,top[0],top[1]+bs*.04,S*.08,[255,110,50],.5*pulse);c.fillStyle=rgba([255,150,70],pulse);c.beginPath();c.ellipse(top[0]+bs*.02,top[1]+bs*.05,bs*.035,bs*.022,0,0,TAU);c.fill();
-  smoke(c,top[0],top[1],S*.6,t,.4,-.5);
-  const fx=bx-S*.1,fh=S*.14,col="rgb(22,12,12)";person(c,fx,by,fh,{kneel:1,bow:.3,col});const sh=shoulderOf(fx,by,fh,1,.3);arm(c,sh,[bx-bs*.3,by-bs*.36],fh*.05,col,fh*.04);
-  if(wind>.05){c.strokeStyle=rgba([170,170,200],.2*wind);c.lineWidth=1;for(let i=0;i<24;i++){const q=(t*1.2+i*.137)%1,x=W*(1.05-q*1.2),y=gy+S*.01+((i*.61)%1)*S*.14;c.beginPath();c.moveTo(x,y);c.lineTo(x+S*.05,y);c.stroke()}}
+/* 7. The beloved's footprint. Moonlight on the sand where the mahmal's camel knelt: the hollow it left, the pad prints around it,
+      and one small footprint of the beloved. The wind rises and smooths everything away, as a promise with no foundation goes.
+      The one who stays kneels and with both hands heaps a little wall of sand around the footprint; the wind takes all the rest,
+      and that one print stays, kept: «در سینه دارم یاد او». */
+// a bare footprint (heel, sole, five toes), toes toward -y, from the Ghazal 255 page
+function footPath(c,s){const P=(...v)=>v.map(q=>q*s);c.beginPath();c.moveTo(0,.5*s);c.bezierCurveTo(...P(.12,.5,.15,.4,.14,.3));c.bezierCurveTo(...P(.13,.15,.17,0,.19,-.12));c.bezierCurveTo(...P(.21,-.22,.15,-.29,.06,-.3));
+  c.bezierCurveTo(...P(-.04,-.31,-.16,-.29,-.18,-.19));c.bezierCurveTo(...P(-.19,-.09,-.06,-.04,.0,.08));c.bezierCurveTo(...P(.04,.18,-.1,.26,-.11,.36));c.bezierCurveTo(...P(-.12,.46,-.07,.5,0,.5));c.closePath();
+  [[-.125,-.4,.058,.074,-.15],[-.035,-.43,.037,.045,0],[.035,-.42,.032,.04,.1],[.095,-.395,.028,.034,.2],[.145,-.355,.024,.029,.3]].forEach(([x,y,rx,ry,r])=>{c.moveTo(x*s+Math.cos(r)*rx*s,y*s+Math.sin(r)*rx*s);c.ellipse(x*s,y*s,rx*s,ry*s,r,0,TAU)})}
+const PADS7=randArr(7707,16,4),DRIFT7=randArr(7708,70,3);
+function r7(c,t,W,H){const S=Math.min(W,H),hz=H*.36,gy=H*.6;
+  bg(c,W,H,[[0,[6,8,24]],[.36,[28,30,56]],[1,[20,18,26]]]);stars(c,W,H,t,.8,.34);
+  glow(c,W*.12,H*.1,S*.2,IV,.14);c.fillStyle="rgb(244,236,214)";c.beginPath();c.arc(W*.12,H*.1,S*.03,0,TAU);c.fill();
+  duneLayer(c,W,H,hz+S*.02,S*.03,1.7,.4,[66,62,82],[40,38,52]);ground(c,W,H,hz+S*.03,[76,70,88],[40,36,46]);
+  const gusts=[5,7,9,11.5,14].reduce((a,g)=>{const q=t-g;return a+(q<0?0:q<.5?q/.5:Math.exp(-(q-.5)*.8))},0),wind=clamp(ss(4.5,6,t)*(.4+gusts*.6));
+  // the hollow where the camel knelt, and its pad prints, each smoothed away by the wind in turn
+  const hx=W*.66,hy=H*.6,fill=ss(6,12,t);c.fillStyle=rgba([30,26,38],.5*(1-fill));c.beginPath();c.ellipse(hx,hy,S*.13,S*.024,0,0,TAU);c.fill();
+  c.strokeStyle=rgba([150,140,170],.35*(1-fill));c.lineWidth=1;c.beginPath();c.ellipse(hx,hy+S*.004,S*.13,S*.024,0,.2,Math.PI-.2);c.stroke();
+  for(const p of PADS7){const x=W*(.56+p[0]*.36),y=H*(.585+p[1]*.07),tf=5.5+p[2]*6;padPrint(c,x,y,S*(.011+p[3]*.004),1-ss(tf,tf+1.5,t))}
+  // the beloved's footprint, toes toward the caravan's way
+  const px=W*.4+S*.24*.27,py=H*.616,ps=S*.06;c.save();c.translate(px,py);c.rotate(Math.PI/2);c.scale(.42,1);
+  footPath(c,ps);c.fillStyle="rgba(14,10,22,.8)";c.fill();c.translate(-ps*.03,0);footPath(c,ps);c.strokeStyle=rgba([200,196,220],.25+.25*ss(11,15,t));c.lineWidth=1.2;c.stroke();c.restore();
+  // the little wall of sand on the windward side
+  const wall=easeInOut(ss(7,10.5,t));if(wall>0){const g=c.createLinearGradient(0,py-S*.03,0,py+S*.02);g.addColorStop(0,"rgb(118,110,132)");g.addColorStop(1,"rgb(58,52,66)");c.fillStyle=g;
+    c.beginPath();c.ellipse(px+S*.006,py,S*.055,S*.018,0,-Math.PI/2,Math.PI/2);c.ellipse(px+S*.006,py,S*.055+S*.012*wall,S*.018+S*.01*wall,0,Math.PI/2,-Math.PI/2,true);c.closePath();c.fill()}
+  // the wind drives sand from right to left; behind the wall it passes over
+  if(wind>0){c.strokeStyle=rgba([180,176,200],.3*wind);c.lineWidth=1;for(const d of DRIFT7){const q=(t*(.7+d[2]*.5)+d[0])%1,x=W*(1.05-q*1.2),y=hz+S*.04+d[1]*(H*.68-hz),l=S*(.03+.05*d[2]);let yy=y;if(wall>.5&&Math.abs(y-py)<S*.02&&x<px+S*.08&&x>px-S*.06)yy=py-S*.03;c.beginPath();c.moveTo(x,yy);c.lineTo(x+l,yy);c.stroke()}}
+  // the one who stays: stands, kneels, bends over the print and shelters it with both hands
+  const fx=W*.4,fy=H*.6,fh=S*.24,kn=easeInOut(ss(2.5,5,t)),bow=.1+.45*kn,col="rgb(16,14,22)";person(c,fx,fy,fh,{kneel:kn,bow,col});
+  // one arm reaches down past the knees and the hand cups round the windward side of the print
+  const reach=easeInOut(ss(6.2,8,t));if(reach>0){const sh=shoulderOf(fx,fy,fh,kn,bow),rest=[sh[0]+fh*.08,sh[1]+fh*.2],hand=[lerp(rest[0],px+ps*.5,reach),lerp(rest[1],py-S*.008,reach)],el=[(sh[0]+hand[0])/2+fh*.035,(sh[1]+hand[1])/2-fh*.01];
+    c.strokeStyle=col;c.lineCap="round";c.lineWidth=fh*.048;c.beginPath();c.moveTo(sh[0],sh[1]);c.lineTo(el[0],el[1]);c.stroke();c.lineWidth=fh*.036;c.beginPath();c.moveTo(el[0],el[1]);c.lineTo(hand[0],hand[1]);c.stroke();
+    c.fillStyle=col;c.beginPath();c.ellipse(hand[0]-fh*.012,hand[1]+fh*.006,fh*.034,fh*.016,-.2,0,TAU);c.fill()}
 }
 
 /* 8. The whirlwind. On the open desert a dust devil gathers at the ground and climbs, turning, until it reaches the sky
@@ -719,9 +714,9 @@ EVENTS.push({t:2*BD+7,fn:()=>hiss(180,70,.9,.09,"lowpass")});
 for(let x=.6;x<17;x+=.9)EVENTS.push({t:3*BD+x,fn:()=>bell(1150,.012)});
 // 5: the cloth over the sand, then wind
 EVENTS.push({t:4*BD+.4,fn:()=>hiss(900,700,9,.02)});EVENTS.push({t:4*BD+9.2,fn:()=>hiss(600,1300,7,.04)});
-// 6-7: the coals crackle; the tent falls
+// 6: the coals crackle; 7: the wind over the camp
 const CRK=randArr(6660,26,1);CRK.forEach(([r],i)=>EVENTS.push({t:5*BD+.5+i*.66+r*.4,fn:()=>click(.03+.03*r)}));
-[2.8,4.9,6.9,11].forEach(x=>EVENTS.push({t:6*BD+x,fn:()=>hiss(400,1100,2.4,.05)}));EVENTS.push({t:6*BD+9.6,fn:()=>hiss(200,80,1.4,.08,"lowpass")});
+[5,7,9,11.5,14].forEach(x=>EVENTS.push({t:6*BD+x,fn:()=>hiss(400,1100,2.4,.05)}));
 // 8: the whirlwind
 EVENTS.push({t:7*BD+.8,fn:()=>hiss(300,1400,14,.06)});
 // 10: rain
