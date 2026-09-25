@@ -1,0 +1,12 @@
+{
+  "name": "naqsh-e-khiyal",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "serve": "python3 -m http.server 8000",
+    "test": "node tests/smoke.mjs"
+  },
+  "devDependencies": {
+    "playwright": "^1.47.0"
+  }
+}

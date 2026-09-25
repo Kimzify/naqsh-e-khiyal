@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Naqsh-e Khiyal · نقش خیال · Persian poems, animated</title>
+<meta name="description" content="Classical Persian poems animated couplet by couplet, each with scenes drawn from its meaning and its own music.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Naqsh-e Khiyal · نقش خیال · Persian poems, animated">
+<meta property="og:description" content="Classical Persian poems animated couplet by couplet, each with scenes drawn from its meaning and its own music.">
+<meta property="og:url" content="https://kimzify.github.io/naqsh-e-khiyal/">
+<meta property="og:image" content="https://kimzify.github.io/naqsh-e-khiyal/assets/og/gallery.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#07091A">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<style>html,body{margin:0;padding:0}</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Marcellus+SC&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme:dark;
+  --ground:#0A0C16;
+  --panel:#11142280;
+  --ivory:#F4EAD4;
+  --mute:#A9A7BD;
+  --gold:#E9B44C;
+  --line:rgba(244,234,212,.16);
+}
+[hidden]{display:none!important}
+html{background:var(--ground)}
+body{background:var(--ground);color:var(--ivory);font-family:"Cormorant Garamond",Georgia,serif;min-height:100%}
+.fa{font-family:"Noto Nastaliq Urdu","Noto Naskh Arabic","Geeza Pro",serif}
+#sky{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.wrap{position:relative;z-index:1;max-width:1120px;margin:0 auto;padding-inline:16px;padding-block:56px 72px}
+header{display:grid;justify-items:center;text-align:center;gap:4px;margin-bottom:44px}
+.eyebrow{margin:0;font-family:"Marcellus SC",Georgia,serif;font-size:13px;letter-spacing:.32em;color:var(--gold)}
+h1{margin:0;font-weight:400;font-size:clamp(64px,11vw,132px);line-height:1.7;text-shadow:0 0 50px rgba(233,180,76,.35)}
+.lede{margin:0;max-width:34em;font-size:clamp(18px,1.7vw,21px);font-style:italic;color:var(--mute);text-wrap:balance}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr));gap:22px}
+.card{position:relative;display:grid;grid-template-rows:auto 1fr;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--panel);text-decoration:none;color:inherit;transition:transform .35s ease,border-color .35s ease,box-shadow .35s ease}
+a.card:hover,a.card:focus-visible{transform:translateY(-4px);border-color:rgba(233,180,76,.55);box-shadow:0 18px 50px rgba(0,0,0,.45),0 0 40px rgba(233,180,76,.12);outline:none}
+.cover{position:relative;aspect-ratio:16/10;max-width:100%}
+.cover canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.cover .first{position:absolute;left:12px;right:12px;bottom:6px;margin:0;text-align:center;font-size:clamp(20px,2.2vw,26px);line-height:2.1;text-shadow:0 0 18px rgba(0,0,0,.9)}
+.body{display:grid;gap:10px;padding:16px 18px 18px;align-content:start}
+.row{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.poet{margin:0;font-size:24px;font-weight:600;letter-spacing:.01em}
+.poetfa{font-size:17px;color:var(--mute)}
+.en{margin:0;font-style:italic;font-size:18px;color:var(--mute)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-family:"Marcellus SC",Georgia,serif;font-size:12px;letter-spacing:.14em;padding:4px 10px;border:1px solid var(--line);border-radius:999px;color:var(--ivory);font-variant-numeric:tabular-nums}
+.open{justify-self:start;margin-top:4px;font-family:"Marcellus SC",Georgia,serif;font-size:13px;letter-spacing:.2em;color:var(--gold)}
+.open::after{content:" →"}
+.card.next{border-style:dashed;background:transparent;place-content:center;text-align:center;min-height:320px;grid-template-rows:auto}
+.card.next .body{justify-items:center;padding:28px}
+.next .fa{font-size:30px;line-height:2;color:var(--mute)}
+.next p{margin:0;color:var(--mute);font-style:italic;font-size:18px;max-width:18em}
+footer{margin-top:40px;text-align:center;color:var(--mute);font-size:15px;font-style:italic}
+@media (prefers-reduced-motion:reduce){.card{transition:none}}
+</style>
+</head>
+<body>
+<canvas id="sky" aria-hidden="true"></canvas>
+<div class="wrap">
+  <header>
+    <p class="eyebrow">Persian Poems · Animated Couplet by Couplet</p>
+    <h1 class="fa" lang="fa" dir="rtl">نقشِ خیال</h1>
+    <p class="lede" style="margin-bottom:6px">Naqsh-e Khiyal · the image a couplet paints in the mind</p>
+    <p class="lede">Each poem is its own animated page: the couplets appear one at a time, each with a scene drawn from its meaning and its own music.</p>
+  </header>
+  <main class="grid" id="grid"></main>
+  <footer>Press Begin with the sound on. · <a href="https://github.com/Kimzify/naqsh-e-khiyal" style="color:inherit">Source on GitHub</a> · Texts from <a href="https://ganjoor.net" style="color:inherit">Ganjoor</a></footer>
+</div>
+
+<script>
+(()=>{
+/* Add a poem here and it appears in the gallery. */
+const POEMS=[
+  {url:"hafez/ghazal-1/",poet:"Hafez",poetFa:"حافظ",first:"اَلا یا اَیُّهَا السّاقی",en:"O cupbearer, bring round the cup",source:"Divan · Ghazal 1",couplets:7,secs:126,mode:"Shur",cover:"cup"},
+  {url:"hafez/ghazal-179/",poet:"Hafez",poetFa:"حافظ",first:"رسید مژده",en:"Good news has come",source:"Divan · Ghazal 179",couplets:9,secs:162,mode:"Esfahan",cover:"portico"},
+  {url:"hafez/ghazal-255/",poet:"Hafez",poetFa:"حافظ",first:"یوسفِ گم‌گشته",en:"Lost Joseph will return",source:"Divan · Ghazal 255",couplets:10,secs:180,mode:"Segah",cover:"shirt"}
+];
+const TAU=Math.PI*2;
+const fmt=s=>`${Math.floor(s/60)}:${String(s%60).padStart(2,"0")}`;
+function glow(c,x,y,r,col,a){const g=c.createRadialGradient(x,y,0,x,y,r);g.addColorStop(0,`rgba(${col},${a})`);g.addColorStop(1,`rgba(${col},0)`);c.fillStyle=g;c.beginPath();c.arc(x,y,r,0,TAU);c.fill()}
+function starfield(c,W,H,t,n,seed){let s=seed;const r=()=>(s=(s*16807)%2147483647)/2147483647;for(let i=0;i<n;i++){const x=r()*W,y=r()*H,f=r(),a=.3+.5*Math.abs(Math.sin(t*(.5+f)+i));c.fillStyle=`rgba(244,234,212,${(a*.6).toFixed(2)})`;c.fillRect(x,y,1.2,1.2)}}
+const COVERS={
+  cup(c,W,H,t){const g=c.createLinearGradient(0,0,0,H);g.addColorStop(0,"#0E0B28");g.addColorStop(1,"#2A0A24");c.fillStyle=g;c.fillRect(0,0,W,H);starfield(c,W,H,t,60,7);
+    const S=Math.min(W,H),cx=W/2,cy=H*.36;glow(c,cx,cy,S*.7,"155,29,63",.45);
+    c.save();c.translate(cx,cy);c.rotate(t*.1);c.strokeStyle="rgba(233,180,76,.25)";c.beginPath();for(let i=0;i<=12;i++){const k=(i*5)%12,a=k/12*TAU;const R=S*.42;i?c.lineTo(Math.cos(a)*R,Math.sin(a)*R):c.moveTo(Math.cos(a)*R,Math.sin(a)*R)}c.stroke();c.restore();
+    const w=S*.13,h=w*1.1,y=cy-S*.1;c.save();c.beginPath();c.moveTo(cx-w,y);c.bezierCurveTo(cx-w,y+h*.75,cx-w*.35,y+h,cx,y+h);c.bezierCurveTo(cx+w*.35,y+h,cx+w,y+h*.75,cx+w,y);c.closePath();c.strokeStyle="#FFD682";c.lineWidth=1.5;c.stroke();c.clip();
+    const lv=y+h*(.35+.08*Math.sin(t*.8));c.fillStyle="#C8284E";c.beginPath();c.moveTo(cx-w,y+h);for(let i=0;i<=16;i++)c.lineTo(cx-w+i/16*2*w,lv+Math.sin(i+t*3)*2);c.lineTo(cx+w,y+h);c.fill();c.restore();
+    c.strokeStyle="#FFD682";c.beginPath();c.moveTo(cx,y+h);c.lineTo(cx,y+h*1.55);c.stroke();c.beginPath();c.ellipse(cx,y+h*1.57,w*.5,w*.1,0,0,TAU);c.stroke();
+    for(let k=0;k<7;k++){const a=k/7*TAU+t*.4,x=cx+Math.cos(a)*S*.38,yy=cy+S*.18+Math.sin(a)*S*.07;glow(c,x,yy,S*.04,"233,180,76",.25+.3*(Math.sin(a)+1)/2)}},
+  sun(c,W,H,t){const g=c.createLinearGradient(0,0,0,H);g.addColorStop(0,"#06141A");g.addColorStop(1,"#2A1C1E");c.fillStyle=g;c.fillRect(0,0,W,H);starfield(c,W,H,t,60,11);
+    const S=Math.min(W,H),cx=W/2,cy=H*.38;glow(c,cx,cy,S*.8,"242,181,68",.35);
+    for(let k=0;k<4;k++){c.save();c.translate(cx,cy);c.rotate(t*.15*(k%2?1:-1)+k);c.strokeStyle=k%2?"rgba(43,179,163,.5)":"rgba(242,181,68,.45)";c.beginPath();c.ellipse(0,0,S*(.2+k*.07),S*(.2+k*.07)*.34,0,0,TAU);c.stroke();const a=t*(.6+k*.2);glow(c,Math.cos(a)*S*(.2+k*.07),Math.sin(a)*S*(.2+k*.07)*.34,S*.03,"255,236,190",.8);c.restore()}
+    c.save();c.translate(cx,cy);c.rotate(t*.05);c.strokeStyle="rgba(255,236,190,.3)";for(let k=0;k<36;k++){const a=k/36*TAU,l=S*(.16+.05*Math.sin(t*2+k));c.beginPath();c.moveTo(Math.cos(a)*S*.1,Math.sin(a)*S*.1);c.lineTo(Math.cos(a)*l,Math.sin(a)*l);c.stroke()}c.restore();
+    glow(c,cx,cy,S*.14,"255,236,190",.8);c.fillStyle="#FFECBE";c.beginPath();c.arc(cx,cy,S*.07,0,TAU);c.fill()},
+  portico(c,W,H,t){const S=Math.min(W,H),cx=W/2,cy=H*.62,R=S*.46;const g=c.createRadialGradient(cx,cy-R,0,cx,cy-R*.5,Math.max(W,H));g.addColorStop(0,"#22785E");g.addColorStop(.5,"#0A3A30");g.addColorStop(1,"#03100E");c.fillStyle=g;c.fillRect(0,0,W,H);starfield(c,W,H,t,60,17);
+    for(let k=0;k<4;k++){c.strokeStyle=`rgba(150,220,190,${.14-k*.03})`;c.beginPath();c.arc(cx,cy,R*(1.3+k*.2),Math.PI,TAU);c.stroke()}
+    c.save();c.translate(cx,cy);c.rotate(t*.03);c.strokeStyle="rgba(232,188,96,.4)";c.beginPath();for(let i=0;i<=12;i++){const k=(i*5)%12,a=k/12*TAU;const r=R*.45;i?c.lineTo(Math.cos(a)*r,Math.sin(a)*r):c.moveTo(Math.cos(a)*r,Math.sin(a)*r)}c.stroke();c.restore();
+    const a0=-Math.PI/2-1.25,a1=-Math.PI/2+1.25;c.lineWidth=R*.3;c.strokeStyle="rgba(6,34,36,.8)";c.beginPath();c.arc(cx,cy,R,a0,a1);c.stroke();c.lineWidth=1.2;c.strokeStyle="rgba(232,188,96,.8)";c.beginPath();c.arc(cx,cy,R*1.16,a0,a1);c.stroke();c.beginPath();c.arc(cx,cy,R*.84,a0,a1);c.stroke();
+    let s=5;const r=()=>(s=(s*16807)%2147483647)/2147483647;for(let i=0;i<260;i++){const u=r(),v=r(),a=a0+.08+u*(a1-a0-.16),rr=R*(.88+v*.24),f=.5+.5*Math.sin(t*2+i);c.fillStyle=`rgba(255,234,176,${(.35+.55*f).toFixed(2)})`;c.fillRect(cx+Math.cos(a)*rr,cy+Math.sin(a)*rr,1.6,1.6)}},
+  // Ghazal 255: Jacob's hut at night; Joseph's shirt drifts toward it on the wind, trailing gold
+  shirt(c,W,H,t){const S=Math.min(W,H),g=c.createLinearGradient(0,0,0,H);g.addColorStop(0,"#070A1C");g.addColorStop(.62,"#2A2240");g.addColorStop(1,"#0C0A10");c.fillStyle=g;c.fillRect(0,0,W,H);starfield(c,W,H*.6,t,60,23);
+    const gy=H*.64;c.fillStyle="#1A1620";c.beginPath();c.moveTo(0,H);for(let i=0;i<=30;i++){const u=i/30;c.lineTo(u*W,gy-S*.03*(.6+.4*Math.sin(u*6+1)))}c.lineTo(W,H);c.fill();
+    const hx=W*.3,hs=S*.42;c.fillStyle="#241E28";c.fillRect(hx-hs*.5,gy-hs*.36,hs,hs*.36+2);c.beginPath();c.ellipse(hx-hs*.12,gy-hs*.38,hs*.24,hs*.21,0,Math.PI,TAU);c.fill();
+    c.fillStyle="#050508";c.beginPath();const dx=hx-hs*.12,dw=hs*.15,dh=hs*.25;c.moveTo(dx-dw/2,gy);c.lineTo(dx-dw/2,gy-dh*.58);c.quadraticCurveTo(dx-dw/2,gy-dh*.92,dx,gy-dh);c.quadraticCurveTo(dx+dw/2,gy-dh*.92,dx+dw/2,gy-dh*.58);c.lineTo(dx+dw/2,gy);c.fill();
+    const q=(t*.08)%1,path=q=>[W*(.92-q*.5),H*(.34+.1*Math.sin(q*4))];
+    for(let k=1;k<18;k++){const p=path(Math.max(0,q-k*.012));glow(c,p[0],p[1],S*.018,"255,234,176",.22*(1-k/18))}
+    const p=path(q),s=S*.07;c.save();c.translate(p[0],p[1]);c.rotate(Math.sin(t*1.3)*.2);c.globalAlpha=Math.sin(q*Math.PI);
+    const P=[[-.07,-.56],[-.3,-.5],[-.62,-.34],[-.8,-.12],[-.68,-.06],[-.46,-.24],[-.3,-.26],[-.36,.2],[-.44,.66],[.44,.66],[.36,.2],[.3,-.26],[.46,-.24],[.68,-.06],[.8,-.12],[.62,-.34],[.3,-.5],[.07,-.56],[0,-.42]];
+    c.beginPath();P.forEach(([u,v],i)=>{const x=u*s+Math.sin(v*4+t*4)*s*.05,y=v*s+Math.sin(u*5+t*3)*s*.06;i?c.lineTo(x,y):c.moveTo(x,y)});c.closePath();c.fillStyle="#F2EADA";c.fill();c.restore()}
+};
+const grid=document.getElementById("grid"),covers=[];
+POEMS.forEach(p=>{const a=document.createElement("a");a.className="card";a.href=p.url;a.setAttribute("aria-label",`${p.poet}: ${p.en}`);
+  a.innerHTML=`<div class="cover"><canvas></canvas><p class="first fa" lang="fa" dir="rtl"></p></div><div class="body"><div class="row"><p class="poet"></p><span class="poetfa fa" lang="fa"></span></div><p class="en"></p><div class="chips"><span class="chip"></span><span class="chip"></span><span class="chip"></span></div><span class="open">Open the poem</span></div>`;
+  a.querySelector(".first").textContent=p.first;a.querySelector(".poet").textContent=p.poet;a.querySelector(".poetfa").textContent=p.poetFa;a.querySelector(".en").textContent=`${p.en} — ${p.source}`;
+  const ch=a.querySelectorAll(".chip");ch[0].textContent=`${p.couplets} couplets`;ch[1].textContent=fmt(p.secs);ch[2].textContent=`Music: ${p.mode}`;
+  grid.appendChild(a);covers.push({cv:a.querySelector("canvas"),draw:COVERS[p.cover]||COVERS.sun})});
+const next=document.createElement("div");next.className="card next";next.innerHTML=`<div class="body"><span class="fa" lang="fa" dir="rtl">شعر بعدی</span><p>The next poem will appear here once it is ready.</p></div>`;grid.appendChild(next);
+const sky=document.getElementById("sky"),sc=sky.getContext("2d");
+const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+function size(){const d=Math.min(devicePixelRatio||1,2);sky.width=innerWidth*d;sky.height=innerHeight*d;covers.forEach(o=>{const r=o.cv.getBoundingClientRect();o.w=r.width;o.h=r.height;o.cv.width=Math.max(1,r.width*d);o.cv.height=Math.max(1,r.height*d);o.d=d})}
+addEventListener("resize",size);size();
+let t0=performance.now();
+function frame(now){const t=reduce?4:(now-t0)/1000;const d=Math.min(devicePixelRatio||1,2);
+  sc.setTransform(d,0,0,d,0,0);sc.clearRect(0,0,innerWidth,innerHeight);starfield(sc,innerWidth,innerHeight,t*.5,140,3);glow(sc,innerWidth/2,-innerHeight*.1,Math.max(innerWidth,innerHeight)*.6,"233,180,76",.08);
+  covers.forEach(o=>{const c=o.cv.getContext("2d");c.setTransform(o.d,0,0,o.d,0,0);o.draw(c,o.w,o.h,t)});
+  if(!reduce)requestAnimationFrame(frame)}
+requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>
