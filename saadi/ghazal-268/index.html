@@ -221,20 +221,30 @@ function camel(c,x,y,s,ph,col,dir=1,o={}){c.save();c.translate(x,y);c.scale(dir,
   c.beginPath();c.ellipse(s*.63,-s*(.99+lift*.1),s*.11,s*.05,.15-lift*.4,0,TAU);c.fill();
   c.beginPath();c.ellipse(s*.55,-s*(1.03+lift*.1),s*.022,s*.035,-.3,0,TAU);c.fill();
   c.lineWidth=s*.04;c.beginPath();c.moveTo(-s*.4,-s*.66);c.quadraticCurveTo(-s*.5,-s*.55,-s*.47,-s*.42);c.stroke();c.restore()}
-// the mahmal (a covered litter) on the camel's hump, in the camel's frame facing +x; its small window can hold the light
-function kajaveh(c,s,col,cloth,lit){c.fillStyle=cloth;c.beginPath();c.moveTo(-s*.34,-s*.84);c.lineTo(s*.22,-s*.84);c.lineTo(s*.24,-s*.6);
+// the mahmal: an open litter on the camel's hump, a small canopy on four posts with its curtains tied back, and the beloved
+// seated inside in silhouette, a long scarf moving behind; the light, when it comes, rests at the beloved's breast
+function kajaveh(c,s,col,cloth,lit,t=0){c.fillStyle=cloth;c.beginPath();c.moveTo(-s*.34,-s*.84);c.lineTo(s*.22,-s*.84);c.lineTo(s*.24,-s*.6);
   for(let i=1;i<=6;i++){const x0=lerp(.24,-.36,(i-1)/6),x1=lerp(.24,-.36,i/6);c.quadraticCurveTo((x0+x1)/2*s,-s*.53,x1*s,-s*.6)}c.closePath();c.fill();
-  c.fillStyle=col;c.fillRect(-s*.31,-s*1.07,s*.5,s*.24);
-  c.beginPath();c.moveTo(-s*.33,-s*1.06);c.bezierCurveTo(-s*.33,-s*1.24,-s*.12,-s*1.28,-s*.06,-s*1.42);c.bezierCurveTo(0,-s*1.28,s*.21,-s*1.24,s*.21,-s*1.06);c.closePath();c.fill();
-  c.strokeStyle=col;c.lineWidth=Math.max(1,s*.02);c.beginPath();c.moveTo(-s*.06,-s*1.4);c.lineTo(-s*.06,-s*1.5);c.stroke();c.beginPath();c.arc(-s*.06,-s*1.51,s*.02,0,TAU);c.fill();
-  c.beginPath();archPath(c,-s*.06,-s*.88,s*.11,s*.15);c.fillStyle=lit>0?rgba([255,200,120],.25+.7*lit):"rgba(0,0,0,.35)";c.fill();
-  if(lit>0)glow(c,-s*.06,-s*.95,s*.35,WARM,.35*lit)}
+  c.fillStyle=col;c.fillRect(-s*.36,-s*.9,s*.62,s*.07);
+  // the beloved, seated facing the way they go, and the scarf blown back
+  const bx=-s*.05,by=-s*.88,bh=s*.64;c.save();c.translate(bx,by);c.fillStyle=col;
+  c.beginPath();c.moveTo(-bh*.24,0);c.quadraticCurveTo(-bh*.22,-bh*.2,-bh*.09,-bh*.34);c.lineTo(bh*.08,-bh*.34);c.quadraticCurveTo(bh*.2,-bh*.18,bh*.26,0);c.closePath();c.fill();
+  c.beginPath();c.moveTo(-bh*.09,-bh*.32);c.lineTo(-bh*.07,-bh*.48);c.quadraticCurveTo(0,-bh*.53,bh*.07,-bh*.48);c.lineTo(bh*.09,-bh*.32);c.closePath();c.fill();
+  c.beginPath();c.arc(bh*.01,-bh*.58,bh*.075,0,TAU);c.fill();
+  const fl=Math.sin(t*1.3)*bh*.025;c.beginPath();c.moveTo(bh*.06,-bh*.64);c.quadraticCurveTo(-bh*.02,-bh*.72,-bh*.09,-bh*.6);c.quadraticCurveTo(-bh*.2,-bh*.42,-bh*.3+fl,-bh*.14);c.lineTo(-bh*.2+fl*.5,-bh*.12);c.quadraticCurveTo(-bh*.1,-bh*.34,-bh*.04,-bh*.5);c.closePath();c.fill();
+  c.restore();
+  // posts, canopy and tied-back curtains
+  c.fillStyle=col;[-.33,.23].forEach(u=>c.fillRect(u*s-s*.012,-s*1.44,s*.024,s*.56));
+  c.beginPath();c.moveTo(-s*.4,-s*1.42);c.bezierCurveTo(-s*.36,-s*1.56,-s*.14,-s*1.58,-s*.05,-s*1.72);c.bezierCurveTo(s*.04,-s*1.58,s*.26,-s*1.56,s*.3,-s*1.42);c.closePath();c.fill();
+  c.strokeStyle=col;c.lineWidth=Math.max(1,s*.02);c.beginPath();c.moveTo(-s*.05,-s*1.7);c.lineTo(-s*.05,-s*1.8);c.stroke();c.beginPath();c.arc(-s*.05,-s*1.81,s*.02,0,TAU);c.fill();
+  c.fillStyle=cloth;[[-.33,1],[.23,-1]].forEach(([u,d])=>{c.beginPath();c.moveTo(u*s-d*s*.01,-s*1.42);c.quadraticCurveTo(u*s+d*s*.07,-s*1.2,u*s+d*s*.02,-s*1.06);c.quadraticCurveTo(u*s+d*s*.05,-s*.96,u*s,-s*.9);c.lineTo(u*s-d*s*.02,-s*.9);c.lineTo(u*s-d*s*.02,-s*1.42);c.closePath();c.fill()});
+  if(lit>0){const hx=bx+bh*.04,hy=by-bh*.24;glow(c,hx,hy,s*.3,WARM,.4*lit);c.fillStyle=rgba([255,236,190],lit);c.beginPath();c.arc(hx,hy,Math.max(1,s*.022),0,TAU);c.fill()}}
 function camelM(c,x,y,s,ph,col,o={}){camel(c,x,y,s,ph,col,1,o);c.save();c.translate(x,y);
-  if(o.mahmal)kajaveh(c,s,col,o.cloth||col,o.lit||0);
+  if(o.mahmal)kajaveh(c,s,col,o.cloth||col,o.lit||0,ph);
   else{c.fillStyle=col;c.beginPath();c.ellipse(-s*.04,-s*.88,s*.2,s*.08,0,0,TAU);c.fill();c.beginPath();c.ellipse(-s*.17,-s*.72,s*.1,s*.13,0,0,TAU);c.fill();c.beginPath();c.ellipse(s*.09,-s*.72,s*.1,s*.13,0,0,TAU);c.fill()}
   c.restore()}
-// window of the mahmal, in world coordinates
-const winOf=(x,y,s)=>[x-s*.06,y-s*.95];
+// where the light rests: the beloved's breast, in world coordinates
+const winOf=(x,y,s)=>[x-s*.03,y-s*1.0];
 // a line of camels walking toward +x, k=0 leading; P[k]=[x,y,s]; ropes run from each nose to the saddle ahead
 function caravan(c,P,ph,col,o={}){c.strokeStyle=col;c.lineWidth=1;
   for(let k=0;k<P.length-1;k++){const[a,ay,as]=P[k],[b,by,bs]=P[k+1];c.beginPath();c.moveTo(b+.66*bs,by-.97*bs);c.quadraticCurveTo((a-.4*as+b+.66*bs)/2,Math.max(ay-.55*as,by-.97*bs)+as*.12,a-.4*as,ay-.58*as);c.stroke()}

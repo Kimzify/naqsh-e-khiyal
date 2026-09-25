@@ -48,7 +48,7 @@ https://kimzify.github.io/naqsh-e-khiyal/ · repo https://github.com/Kimzify/naq
 
 ## Saadi Ghazal 268 scenes (first draft, not yet reviewed)
 One caravan leaves at dusk and is watched by the one left behind until dawn; radif «می‌رود». The cadence is santur plus a camel bell (درای) that sounds farther off each couplet. Umami label: `saadi-ghazal-268`.
-1. Caravan leaves the caravanserai at sunset; a small light leaves the figure and settles in the mahmal's window.
+1. Caravan leaves the caravanserai at sunset; a small light leaves the figure and settles at the breast of the beloved, who sits visible in an open mahmal.
 2. Cold night; the caravan vanishes on the horizon; the figure sinks down in the wind; frost.
 3. Doors of the caravanserai close on the figure; red tulips with dark hearts rise on the threshold.
 4. Low moon behind the figure; long shadows; the mahmal's shadow is a lying cypress, the figure's shadow reaches after it.
