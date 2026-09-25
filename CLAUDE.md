@@ -47,7 +47,7 @@ https://kimzify.github.io/naqsh-e-khiyal/ · repo https://github.com/Kimzify/naq
 10. The hut far off in a long stormy night, one window lit with a small reader inside, until dawn.
 
 ## Open items
-- Umami analytics: done in code, one Umami site for the whole domain. Every page's `<head>` has the script with `data-website-id="UMAMI_WEBSITE_ID"` (placeholder) and `data-domains="kimzify.github.io"` so local runs aren't counted. Replace the placeholder in all 4 pages with the real Website ID when the owner sends it; don't push before that.
+- Umami analytics (done): one Umami site for the whole domain. Every page's `<head>` has the script with website ID `2786b32f-32db-4029-a82f-e0adbcf506d7` and `data-domains="kimzify.github.io"` so local runs aren't counted.
   - Events (each with `{poem:"ghazal-N"}`): `begin`, `couplet-N` (once per visit, after 3 s of that couplet), `finish` (once per visit), `read-text`, `sound-off`.
 - Check every poem text against Ganjoor before promoting the site.
 - Ideas not done yet:
