@@ -46,7 +46,7 @@ https://kimzify.github.io/naqsh-e-khiyal/ · repo https://github.com/Kimzify/naq
 9. A candle in a glass lantern; wind keeps throwing a moth back; the lantern door opens by itself.
 10. The hut far off in a long stormy night, one window lit with a small reader inside, until dawn.
 
-## Saadi Ghazal 268 scenes (second draft; 6, 12, 13 and the visible beloved were revised after review)
+## Saadi Ghazal 268 scenes (third draft; 5, 6, 7, 9, 11, 12, 13 and the visible beloved were revised after review)
 Its full-text view puts the two hemistichs close to the middle (the owner's choice); the Hafez pages still align them to the outer edges.
 One caravan leaves at dusk and is watched by the one left behind until dawn; radif «می‌رود». The cadence is santur plus a camel bell (درای) that sounds farther off each couplet. Umami label: `saadi-ghazal-268`.
 1. Caravan leaves the caravanserai at sunset; a small light leaves the figure and settles at the breast of the beloved, who sits visible in an open mahmal.
@@ -59,7 +59,7 @@ One caravan leaves at dusk and is watched by the one left behind until dawn; rad
 8. A whirlwind rises from the ground to the sky; the figure shades their eyes.
 9. Night rider on the camel tracks, reins slipping loose; someone at the caravanserai waves them back.
 10. Rain; one camel sinks in the mud and the caravan halts, then pulls free and goes on.
-11. Footprints head home, loop round, and turn back after the caravan.
+11. The seated lover holds a handful of sand; it runs out between the fingers and the wind carries it toward the far caravan, three times.
 12. Climax: dawn; a figure of light steps out of the standing lover, walks after the far caravan leaving fading light footprints, and joins the light in the mahmal; the body sinks to its knees.
 13. Empty morning; the lover cries out and the cry spreads over the sand in rings that fade at the dunes with no echo; they sit down.
 

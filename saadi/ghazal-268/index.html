@@ -283,7 +283,7 @@ const POEM=[
  ["بازآی و بر چشمم نشین، ای دلسِتان نازنین!","کآشوب و فریاد از زمین، بر آسمانم می‌رود","Come back and sit upon my eye, my dear heart-stealer, for my turmoil and my cry go up from the earth to the sky.","The Whirlwind"],
  ["شب تا سحر می‌نَغنَوَم، واندرز کس می‌نَشنَوَم","وین ره نه قاصد می‌روم، کز کف عنانم می‌رود","From night till dawn I do not sleep, and I listen to no one's advice. I do not take this road by choice: the reins are slipping from my hand.","The Loose Reins"],
  ["گفتم بگریم تا اِبِل، چون خَر فرو ماند به گِل","وین نیز نتوانم که دل، با کاروانم می‌رود","I said I would weep until the camels stuck fast, like a donkey in mud. I cannot do even this, for my heart is going with the caravan.","The Rain"],
- ["صبر از وصال یار من، برگشتن از دلدار من","گر چه نباشد کار من، هم کار از آنم می‌رود","Patience without my love, turning back from the one I love: though neither is in my power, my life comes undone over them.","The Way Back"],
+ ["صبر از وصال یار من، برگشتن از دلدار من","گر چه نباشد کار من، هم کار از آنم می‌رود","Patience without my love, turning back from the one I love: though neither is in my power, my life comes undone over them.","Sand"],
  ["در رفتن جان از بدن، گویند هر نوعی سخن","من خود به چشم خویشتن، دیدم که جانم می‌رود","Of the soul leaving the body people say every kind of thing. I saw it with my own eyes: my soul was going.","The Soul"],
  ["سعدی! فغان از دست ما، لایق نبود ای بی‌وفا!","طاقت نمی‌آرم جفا، کار از فغانم می‌رود","Saadi, it was not fitting, faithless one, to cry out against us. I cannot bear the cruelty; it has gone beyond my crying.","Saadi"]
 ];
@@ -605,25 +605,34 @@ function r10(c,t,W,H){const S=Math.min(W,H),gy=H*.5,rain=ss(0,2,t)*(1-ss(9.5,12,
   if(rain>0){c.strokeStyle=rgba([200,206,222],.35*rain);c.lineWidth=1;for(const r of RAIN10){const q=(t*1.3+r[0])%1,x=r[1]*W*1.1-q*S*.06,y=q*H*.72;c.beginPath();c.moveTo(x,y);c.lineTo(x-S*.008,y+S*.04);c.stroke()}}
 }
 
-/* 11. The way back. Early morning. The one who stays sets off on foot for home, toward the caravanserai; but the footprints
-      bend round in a loop, and the walk turns back after the caravan's tracks toward the far horizon. */
-const PATH11=[[.7,.6],[.52,.55],[.36,.5],[.24,.5],[.2,.57],[.28,.62],[.45,.61],[.62,.56],[.78,.5],[.92,.45]];
-function r11(c,t,W,H){const S=Math.min(W,H),hz=H*.3,m=ss(0,18,t);
-  bg(c,W,H,[[0,mix([30,40,74],[54,72,110],m)],[.3,mix([150,120,130],[210,170,150],m)],[1,[60,50,52]]]);
-  glow(c,W*.85,hz,S*.6,[255,200,150],.22+.15*m);
-  duneLayer(c,W,H,hz+S*.01,S*.03,1.9,.3,mix([120,96,96],[150,118,106],m),[92,74,76]);
-  ground(c,W,H,hz+S*.03,mix([130,104,98],[160,126,110],m),[80,62,62]);
-  serai(c,W*.12,hz+S*.03,S*.045,{col:"rgb(74,58,62)"});
-  // the caravan's tracks going off to the east
-  for(let u=0;u<1;u+=.025){const x=lerp(W*.16,W*.98,u),y=lerp(H*.66,hz+S*.03,Math.pow(u,.7)),sz=S*lerp(.01,.003,u);padPrint(c,x,y,sz,.9)}
-  // the walker's path: a smooth curve through the points
-  const Pp=PATH11.map(([u,v])=>[u*W,v*H]),N=240,pts=[];for(let i=0;i<=N;i++){const f=i/N*(Pp.length-1),j=Math.min(Pp.length-2,Math.floor(f)),q=f-j,p0=Pp[Math.max(0,j-1)],p1=Pp[j],p2=Pp[j+1],p3=Pp[Math.min(Pp.length-1,j+2)];
-    pts.push([.5*(2*p1[0]+(-p0[0]+p2[0])*q+(2*p0[0]-5*p1[0]+4*p2[0]-p3[0])*q*q+(-p0[0]+3*p1[0]-3*p2[0]+p3[0])*q*q*q),.5*(2*p1[1]+(-p0[1]+p2[1])*q+(2*p0[1]-5*p1[1]+4*p2[1]-p3[1])*q*q+(-p0[1]+3*p1[1]-3*p2[1]+p3[1])*q*q*q)])}
-  const L=[0];for(let i=1;i<pts.length;i++)L.push(L[i-1]+Math.hypot(pts[i][0]-pts[i-1][0],pts[i][1]-pts[i-1][1]));
-  const at=l=>{let i=1;while(i<L.length-1&&L[i]<l)i++;const q=clamp((l-L[i-1])/((L[i]-L[i-1])||1));return[lerp(pts[i-1][0],pts[i][0],q),lerp(pts[i-1][1],pts[i][1],q),pts[i][0]-pts[i-1][0]]};
-  const cur=L[L.length-1]*clamp(t/17.2),step=S*.022;
-  for(let l=step,i=0;l<cur-step*.6;l+=step,i++){const p=at(l),sc=lerp(.6,1.1,(p[1]-hz)/(H*.7-hz));footPrint(c,p[0],p[1]+(i%2?1:-1)*S*.003,S*.007*sc,.9)}
-  const p=at(cur),sc=lerp(.6,1.1,(p[1]-hz)/(H*.7-hz));walker(c,p[0],p[1],S*.13*sc,cur/(S*.02),t<17.2,"rgb(30,22,26)",{dir:p[2]<0?-1:1});
+/* 11. Sand through the fingers. Early morning; far off, the caravan still moving along the horizon. The one who stays sits
+      and takes up a handful of sand and holds it (patience, turning back); it runs out between the fingers and the wind
+      carries it off toward the caravan. Again, and a third time, and each time the hand empties. */
+const SAND11=randArr(1111,240,3),DUST11=randArr(1112,30,3);
+const CYC11=[.6,5.9,11.2],CL11=5.3;
+function r11(c,t,W,H){const S=Math.min(W,H),hz=H*.44,m=ss(0,18,t);
+  bg(c,W,H,[[0,mix([30,40,74],[54,72,110],m)],[.44,mix([150,120,130],[206,166,148],m)],[1,[70,56,58]]]);
+  glow(c,W*.86,hz,S*.6,[255,200,150],.2+.12*m);
+  const Y=duneLayer(c,W,H,hz+S*.01,S*.02,1.9,.3,mix([118,94,96],[146,114,104],m),[92,74,76]);
+  ground(c,W,H,hz+S*.03,mix([128,102,96],[156,122,108],m),[80,62,62]);
+  const cp=[];for(let k=0;k<5;k++){const x=W*.74+(4-k)*S*.028+t*S*.004;cp.push([x,Y(x/W)+1,S*.02])}caravan(c,cp,t*3,"rgb(60,44,50)",{m:1,lit:1,cloth:"rgb(96,40,46)"});
+  const fx=W*.34,fy=H*.62,fh=S*.24,col="rgb(30,22,26)",dig=[fx+fh*.3,fy-fh*.01],hold=[fx+fh*.36,fy-fh*.4],knee=[fx+fh*.2,fy-fh*.12];
+  c.fillStyle="rgba(60,44,46,.35)";c.beginPath();c.ellipse(dig[0],dig[1]+fh*.012,fh*.07,fh*.014,0,0,TAU);c.fill();
+  person(c,fx,fy,fh,{kneel:1,bow:.08,col});
+  // where the hand is: down to the sand, closing on it, up in front, held while it empties; after the last, back to the knee
+  let hand=knee,full=0;
+  for(const c0 of CYC11){const q=t-c0;if(q<0||q>CL11)continue;const down=easeInOut(ss(0,.8,q)),up=easeInOut(ss(1.2,2.2,q));
+    const p1=[lerp(knee[0],dig[0],down),lerp(knee[1],dig[1],down)];hand=[lerp(p1[0],hold[0],up),lerp(p1[1],hold[1],up)];full=ss(.8,1.2,q)*(1-ss(2.2,5,q))}
+  if(t>CYC11[2]+CL11){const r=easeInOut(ss(CYC11[2]+CL11,CYC11[2]+CL11+1,t));hand=[lerp(hold[0],knee[0],r),lerp(hold[1],knee[1],r)]}
+  const sh=shoulderOf(fx,fy,fh,1,.08),el=[(sh[0]+hand[0])/2,(sh[1]+hand[1])/2+fh*.025];
+  c.strokeStyle=col;c.lineCap="round";c.lineWidth=fh*.05;c.beginPath();c.moveTo(sh[0],sh[1]);c.lineTo(el[0],el[1]);c.stroke();c.lineWidth=fh*.04;c.beginPath();c.moveTo(el[0],el[1]);c.lineTo(hand[0],hand[1]);c.stroke();
+  c.fillStyle=col;c.beginPath();c.ellipse(hand[0]+fh*.01,hand[1]+fh*.004,fh*(.032+.008*full),fh*(.028+.006*full),0,0,TAU);c.fill();
+  // the sand running out of the fist, falling, and blown off toward the caravan
+  for(const c0 of CYC11){const q=t-c0;if(q<2.2)continue;const top=[hold[0]+fh*.012,hold[1]+fh*.03];
+    const flow=ss(2.2,2.5,q)*(1-ss(3.8,5,q));if(flow>0){const g=c.createLinearGradient(0,top[1],0,top[1]+fh*.25);g.addColorStop(0,rgba([232,204,168],.75*flow));g.addColorStop(1,rgba([232,204,168],0));c.strokeStyle=g;c.lineWidth=Math.max(1,fh*.012*flow);c.beginPath();c.moveTo(top[0],top[1]);c.quadraticCurveTo(top[0]+fh*.01,top[1]+fh*.12,top[0]+fh*.04,top[1]+fh*.25);c.stroke()}
+    for(const p of SAND11){const ts=2.2+Math.pow(p[0],1.6)*2.8,age=q-ts;if(age<=0||age>3.2)continue;const fall=Math.min(fy-top[1],S*1.4*age*age),fallT=Math.sqrt((fy-top[1])/(S*1.4)),x=top[0]+age*S*(.03+p[1]*.03)+age*age*S*.03+(age>fallT?(age-fallT)*S*.08:0),y=top[1]+fall-(age>fallT?Math.sin((age-fallT)*3+p[2]*6)*S*.004:0);
+      c.fillStyle=rgba([226,196,160],.85*(1-age/3.2));c.fillRect(x,y,1.5,1.5)}
+    for(const d of DUST11){const age=q-2.4-d[0]*2.6;if(age<=0||age>5)continue;glow(c,top[0]+age*S*(.07+d[1]*.05),top[1]+fh*.3-age*S*(.012+d[2]*.02),S*(.008+age*.006),[230,206,176],.18*(1-age/5))}}
 }
 
 /* 12. The soul (the high point). Dawn over the open desert; the caravan is a small line on the far ridge, its bells ringing
@@ -721,6 +730,8 @@ const CRK=randArr(6660,26,1);CRK.forEach(([r],i)=>EVENTS.push({t:5*BD+.5+i*.66+r
 EVENTS.push({t:7*BD+.8,fn:()=>hiss(300,1400,14,.06)});
 // 10: rain
 EVENTS.push({t:9*BD+.2,fn:()=>hiss(3000,2600,12,.035)});
+// 11: sand running between the fingers
+[.6,5.9,11.2].forEach(x=>EVENTS.push({t:10*BD+x+2.2,fn:()=>hiss(5200,3800,3,.012)}));
 // 12: all the bells at once on the crest, then one by one gone
 for(let i=0;i<22;i++){const x=.4+i*.62+((i*37)%10)/25;EVENTS.push({t:11*BD+x,fn:()=>bell(900+((i*53)%5)*110,.02*(1-x/16))})}
 EVENTS.push({t:11*BD+14.8,fn:()=>hiss(400,300,4,.02)});
