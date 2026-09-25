@@ -111,6 +111,17 @@ a.textlink{display:inline-block}
   #verse .w{transition-duration:.2s!important;filter:none!important}
 }
 </style>
+<style id="nastaliq-fix">
+/* Nastaliq has very tall ascenders and deep descenders: give the Persian headings and lines room so they don't touch the text around them */
+#intro h1{line-height:1.5;padding:.32em 0 .5em;margin:0}
+#intro .sub{margin-top:.1em}
+.refrain{line-height:2.2}
+.refrain .fa{line-height:1}
+#verse{line-height:2.3}
+#verse .m + .m{margin-top:0}
+#gloss{margin-top:.4em}
+.outro-in h2{line-height:1.5;padding:.28em 0 .4em}
+</style>
 </head>
 <body>
 <div id="stage">

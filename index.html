@@ -61,6 +61,11 @@ a.card:hover,a.card:focus-visible{transform:translateY(-4px);border-color:rgba(2
 footer{margin-top:40px;text-align:center;color:var(--mute);font-size:15px;font-style:italic}
 @media (prefers-reduced-motion:reduce){.card{transition:none}}
 </style>
+<style id="nastaliq-fix">
+/* Nastaliq has very tall ascenders and deep descenders: give the Persian heading room */
+header h1{line-height:1.5;padding:.28em 0 .5em}
+.cover .first{line-height:2.4;bottom:2px}
+</style>
 </head>
 <body>
 <canvas id="sky" aria-hidden="true"></canvas>
