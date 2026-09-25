@@ -15,11 +15,11 @@ Each poem is one self-contained web page: every couplet gets its own scene, draw
 
 ## Why "Naqsh-e Khiyal"?
 
-**نقش (naqsh)** means an image, a design, a pattern: the mark something leaves. It is one of Hafez's favourite words; in Ghazal 179, one of the poems on this site, he writes «نقشِ جور و نشانِ ستم», *the mark of cruelty and the scar of injustice*.
+**Naqsh (نقش)** means an image, a design, a pattern: the mark something leaves. It is one of Hafez's favourite words; in Ghazal 179, one of the poems on this site, he writes «نقشِ جور و نشانِ ستم», *the mark of cruelty and the scar of injustice*.
 
-**خیال (khiyal)** is the imagination, and in Persian poetry also the imagined face of the beloved that stays with the lover.
+**Khiyal (خیال)** is the imagination, and in Persian poetry also the imagined face of the beloved that stays with the lover.
 
-Together, **نقشِ خیال** is *the image that takes shape in the imagination*. That is what every page here tries to draw: the picture a couplet paints in the mind of someone who reads it.
+Together, **Naqsh-e Khiyal (نقشِ خیال)** is *the image that takes shape in the imagination*. That is what every page here tries to draw: the picture a couplet paints in the mind of someone who reads it.
 
 ## How it works
 
@@ -81,6 +81,6 @@ Code: [MIT](LICENSE). Glosses, scene designs, music and notes: [CC BY 4.0](LICEN
 
 **نقشِ خیال** یعنی تصویری که در خیال نقش می‌بندد. هر صفحهٔ این سایت می‌خواهد همین را بکشد: تصویری که یک بیت در ذهنِ خواننده می‌سازد.
 
-متن اشعار از [گنجور](https://ganjoor.net) است و اشعار حافظ مال همه است. کد با مجوز MIT و ترجمه‌ها، طرح صحنه‌ها و موسیقی با مجوز CC BY 4.0 منتشر شده‌اند.
+متن اشعار از [گنجور](https://ganjoor.net) است. کد با مجوز MIT و ترجمه‌ها، طرح صحنه‌ها و موسیقی با مجوز CC BY 4.0 منتشر شده‌اند.
 
 </div>
