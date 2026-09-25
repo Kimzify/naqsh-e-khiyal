@@ -435,16 +435,21 @@ function r5(c,t,W,H){const S=Math.min(W,H),hz=H*.36,gy=H*.6;
   c.strokeStyle="rgba(120,112,130,.28)";c.lineWidth=1;for(const r of RIP5){const x=r[0]*W,y=hz+S*.05+r[1]*(H*.68-hz),w=S*(.04+r[2]*.06);c.beginPath();c.moveTo(x-w,y);c.quadraticCurveTo(x,y-S*.004,x+w,y);c.stroke()}
   const s=S*.2,xc=W*.1+t*(W*.95+s)/13,ph=xc/(s*.6);
   // the smoothed band behind the train
-  const tail=xc-s*.8-S*.26;if(tail>0){const bgd=c.createLinearGradient(0,gy-S*.02,0,gy+S*.03);bgd.addColorStop(0,"rgba(96,90,108,0)");bgd.addColorStop(.5,"rgba(96,90,108,.55)");bgd.addColorStop(1,"rgba(96,90,108,0)");c.fillStyle=bgd;c.fillRect(0,gy-S*.02,tail,S*.05)}
+  const tail=xc-s*.64-S*.15;if(tail>0){const bgd=c.createLinearGradient(0,gy-S*.02,0,gy+S*.03);bgd.addColorStop(0,"rgba(96,90,108,0)");bgd.addColorStop(.5,"rgba(96,90,108,.55)");bgd.addColorStop(1,"rgba(96,90,108,0)");c.fillStyle=bgd;c.fillRect(0,gy-S*.02,tail,S*.05)}
   // pad prints only under the camel itself
   for(let x=-s;x<xc+s*.3;x+=s*.34){if(x>xc-s*.45)padPrint(c,x,gy+((x/(s*.34)|0)%2?S*.005:-S*.004),S*.012,1)}
-  // the trailing cloth
-  const cl="rgb(92,30,38)",L=S*.26,g1=xc-s*.8,g2=xc-s*.5;c.fillStyle=cl;c.beginPath();c.moveTo(xc-s*.34,gy-s*.84);c.quadraticCurveTo(xc-s*.7,gy-s*.62,g1,gy-S*.012);
-  for(let i=1;i<=8;i++){const u=i/8;c.lineTo(g1-L*u,gy-S*.01*(1-u)-S*.004+Math.sin(u*7+t*2.4)*S*.003)}
-  for(let i=8;i>=0;i--){const u=i/8;c.lineTo(lerp(g2,g1,1)-L*u+(1-u)*(g2-g1),gy+S*.006+Math.sin(u*9+t*2)*S*.002)}
-  c.quadraticCurveTo(xc-s*.44,gy-s*.3,xc-s*.36,gy-s*.6);c.closePath();c.fill();
-  c.strokeStyle="rgba(40,10,16,.5)";c.lineWidth=1;for(let i=1;i<4;i++){const u=i/4;c.beginPath();c.moveTo(lerp(xc-s*.34,xc-s*.36,u),lerp(gy-s*.84,gy-s*.6,u));c.quadraticCurveTo(lerp(xc-s*.7,xc-s*.44,u),lerp(gy-s*.62,gy-s*.3,u),lerp(g1,g2,u),gy);c.stroke()}
-  c.strokeStyle="rgba(200,160,90,.5)";c.lineWidth=1;for(let i=0;i<6;i++){const x=g1-L+i*S*.004;c.beginPath();c.moveTo(x,gy);c.lineTo(x-S*.008,gy+S*.006);c.stroke()}
+  // the drape: it falls from the back of the litter over the camel's rump, bellies a little with the gait,
+  // and its hem lies on the sand in a short train that drags behind, smoothing the tracks
+  const cl="rgb(92,30,38)",L=S*.15,sw=Math.sin(ph)*s*.02,t0=[xc-s*.36,gy-s*.84],t1=[xc-s*.1,gy-s*.84],bk=[xc-s*.64+sw,gy],tip=[bk[0]-L,gy+S*.004];
+  const cg=c.createLinearGradient(0,gy-s*.84,0,gy);cg.addColorStop(0,"rgb(118,38,46)");cg.addColorStop(.7,"rgb(84,26,34)");cg.addColorStop(1,"rgb(58,18,26)");c.fillStyle=cg;
+  c.beginPath();c.moveTo(t1[0],t1[1]);c.lineTo(t0[0],t0[1]);c.bezierCurveTo(xc-s*.5,gy-s*.62,xc-s*.62+sw,gy-s*.3,bk[0],gy-S*.016);
+  c.bezierCurveTo(bk[0]-L*.35,gy-S*.02,bk[0]-L*.75,gy-S*.008,tip[0],tip[1]-S*.003);c.quadraticCurveTo(tip[0]-S*.008,tip[1]+S*.004,tip[0]+S*.012,gy+S*.008);
+  c.lineTo(xc-s*.3,gy+S*.008);c.bezierCurveTo(xc-s*.3,gy-s*.3,xc-s*.16,gy-s*.62,t1[0],t1[1]);c.closePath();c.fill();
+  c.lineWidth=Math.max(1,s*.008);for(let i=1;i<6;i++){const u=i/6,p0=[lerp(t0[0],t1[0],u),t0[1]],p1=[lerp(bk[0],xc-s*.3,u),gy],cx1=lerp(xc-s*.6+sw,xc-s*.3,u)-s*.02*Math.sin(i*2.1+ph*.5);
+    c.strokeStyle="rgba(30,6,12,.5)";c.beginPath();c.moveTo(p0[0],p0[1]);c.quadraticCurveTo(cx1,gy-s*.4,p1[0],p1[1]);c.stroke();
+    c.strokeStyle="rgba(190,110,110,.16)";c.beginPath();c.moveTo(p0[0]+s*.012,p0[1]);c.quadraticCurveTo(cx1+s*.012,gy-s*.4,p1[0]+s*.012,p1[1]);c.stroke()}
+  c.strokeStyle="rgba(30,6,12,.45)";c.lineWidth=1;for(let i=1;i<5;i++){const x=lerp(bk[0],tip[0],i/5),w=S*.012;c.beginPath();c.moveTo(x+w,gy-S*.012*(1-i/5));c.quadraticCurveTo(x,gy-S*.002,x-w*.6,gy+S*.005);c.stroke()}
+  for(let k=0;k<4;k++){const q=(t*1.6+k*.25)%1;glow(c,tip[0]-q*S*.03,gy-q*S*.012,S*(.006+q*.012),[150,140,160],.25*(1-q))}
   camelM(c,xc,gy,s,ph,"rgb(34,30,38)",{mahmal:1,lit:.8,cloth:cl});
   // the one who follows, and their footprints, which the wind takes back
   const x0=-S*.06,x1=W*.46,ts=3.5,te=12,fxp=lerp(x0,x1,clamp((t-ts)/(te-ts))),moving=t>ts&&t<te,fy=gy+S*.008;
@@ -542,9 +547,16 @@ function r8(c,t,W,H){const S=Math.min(W,H),gy=H*.58,grow=easeInOut(ss(1,10,t));
 /* 9. The loose reins. All night the one who stays rides after the caravan. Back at the caravanserai someone waves them back;
       they do not turn. The reins slip from their hand and hang loose, and the horse follows the camel tracks by itself until dawn. */
 function horse(c,x,y,s,ph,col,o={}){c.save();c.translate(x,y);c.fillStyle=col;c.strokeStyle=col;c.lineCap="round";c.lineJoin="round";
-  // legs: a thick upper part, a thin cannon, a small hoof; hind legs bend back at the hock
-  [[-.27,0,-1],[-.19,Math.PI,-1],[.22,Math.PI*.5,1],[.3,Math.PI*1.5,1]].forEach(([lx,of,fr])=>{const sw=Math.sin(ph+of)*.08*s,lift=Math.max(0,Math.sin(ph+of+1.4))*.05*s,kx=lx*s+sw*.4-fr*.035*s,ky=-s*.27,fx=lx*s+sw,fy=-lift*.4;
-    c.lineWidth=s*.08;c.beginPath();c.moveTo(lx*s,-s*.5);c.lineTo(kx,ky);c.stroke();c.lineWidth=s*.038;c.beginPath();c.moveTo(kx,ky);c.lineTo(fx,fy-s*.03);c.stroke();c.beginPath();c.ellipse(fx+s*.012,fy-s*.018,s*.028,s*.02,0,0,TAU);c.fill()});
+  // legs, jointed as a horse's are: forelegs straight down to the knee, the lower leg folding back when lifted;
+  // hind legs slanting back to the hock, the cannon upright beneath it; short sloping pasterns and small hooves
+  const D=(a)=>[Math.sin(a),Math.cos(a)],seg=(p,q,w0,w1)=>{const n=4;for(let i=0;i<n;i++){c.lineWidth=s*lerp(w0,w1,i/(n-1));c.beginPath();c.moveTo(lerp(p[0],q[0],i/n),lerp(p[1],q[1],i/n));c.lineTo(lerp(p[0],q[0],(i+1)/n),lerp(p[1],q[1],(i+1)/n));c.stroke()}};
+  [[-.25,0,1],[-.17,Math.PI,1],[.2,Math.PI*.5,0],[.28,Math.PI*1.5,0]].forEach(([lx,of,hind])=>{const a=Math.sin(ph+of)*.26,l=Math.max(0,Math.sin(ph+of+1.4));
+    const T=[lx*s,-s*(hind?.52:.5)];let J,F,ang;
+    if(hind){const d=D(a-.3);J=[T[0]+d[0]*s*.27,T[1]+d[1]*s*.27];ang=a+.06+.7*l;seg(T,J,.1,.05)}
+    else{const d=D(a);J=[T[0]+d[0]*s*.22,T[1]+d[1]*s*.22];ang=a-1.2*l;seg(T,J,.085,.05)}
+    const d2=D(ang);F=[J[0]+d2[0]*s*(hind?.2:.19),J[1]+d2[1]*s*(hind?.2:.19)];seg(J,F,.036,.032);
+    const d3=D(ang+.55),P=[F[0]+d3[0]*s*.05,F[1]+d3[1]*s*.05];c.beginPath();c.arc(F[0],F[1],s*.022,0,TAU);c.fill();c.lineWidth=s*.028;c.beginPath();c.moveTo(F[0],F[1]);c.lineTo(P[0],P[1]);c.stroke();
+    c.beginPath();c.ellipse(P[0]+s*.008,P[1]+s*.004,s*.03,s*.018,ang*.5,0,TAU);c.fill()});
   c.beginPath();c.ellipse(0,-s*.6,s*.34,s*.15,0,0,TAU);c.fill();c.beginPath();c.arc(-s*.24,-s*.62,s*.16,0,TAU);c.fill();c.beginPath();c.arc(s*.24,-s*.6,s*.15,0,TAU);c.fill();
   // neck rising from the withers, head hanging low at the end of it
   const hd=o.headDown||0,P=[lerp(.5,.56,hd)*s,lerp(-1.0,-.86,hd)*s],ang=lerp(1.0,1.3,hd),hl=s*.3,M=[P[0]+Math.cos(ang)*hl,P[1]+Math.sin(ang)*hl],nx=-Math.sin(ang),ny=Math.cos(ang);
