@@ -27,6 +27,7 @@ Together, **Naqsh-e Khiyal (نقشِ خیال)** is *the image that takes shape 
 - **The music is generated in the browser** with the Web Audio API: a Karplus–Strong santur, a breathy ney with glide and vibrato, a string pad and a drone, tuned to each poem's dastgah (quarter tones included). Each ghazal has a short musical figure that returns at the end of every couplet, like the poem's radif.
 - **The text** is shown in Noto Nastaliq Urdu, both hemistichs at once, word by word, with an English gloss beneath.
 - Keyboard: <kbd>Space</kbd> to pause, <kbd>←</kbd> <kbd>→</kbd> to move between couplets.
+- **Visitor stats** come from [Umami](https://umami.is): anonymous and cookie-free, with no personal data stored. Besides page views, the pages count a few events: Begin, each couplet reached, the end of the poem, "Read the whole ghazal", and turning the sound off.
 
 ## Run it locally
 
@@ -72,6 +73,7 @@ Code: [MIT](LICENSE). Glosses, scene designs, music and notes: [CC BY 4.0](LICEN
 - هر دو مصراع با هم و کلمه به کلمه با خط نستعلیق نشان داده می‌شوند و ترجمهٔ انگلیسی زیرشان می‌آید.
 - هر غزل یک جملهٔ کوتاه موسیقایی دارد که آخر هر بیت تکرار می‌شود، مثل ردیف شعر.
 - هیچ فایل صوتی یا تصویری دانلود نمی‌شود؛ همه‌چیز در لحظه در مرورگر ساخته می‌شود.
+- آمار بازدید با [Umami](https://umami.is) گرفته می‌شود: ناشناس و بدون کوکی، و هیچ اطلاعات شخصی‌ای ذخیره نمی‌شود.
 
 ### چرا «نقش خیال»؟
 

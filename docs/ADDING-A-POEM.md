@@ -49,4 +49,5 @@ Use `window.__seek(seconds)` in the browser console to jump to any moment. Take 
 1. Add the poem to the `POEMS` list at the top of the script in `/index.html`, and add a small cover function to `COVERS`.
 2. Add a 1200×630 preview image to `assets/og/` and the matching `<meta>` tags in the new page's `<head>`. Copy them from an existing page.
 3. Add a row to the table in `README.md`.
-4. Push. GitHub Pages redeploys automatically.
+4. Keep the Umami `<script>` tag in the `<head>` and the `track(...)` calls (they come with the template). Change the `poem:"ghazal-255"` label next to `const track` to the new page's folder name.
+5. Push. GitHub Pages redeploys automatically.

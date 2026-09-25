@@ -15,6 +15,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#07091A">
 <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+<script defer src="https://cloud.umami.is/script.js" data-website-id="UMAMI_WEBSITE_ID" data-domains="kimzify.github.io"></script>
 <style>html,body{margin:0;padding:0}</style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -714,6 +715,8 @@ function fire(a,b){for(const e of EVENTS)if(e.t>a&&e.t<=b)try{e.fn()}catch(_){}}
 
 /* ---------- UI ---------- */
 const $=id=>document.getElementById(id);
+// anonymous, cookie-free stats (Umami): how far people get into the poem
+const track=e=>{try{window.umami&&umami.track(e,{poem:"ghazal-1"})}catch(_){}};const seen=new Set();let finished=false;
 const intro=$("intro"),cap=$("caption"),bar=$("bar"),outro=$("outro"),mark=$("mark");
 const verse=$("verse"),gloss=$("gloss"),label=$("label"),segs=$("segs"),pp=$("pp"),snd=$("snd"),clockEl=$("clock"),markLabel=$("markLabel");
 const segEls=BAYT.map((T,i)=>{const b=document.createElement("button");b.className="seg";b.setAttribute("aria-label",`Couplet ${i+1}: ${T}`);b.innerHTML="<i></i>";b.addEventListener("click",()=>jump(i));segs.appendChild(b);return b.firstChild});
@@ -724,7 +727,7 @@ let mode="intro",playing=false,time=0,clock=0,outroStart=0,last=performance.now(
 let capS=-1,capState="";
 function build(b){verse.textContent="";const dl=wordDelays(b);let n=0;[2*b,2*b+1].forEach(li=>{const m=document.createElement("span");m.className="m";const ws=LINES[li].fa.split(" ");ws.forEach((w,i)=>{const sp=document.createElement("span");sp.className="w";sp.textContent=w;sp.style.setProperty("--d",dl[n++].toFixed(2)+"s");m.appendChild(sp);if(i<ws.length-1)m.appendChild(document.createTextNode(" "))});verse.appendChild(m)});
   gloss.textContent=LINES[2*b].en+" "+LINES[2*b+1].en;label.textContent=BAYT[b];markLabel.textContent=`${b+1} / ${NB}`;cap.classList.remove("on","out")}
-function updateCaption(s,t){if(s!==capS){capS=s;build(s);capState=""}const st=t<.7?"pre":t<BD-.8?"on":"out";if(st!==capState){capState=st;cap.classList.toggle("on",st==="on");cap.classList.toggle("out",st==="out")}}
+function updateCaption(s,t){if(t>3&&!seen.has(s)){seen.add(s);track("couplet-"+(s+1))}if(s!==capS){capS=s;build(s);capState=""}const st=t<.7?"pre":t<BD-.8?"on":"out";if(st!==capState){capState=st;cap.classList.toggle("on",st==="on");cap.classList.toggle("out",st==="out")}}
 function fmt(x){x=Math.max(0,Math.floor(x));return`${Math.floor(x/60)}:${String(x%60).padStart(2,"0")}`}
 function updateBar(){segEls.forEach((el,i)=>{el.style.transform=`scaleX(${clamp((time-i*BD)/BD).toFixed(4)})`});clockEl.textContent=fmt(time)}
 function setPlaying(p){playing=p;pp.textContent=p?"Pause":"Play";if(AC){try{p?AC.resume():AC.suspend()}catch(_){}}}
@@ -737,15 +740,15 @@ if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>{if(mode==
 function sceneFrame(c,Hs){const g=c.createRadialGradient(W/2,Hs*.45,Math.min(W,Hs)*.3,W/2,Hs*.5,Math.max(W,Hs)*.78);g.addColorStop(0,"rgba(0,0,0,0)");g.addColorStop(1,"rgba(2,3,8,.5)");c.fillStyle=g;c.fillRect(0,0,W,Hs);
   const f=c.createLinearGradient(0,Hs-40,0,Hs);f.addColorStop(0,"rgba(7,10,31,0)");f.addColorStop(1,"rgba(7,10,31,1)");c.fillStyle=f;c.fillRect(0,Hs-40,W,40);c.fillStyle="rgb(7,10,31)";c.fillRect(0,Hs,W,H-Hs);c.fillStyle="rgba(230,190,99,.4)";c.fillRect(W/2-36,Hs+8,72,1)}
 function start(at=0){initAudio();mode="play";time=at;capS=-1;intro.classList.add("gone");setTimeout(()=>{if(mode!=="intro")intro.hidden=true},1000);outro.classList.remove("show");outro.hidden=true;cap.hidden=false;bar.hidden=false;mark.hidden=false;measureCaps();setPlaying(true)}
-function toOutro(){mode="outro";outroStart=clock;setPlaying(false);if(AC)try{AC.resume()}catch(_){}cap.hidden=true;bar.hidden=true;mark.hidden=true;intro.hidden=true;outro.hidden=false;requestAnimationFrame(()=>outro.classList.add("show"))}
+function toOutro(){if(mode==="play"&&!finished){finished=true;track("finish")}mode="outro";outroStart=clock;setPlaying(false);if(AC)try{AC.resume()}catch(_){}cap.hidden=true;bar.hidden=true;mark.hidden=true;intro.hidden=true;outro.hidden=false;requestAnimationFrame(()=>outro.classList.add("show"))}
 function jump(i){if(mode!=="play"){start(i*BD);return}time=i*BD;capS=-1;if(!playing)setPlaying(true)}
-$("begin").addEventListener("click",()=>start(0));
+$("begin").addEventListener("click",()=>{track("begin");start(0)});
 $("again").addEventListener("click",()=>start(0));
-$("readBtn").addEventListener("click",()=>{intro.classList.add("gone");setTimeout(()=>{intro.hidden=true},900);toOutro()});
+$("readBtn").addEventListener("click",()=>{track("read-text");intro.classList.add("gone");setTimeout(()=>{intro.hidden=true},900);toOutro()});
 pp.addEventListener("click",()=>setPlaying(!playing));
 $("prev").addEventListener("click",()=>{const s=Math.floor(time/BD);jump(time-s*BD>2?s:Math.max(0,s-1))});
 $("next").addEventListener("click",()=>{const s=Math.floor(time/BD);if(s+1<NB)jump(s+1);else toOutro()});
-snd.addEventListener("click",()=>{soundOn=!soundOn;snd.textContent=soundOn?"Sound on":"Sound off";if(master)master.gain.setTargetAtTime(soundOn?1:0,AC.currentTime,.1)});
+snd.addEventListener("click",()=>{soundOn=!soundOn;if(!soundOn)track("sound-off");snd.textContent=soundOn?"Sound on":"Sound off";if(master)master.gain.setTargetAtTime(soundOn?1:0,AC.currentTime,.1)});
 addEventListener("keydown",e=>{if(mode!=="play")return;if(e.code==="Space"){e.preventDefault();setPlaying(!playing)}else if(e.key==="ArrowRight")$("next").click();else if(e.key==="ArrowLeft")$("prev").click()});
 
 function frame(now){
