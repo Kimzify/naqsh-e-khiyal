@@ -1,0 +1,756 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Ey Sarban · Saadi, Ghazal 268 · Naqsh-e Khiyal</title>
+<meta name="description" content="«ای ساربان آهسته رو کآرام جانم می‌رود»: Saadi’s Ghazal 268, animated couplet by couplet with music in Homayoun.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Ey Sarban · Saadi, Ghazal 268 · Naqsh-e Khiyal">
+<meta property="og:description" content="«ای ساربان آهسته رو کآرام جانم می‌رود»: Saadi’s Ghazal 268, animated couplet by couplet with music in Homayoun.">
+<meta property="og:url" content="https://kimzify.github.io/naqsh-e-khiyal/saadi/ghazal-268/">
+<meta property="og:image" content="https://kimzify.github.io/naqsh-e-khiyal/assets/og/saadi-ghazal-268.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#07091A">
+<link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+<script defer src="https://cloud.umami.is/script.js" data-website-id="2786b32f-32db-4029-a82f-e0adbcf506d7" data-domains="kimzify.github.io"></script>
+<style>html,body{margin:0;padding:0}</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Marcellus+SC&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme:dark;
+  --night:#07091A;
+  --sun:#E6BE63;
+  --sunl:#FFE9B0;
+  --ivory:#F6EEDC;
+  --mute:#B8BCC8;
+  --line:rgba(246,238,220,.32);
+}
+[hidden]{display:none!important}
+html,body{height:100%}
+body{background:var(--night);color:var(--ivory);overflow:hidden;font-family:"Cormorant Garamond",Georgia,serif}
+#stage{position:fixed;inset:0;overflow:hidden;background:var(--night)}
+canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.fa{font-family:"Noto Nastaliq Urdu","Noto Naskh Arabic","Geeza Pro","Tahoma",serif}
+button,a{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,a:focus-visible{outline:2px solid var(--sun);outline-offset:4px}
+#intro{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding-inline:16px;gap:10px;transition:opacity 1s ease}
+#intro.gone{opacity:0;pointer-events:none}
+.eyebrow{margin:0;font-family:"Marcellus SC",Georgia,serif;font-size:13px;letter-spacing:.3em;color:var(--sun)}
+#intro h1{margin:0;font-weight:400;font-size:clamp(44px,8vw,110px);line-height:1.95;text-shadow:0 0 50px rgba(230,190,99,.4)}
+.sub{margin:0;font-style:italic;font-size:clamp(18px,1.8vw,23px);color:var(--mute)}
+.refrain{margin:0 0 18px;max-width:34em;font-size:clamp(15px,1.4vw,18px);color:var(--mute);opacity:.9}
+.refrain .fa{color:var(--sunl);font-size:1.15em}
+.begin{background:var(--sunl);color:#0c0f18;border:0;border-radius:999px;padding:12px 40px;font-size:21px;font-weight:500;letter-spacing:.04em;box-shadow:0 0 40px rgba(230,190,99,.4);transition:transform .3s ease,box-shadow .3s ease}
+.begin:hover{transform:translateY(-2px);box-shadow:0 0 60px rgba(230,190,99,.6)}
+.hint{margin:14px 0 0;font-size:15px;color:var(--mute);opacity:.85}
+.links{display:flex;gap:22px;flex-wrap:wrap;justify-content:center}
+.textlink{background:none;border:0;padding:4px 2px;color:var(--mute);font-style:italic;font-size:17px;text-decoration:underline;text-underline-offset:4px;text-decoration-color:rgba(184,188,200,.4)}
+.textlink:hover{color:var(--ivory)}
+#mark{position:absolute;top:calc(14px + env(safe-area-inset-top,0px));left:16px;right:16px;display:flex;justify-content:space-between;font-family:"Marcellus SC",Georgia,serif;font-size:12px;letter-spacing:.28em;color:rgba(246,238,220,.55);pointer-events:none}
+#caption{position:absolute;left:16px;right:16px;bottom:calc(76px + env(safe-area-inset-bottom,0px));display:grid;justify-items:center;gap:2px;text-align:center;pointer-events:none}
+#meta{font-family:"Marcellus SC",Georgia,serif;font-size:12px;letter-spacing:.3em;color:var(--sun);opacity:0;transition:opacity 1s ease}
+#verse{margin:0;max-width:26em;font-size:clamp(19px,2.2vw,36px);line-height:1.95;text-shadow:0 0 22px rgba(3,4,10,.95),0 0 30px rgba(230,190,99,.2)}
+#verse .m{display:block}
+#verse .w{display:inline-block;opacity:0;filter:blur(10px);transform:translateY(.35em) scale(.96);transition:opacity 1.1s ease,filter 1.2s ease,transform 1.5s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
+#verse .w.rf{color:var(--sunl)}
+#gloss{margin:0;max-width:40em;font-style:italic;font-size:clamp(15px,1.35vw,19px);color:var(--mute);opacity:0;transition:opacity 1.2s ease}
+#caption.on #verse .w{opacity:1;filter:blur(0);transform:none}
+#caption.on #meta{opacity:.9}
+#caption.on #gloss{opacity:.95;transition-delay:1.1s}
+#caption.out #verse .w{opacity:0;filter:blur(6px);transform:translateY(-.25em);transition-duration:.7s;transition-delay:0s}
+#caption.out #meta,#caption.out #gloss{opacity:0;transition-delay:0s;transition-duration:.6s}
+#bar{position:absolute;left:0;right:0;bottom:0;display:flex;align-items:center;gap:10px;padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px));background:linear-gradient(rgba(3,4,10,0),rgba(3,4,10,.6))}
+.ctl{flex:none;height:34px;min-width:34px;padding:0 14px;border:1px solid var(--line);border-radius:999px;background:rgba(7,9,26,.4);font-family:"Marcellus SC",Georgia,serif;font-size:13px;letter-spacing:.12em;transition:border-color .2s,background .2s}
+.ctl:hover{border-color:var(--sun);background:rgba(230,190,99,.1)}
+.ctl.icon{padding:0;width:34px;font-size:18px;letter-spacing:0}
+#pp{min-width:78px}
+#segs{flex:1;display:flex;gap:3px;min-width:0}
+.seg{flex:1;min-width:0;height:24px;border:0;padding:0;background:none;position:relative}
+.seg::before,.seg i{content:"";position:absolute;left:0;right:0;top:11px;height:2px;border-radius:2px}
+.seg::before{background:rgba(246,238,220,.2)}
+.seg i{background:var(--sun);transform-origin:left center;transform:scaleX(0)}
+.seg:hover::before{background:rgba(246,238,220,.45)}
+#clock{flex:none;font-variant-numeric:tabular-nums;font-size:14px;color:var(--mute);min-width:3.2em;text-align:right}
+#outro{position:absolute;inset:0;overflow-y:auto;background:rgba(4,5,12,.66);opacity:0;transition:opacity 1.4s ease}
+#outro.show{opacity:1}
+.outro-in{max-width:1000px;margin:0 auto;padding-inline:16px;padding-block:calc(48px + env(safe-area-inset-top,0px)) 56px;display:grid;justify-items:center;gap:16px;text-align:center}
+.outro-in h2{margin:0;font-weight:400;font-size:clamp(40px,6vw,70px);line-height:1.9;color:var(--sunl);text-shadow:0 0 40px rgba(230,190,99,.45)}
+.poem{display:grid;gap:4px;width:100%}
+.bayt{display:grid;grid-template-columns:1fr 1fr;gap:0 3em;align-items:baseline;background:none;border:0;padding:0 6px;border-radius:8px;color:var(--ivory);transition:background .2s,color .2s}
+.bayt span{font-size:clamp(16px,1.8vw,24px);line-height:2.4}
+.bayt span:first-child{text-align:right}
+.bayt span:last-child{text-align:left}
+.bayt:hover{background:rgba(230,190,99,.08);color:var(--sunl)}
+.outro-note{margin:0;font-style:italic;color:var(--mute);font-size:16px}
+.actions{display:flex;gap:22px;align-items:center;flex-wrap:wrap;justify-content:center;margin-top:8px}
+@media (max-width:720px){
+  .bayt{grid-template-columns:1fr;margin-bottom:10px}
+  .bayt span:first-child,.bayt span:last-child{text-align:center}
+  #clock{display:none}
+  .ctl{padding:0 10px}
+  #pp{min-width:64px}
+}
+@media (prefers-reduced-motion:reduce){#verse .w{transition-duration:.2s!important;filter:none!important}}
+</style>
+<style id="nastaliq-fix">
+/* Nastaliq has very tall ascenders and deep descenders: give the Persian headings and lines room so they don't touch the text around them */
+#intro h1{line-height:1.5;padding:.32em 0 .5em;margin:0}
+#intro .sub{margin-top:.1em}
+.refrain{line-height:2.2}
+.refrain .fa{line-height:1}
+#verse{line-height:2.3}
+#verse .m + .m{margin-top:0}
+#gloss{margin-top:.4em}
+.outro-in h2{line-height:1.5;padding:.28em 0 .4em}
+</style>
+</head>
+<body>
+<div id="stage">
+  <canvas id="cv" aria-hidden="true"></canvas>
+  <div id="mark" hidden><span>Saadi · Divan · Ghazal 268</span><span id="markLabel"></span></div>
+
+  <section id="intro">
+    <p class="eyebrow">Saadi · Divan · Ghazal 268 · Thirteen Couplets</p>
+    <h1 class="fa" lang="fa" dir="rtl">ای ساربان</h1>
+    <p class="sub">Camel driver, go slowly</p>
+    <p class="refrain">Every couplet ends on <span class="fa" lang="fa">می‌رود</span>, “is going”. A caravan leaves at dusk, and the one left behind watches it go until dawn.</p>
+    <button class="begin" id="begin">Begin</button>
+    <p class="hint">Sound on · Space to pause · ← → to move between couplets</p>
+    <div class="links">
+      <button class="textlink" id="readBtn">Read the whole ghazal</button>
+      <a class="textlink" id="galleryLink" href="#" hidden>All poems</a>
+    </div>
+  </section>
+
+  <div id="caption" hidden>
+    <div id="meta"><span id="label"></span></div>
+    <p id="verse" class="fa" lang="fa" dir="rtl"></p>
+    <p id="gloss"></p>
+  </div>
+
+  <nav id="bar" hidden aria-label="Playback">
+    <button class="ctl" id="pp">Pause</button>
+    <button class="ctl icon" id="prev" aria-label="Previous couplet">‹</button>
+    <div id="segs"></div>
+    <button class="ctl icon" id="next" aria-label="Next couplet">›</button>
+    <span id="clock">0:00</span>
+    <button class="ctl" id="snd">Sound on</button>
+  </nav>
+
+  <section id="outro" hidden>
+    <div class="outro-in">
+      <p class="eyebrow">Saadi · Divan · Ghazal 268</p>
+      <h2 class="fa" lang="fa" dir="rtl">سعدی</h2>
+      <div class="poem fa" id="poem" lang="fa" dir="rtl"></div>
+      <p class="outro-note">Tap any couplet to watch it again.</p>
+      <div class="actions">
+        <button class="begin" id="again">Play again</button>
+        <a class="textlink" id="galleryLink2" href="#" hidden>All poems</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+(()=>{
+/* ---------- helpers ---------- */
+const TAU=Math.PI*2;
+const clamp=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+const lerp=(a,b,t)=>a+(b-a)*t;
+const ss=(a,b,x)=>{const t=clamp((x-a)/(b-a));return t*t*(3-2*t)};
+const easeOut=t=>1-Math.pow(1-clamp(t),3);
+const easeInOut=t=>{t=clamp(t);return t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2};
+const mix=(a,b,t)=>[lerp(a[0],b[0],t),lerp(a[1],b[1],t),lerp(a[2],b[2],t)];
+const rgb=c=>`rgb(${c[0]|0},${c[1]|0},${c[2]|0})`;
+const rgba=(c,a)=>`rgba(${c[0]|0},${c[1]|0},${c[2]|0},${clamp(a).toFixed(3)})`;
+function rng(seed){return()=>{seed|=0;seed=seed+0x6D2B79F5|0;let t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+const randArr=(seed,n,k)=>{const r=rng(seed);return Array.from({length:n},()=>Array.from({length:k},()=>r()))};
+
+/* palette: desert night indigo, dusk rose, sand, lamplight gold, tulip red */
+const GOLD=[232,188,96],GOLDL=[255,234,176],IV=[246,238,220],WARM=[255,184,104];
+
+function bg(c,W,H,stops){const g=c.createLinearGradient(0,0,0,H);stops.forEach(([o,col])=>g.addColorStop(o,rgb(col)));c.fillStyle=g;c.fillRect(0,0,W,H)}
+function glow(c,x,y,r,col,a=1){if(r<=0||a<=0)return;const g=c.createRadialGradient(x,y,0,x,y,r);g.addColorStop(0,rgba(col,a));g.addColorStop(.4,rgba(col,a*.35));g.addColorStop(1,rgba(col,0));c.fillStyle=g;c.beginPath();c.arc(x,y,r,0,TAU);c.fill()}
+const STARS=(()=>{const r=rng(268);return Array.from({length:260},()=>({x:r(),y:r(),s:r()*1.5+.3,p:r()*TAU,f:.5+r()*2}))})();
+function stars(c,W,H,t,a,ymax=1){if(a<=0)return;for(const s of STARS){if(s.y>ymax)continue;const tw=.55+.45*Math.sin(t*s.f+s.p);c.fillStyle=`rgba(244,232,208,${(a*tw*(.3+s.s/1.8*.7)).toFixed(3)})`;c.fillRect(s.x*W,s.y*H,s.s,s.s)}}
+// stars turning slowly about the pole (px,py)
+function wheel(c,W,H,t,a,px,py,rate,ymax){if(a<=0)return;const rot=t*rate;for(const s of STARS){if(s.y>ymax)continue;const x0=s.x*W-px,y0=s.y*H-py,rr=Math.hypot(x0,y0),an=Math.atan2(y0,x0)+rot,tw=.55+.45*Math.sin(t*s.f+s.p),y=py+Math.sin(an)*rr;if(y>ymax*H)continue;c.fillStyle=`rgba(244,232,208,${(a*tw*(.3+s.s/1.8*.7)).toFixed(3)})`;c.fillRect(px+Math.cos(an)*rr,y,s.s,s.s)}}
+function archPath(c,x,y,w,h){c.moveTo(x-w/2,y);c.lineTo(x-w/2,y-h*.58);c.quadraticCurveTo(x-w/2,y-h*.92,x,y-h);c.quadraticCurveTo(x+w/2,y-h*.92,x+w/2,y-h*.58);c.lineTo(x+w/2,y);c.closePath()}
+function hillAt(u,y,amp,seed){const r=rng(seed),a=r()*6,b=r()*6;return y-amp*(.55+.3*Math.sin(u*5+a)+.15*Math.sin(u*13+b))}
+function hillLayer(c,W,H,y,amp,col,seed){c.fillStyle=rgb(col);c.beginPath();c.moveTo(0,H);for(let i=0;i<=60;i++){const u=i/60;c.lineTo(u*W,hillAt(u,y,amp,seed))}c.lineTo(W,H);c.closePath();c.fill()}
+// one dune ridge: lit face above, shade below, a pale line on the crest
+function duneLayer(c,W,H,base,amp,a,b,lit,shade){const Y=u=>base-amp*(.55+.3*Math.sin(u*4.2+a)+.15*Math.sin(u*9.3+b));
+  const g=c.createLinearGradient(0,base-amp,0,base+amp*1.6);g.addColorStop(0,rgb(lit));g.addColorStop(1,rgb(shade));c.fillStyle=g;c.beginPath();c.moveTo(0,H);for(let i=0;i<=80;i++){const u=i/80;c.lineTo(u*W,Y(u))}c.lineTo(W,H);c.closePath();c.fill();
+  c.strokeStyle=rgba(mix(lit,[255,240,220],.3),.45);c.lineWidth=1;c.beginPath();for(let i=0;i<=80;i++){const u=i/80;i?c.lineTo(u*W,Y(u)):c.moveTo(u*W,Y(u))}c.stroke();return Y}
+function ground(c,W,H,y,top,bot){const g=c.createLinearGradient(0,y,0,H);g.addColorStop(0,rgb(top));g.addColorStop(1,rgb(bot));c.fillStyle=g;c.fillRect(0,y,W,H-y)}
+function moonPhase(c,x,y,R,p,col){if(p<=.001)return;const k=1-2*p;c.beginPath();c.arc(x,y,R,-Math.PI/2,Math.PI/2,false);c.ellipse(x,y,Math.abs(k)*R,R,0,Math.PI/2,-Math.PI/2,k>0);c.closePath();c.fillStyle=col;c.fill()}
+function cloud(c,x,y,s,col,a){if(a<=.01)return;[[0,0,1],[-.5,.1,.75],[.55,.08,.8],[.2,-.14,.7],[-.25,-.08,.6]].forEach(([dx,dy,r])=>{const rr=s*r*.7;c.save();c.translate(x+dx*s,y+dy*s);c.scale(1,.45);const g=c.createRadialGradient(0,0,0,0,0,rr);g.addColorStop(0,rgba(col,a*.85));g.addColorStop(.6,rgba(col,a*.5));g.addColorStop(1,rgba(col,0));c.fillStyle=g;c.beginPath();c.arc(0,0,rr,0,TAU);c.fill();c.restore()})}
+// the one left behind: a robed figure; kneel=1 reads as seated, bow tilts the head toward +x
+function person(c,x,y,h,o={}){const col=o.col||"rgb(8,10,12)",kn=o.kneel||0,bow=o.bow||0;c.save();c.translate(x,y);c.fillStyle=col;
+  const bh=h*(.6-kn*.3),bw=h*(.17+kn*.07);
+  c.beginPath();c.moveTo(-bw,0);c.quadraticCurveTo(-bw*.85,-bh*.55,-h*.075,-bh);c.lineTo(h*.075,-bh);c.quadraticCurveTo(bw*.85,-bh*.55,bw,0);c.closePath();c.fill();
+  c.translate(0,-bh+h*.02);c.rotate(bow);
+  c.beginPath();c.moveTo(-h*.088,0);c.lineTo(-h*.075,-h*.15);c.quadraticCurveTo(0,-h*.2,h*.075,-h*.15);c.lineTo(h*.088,0);c.closePath();c.fill();
+  c.beginPath();c.arc(0,-h*.215,h*.05,0,TAU);c.fill();
+  c.beginPath();c.ellipse(0,-h*.262,h*.07,h*.042,0,0,TAU);c.fill();c.beginPath();c.arc(0,-h*.292,h*.022,0,TAU);c.fill();
+  c.restore()}
+function headOf(x,y,h,kn,bow){const bh=h*(.6-kn*.3),py=y-bh+h*.02;return[x+Math.sin(bow)*h*.215,py-Math.cos(bow)*h*.215]}
+function shoulderOf(x,y,h,kn,bow){const bh=h*(.6-kn*.3),py=y-bh+h*.02;return[x+Math.sin(bow)*h*.12+h*.03,py-Math.cos(bow)*h*.12]}
+function arm(c,a,b,w,col,bend=0){c.strokeStyle=col;c.lineCap="round";c.lineWidth=w;c.beginPath();c.moveTo(a[0],a[1]);c.quadraticCurveTo((a[0]+b[0])/2,(a[1]+b[1])/2+bend,b[0],b[1]);c.stroke()}
+// a walking figure in profile, facing +x (dir=-1 turns it round)
+function walker(c,x,y,h,ph,moving,col,o={}){const dir=o.dir||1,sw=moving?Math.sin(ph):0,bob=moving?Math.abs(Math.sin(ph))*h*.015:0;c.save();c.translate(x,y);c.scale(dir,1);c.rotate(o.lean||0);c.translate(0,-bob);c.fillStyle=col;
+  [sw,-sw].forEach(s=>{c.beginPath();c.ellipse(s*h*.08,bob-h*.008,h*.045,h*.016,0,0,TAU);c.fill()});
+  const hb=[-h*.17-sw*h*.025,-h*.03],hf=[h*.15+sw*h*.03,-h*.03];
+  c.beginPath();c.moveTo(-h*.05,-h*.74);c.quadraticCurveTo(-h*.12,-h*.4,hb[0],hb[1]);c.quadraticCurveTo(0,h*.012,hf[0],hf[1]);c.quadraticCurveTo(h*.1,-h*.45,h*.06,-h*.72);c.closePath();c.fill();
+  c.beginPath();c.ellipse(h*.02,-h*.8,h*.058,h*.068,0,0,TAU);c.fill();c.beginPath();c.ellipse(h*.01,-h*.86,h*.072,h*.04,0,0,TAU);c.fill();
+  const hand=[h*.13+sw*h*.03,-h*.42];c.strokeStyle=col;c.lineWidth=h*.045;c.lineCap="round";c.beginPath();c.moveTo(h*.02,-h*.66);c.quadraticCurveTo(h*.1,-h*.56,hand[0],hand[1]);c.stroke();
+  if(o.staff){c.lineWidth=Math.max(1.2,h*.018);c.beginPath();c.moveTo(hand[0]+h*.005,hand[1]-h*.16);c.lineTo(hand[0]+h*.06+sw*h*.05,bob);c.stroke()}
+  c.restore()}
+// a camel in profile, feet at (x,y); dir=1 faces +x
+function camel(c,x,y,s,ph,col,dir=1,o={}){c.save();c.translate(x,y);c.scale(dir,1);c.fillStyle=col;c.strokeStyle=col;c.lineCap="round";
+  const lift=o.headUp||0;
+  c.lineWidth=s*.07;[[-.3,0],[-.2,Math.PI],[.26,Math.PI*.5],[.36,Math.PI*1.5]].forEach(([lx,of])=>{const sw=Math.sin(ph+of)*.1*s,kn=Math.max(0,Math.sin(ph+of+1.2))*.05*s;c.beginPath();c.moveTo(lx*s,-s*.56);c.lineTo(lx*s+sw*.4+kn,-s*.28);c.lineTo(lx*s+sw,0);c.stroke()});
+  c.beginPath();c.ellipse(0,-s*.62,s*.42,s*.16,0,0,TAU);c.fill();
+  c.beginPath();c.ellipse(-s*.04,-s*.74,s*.21,s*.17,0,Math.PI,TAU);c.fill();
+  c.lineWidth=s*.1;c.beginPath();c.moveTo(s*.34,-s*.66);c.quadraticCurveTo(s*.52,-s*.62,s*.55,-s*(.97+lift*.1));c.stroke();
+  c.beginPath();c.ellipse(s*.63,-s*(.99+lift*.1),s*.11,s*.05,.15-lift*.4,0,TAU);c.fill();
+  c.beginPath();c.ellipse(s*.55,-s*(1.03+lift*.1),s*.022,s*.035,-.3,0,TAU);c.fill();
+  c.lineWidth=s*.04;c.beginPath();c.moveTo(-s*.4,-s*.66);c.quadraticCurveTo(-s*.5,-s*.55,-s*.47,-s*.42);c.stroke();c.restore()}
+// the mahmal (a covered litter) on the camel's hump, in the camel's frame facing +x; its small window can hold the light
+function kajaveh(c,s,col,cloth,lit){c.fillStyle=cloth;c.beginPath();c.moveTo(-s*.34,-s*.84);c.lineTo(s*.22,-s*.84);c.lineTo(s*.24,-s*.6);
+  for(let i=1;i<=6;i++){const x0=lerp(.24,-.36,(i-1)/6),x1=lerp(.24,-.36,i/6);c.quadraticCurveTo((x0+x1)/2*s,-s*.53,x1*s,-s*.6)}c.closePath();c.fill();
+  c.fillStyle=col;c.fillRect(-s*.31,-s*1.07,s*.5,s*.24);
+  c.beginPath();c.moveTo(-s*.33,-s*1.06);c.bezierCurveTo(-s*.33,-s*1.24,-s*.12,-s*1.28,-s*.06,-s*1.42);c.bezierCurveTo(0,-s*1.28,s*.21,-s*1.24,s*.21,-s*1.06);c.closePath();c.fill();
+  c.strokeStyle=col;c.lineWidth=Math.max(1,s*.02);c.beginPath();c.moveTo(-s*.06,-s*1.4);c.lineTo(-s*.06,-s*1.5);c.stroke();c.beginPath();c.arc(-s*.06,-s*1.51,s*.02,0,TAU);c.fill();
+  c.beginPath();archPath(c,-s*.06,-s*.88,s*.11,s*.15);c.fillStyle=lit>0?rgba([255,200,120],.25+.7*lit):"rgba(0,0,0,.35)";c.fill();
+  if(lit>0)glow(c,-s*.06,-s*.95,s*.35,WARM,.35*lit)}
+function camelM(c,x,y,s,ph,col,o={}){camel(c,x,y,s,ph,col,1,o);c.save();c.translate(x,y);
+  if(o.mahmal)kajaveh(c,s,col,o.cloth||col,o.lit||0);
+  else{c.fillStyle=col;c.beginPath();c.ellipse(-s*.04,-s*.88,s*.2,s*.08,0,0,TAU);c.fill();c.beginPath();c.ellipse(-s*.17,-s*.72,s*.1,s*.13,0,0,TAU);c.fill();c.beginPath();c.ellipse(s*.09,-s*.72,s*.1,s*.13,0,0,TAU);c.fill()}
+  c.restore()}
+// window of the mahmal, in world coordinates
+const winOf=(x,y,s)=>[x-s*.06,y-s*.95];
+// a line of camels walking toward +x, k=0 leading; P[k]=[x,y,s]; ropes run from each nose to the saddle ahead
+function caravan(c,P,ph,col,o={}){c.strokeStyle=col;c.lineWidth=1;
+  for(let k=0;k<P.length-1;k++){const[a,ay,as]=P[k],[b,by,bs]=P[k+1];c.beginPath();c.moveTo(b+.66*bs,by-.97*bs);c.quadraticCurveTo((a-.4*as+b+.66*bs)/2,Math.max(ay-.55*as,by-.97*bs)+as*.12,a-.4*as,ay-.58*as);c.stroke()}
+  for(let k=P.length-1;k>=0;k--){const[x,y,s]=P[k],m=k===o.m;camelM(c,x,y,s,ph+k*1.3,col,{mahmal:m,lit:m?o.lit:0,cloth:o.cloth})}
+  if(o.driver){const[x,y,s]=P[0],h=s*1.05,dx=x+s*1.02,dy=o.ground?o.ground(dx):y;c.strokeStyle=col;c.lineWidth=1;c.beginPath();c.moveTo(dx-h*.04,dy-h*.5);c.quadraticCurveTo((dx+x+s*.66)/2,Math.max(dy-h*.4,y-s*.9),x+s*.68,y-s*.97);c.stroke();walker(c,dx,dy,h,ph*1.6,o.moving!==false,col,{staff:1})}}
+function padPrint(c,x,y,s,a){if(a<=.01)return;c.fillStyle=rgba([14,12,18],.32*a);c.beginPath();c.ellipse(x-s*.22,y,s*.3,s*.2,0,0,TAU);c.ellipse(x+s*.2,y,s*.3,s*.2,0,0,TAU);c.fill()}
+function footPrint(c,x,y,s,a){if(a<=.01)return;c.fillStyle=rgba([14,12,18],.4*a);c.beginPath();c.ellipse(x,y,s,s*.34,0,0,TAU);c.fill()}
+// the caravanserai: a wall with round corner towers and a tall portal; door 0 = open, 1 = shut; lamp lights the gateway
+function serai(c,x,gy,s,o={}){const col=o.col||"rgb(30,26,32)";c.save();c.fillStyle=col;
+  const wh=s*.32;c.fillRect(x-s,gy-wh,s*2,wh);for(let i=-9;i<=9;i++){if(Math.abs(i)<3)continue;c.fillRect(x+i*s*.105-s*.03,gy-wh-s*.04,s*.06,s*.04)}
+  [-1,1].forEach(k=>{c.fillRect(x+k*s-s*.08,gy-s*.44,s*.16,s*.44);c.beginPath();c.ellipse(x+k*s,gy-s*.44,s*.08,s*.05,0,Math.PI,TAU);c.fill()});
+  const pw=s*.3,ph=s*.66;c.fillRect(x-pw,gy-ph,pw*2,ph);
+  if(o.detail){c.strokeStyle=rgba(GOLD,.22);c.lineWidth=1;c.strokeRect(x-pw*.86,gy-ph*.94,pw*1.72,ph*.94)}
+  const gw=s*.3,gh=s*.48,lamp=o.lamp||0,door=o.door||0;
+  c.save();c.beginPath();archPath(c,x,gy,gw,gh);c.clip();
+  const g=c.createLinearGradient(0,gy-gh,0,gy);g.addColorStop(0,rgba(mix([6,6,10],[200,130,70],lamp),1));g.addColorStop(1,rgba(mix([4,4,8],[120,70,40],lamp),1));c.fillStyle=g;c.fillRect(x-gw,gy-gh,gw*2,gh);
+  if(o.fig)person(c,x-gw*.08,gy,o.fig,{col:"rgb(26,14,12)",bow:o.figBow||0});
+  if(door>0){const lw=gw/2*door;c.fillStyle="rgb(58,38,28)";c.fillRect(x-gw/2,gy-gh,lw,gh);c.fillRect(x+gw/2-lw,gy-gh,lw,gh);
+    c.fillStyle="rgba(150,110,60,.5)";for(let r=1;r<6;r++)for(let q=0;q<3;q++){const u=(q+.5)/3*lw;c.beginPath();c.arc(x-gw/2+u,gy-gh+r*gh/6,Math.max(.6,s*.006),0,TAU);c.arc(x+gw/2-u,gy-gh+r*gh/6,Math.max(.6,s*.006),0,TAU);c.fill()}
+    c.strokeStyle="rgba(20,12,10,.8)";c.lineWidth=Math.max(1,s*.005);c.beginPath();c.moveTo(x-gw/2+lw,gy-gh);c.lineTo(x-gw/2+lw,gy);c.moveTo(x+gw/2-lw,gy-gh);c.lineTo(x+gw/2-lw,gy);c.stroke();
+    if(door>.98&&lamp>0){c.fillStyle=rgba([255,196,120],.55*lamp);c.fillRect(x-Math.max(.6,s*.003),gy-gh,Math.max(1.2,s*.006),gh)}}
+  c.restore();
+  if(lamp>0&&door>.98)glow(c,x,gy,s*.25,WARM,.2*lamp);
+  c.restore()}
+
+/* ---------- the poem ---------- */
+const GALLERY_URL="../../";
+const POEM=[
+ ["ای ساربان! آهسته رو کآرام جانم می‌رود","وآن دل که با خود داشتم، با دل‌سِتانم می‌رود","Camel driver, go slowly, for the peace of my soul is leaving; and the heart I had with me is leaving with the one who stole it.","The Caravan Leaves"],
+ ["من مانده‌ام مهجور از او، بیچاره و رنجور از او","گویی که نیشی دور از او، در استخوانم می‌رود","I am left behind, cut off, helpless and sick with longing. Far from my love, it is as if a sting were going into my bones.","The Cold"],
+ ["گفتم، به نیرنگ و فسون پنهان کنم ریشِ درون","پنهان نمی‌ماند که خون، بر آستانم می‌رود","I said I would hide the wound inside with tricks and charms. It will not stay hidden, for blood is running over my threshold.","The Threshold"],
+ ["مَحمل بدار ای ساروان! تندی مکن با کاروان","کز عشق آن سرو روان، گویی روانم می‌رود","Stop the litter, camel driver, do not drive the caravan so hard: for love of that walking cypress, it is as if my soul were going.","The Long Shadows"],
+ ["او می‌رود دامن‌کشان، من زَهرِ تنهایی‌چشان","دیگر مپرس از من نشان‌، کز دل، نشانم می‌رود","My love goes, trailing a hem, and I taste the poison of being alone. Ask me no more for a trace of me: my own trace is leaving my heart.","The Trailing Hem"],
+ ["برگشت یار سرکشم، بگذاشت عیش ناخوشم","چون مجمری پُرآتشم، کز سر دخانم می‌رود","My headstrong love turned away and left me a bitter life. I am like a brazier full of fire, with smoke going up from its head.","The Brazier"],
+ ["با آن همه بیداد او، وین عهد بی‌بنیاد او","در سینه دارم یاد او، یا بر زبانم می‌رود","For all that cruelty, and that promise with no foundation, I keep the memory in my breast, or it goes onto my tongue.","The Tent"],
+ ["بازآی و بر چشمم نشین، ای دلسِتان نازنین!","کآشوب و فریاد از زمین، بر آسمانم می‌رود","Come back and sit upon my eye, my dear heart-stealer, for my turmoil and my cry go up from the earth to the sky.","The Whirlwind"],
+ ["شب تا سحر می‌نَغنَوَم، واندرز کس می‌نَشنَوَم","وین ره نه قاصد می‌روم، کز کف عنانم می‌رود","From night till dawn I do not sleep, and I listen to no one's advice. I do not take this road by choice: the reins are slipping from my hand.","The Loose Reins"],
+ ["گفتم بگریم تا اِبِل، چون خَر فرو ماند به گِل","وین نیز نتوانم که دل، با کاروانم می‌رود","I said I would weep until the camels stuck fast, like a donkey in mud. I cannot do even this, for my heart is going with the caravan.","The Rain"],
+ ["صبر از وصال یار من، برگشتن از دلدار من","گر چه نباشد کار من، هم کار از آنم می‌رود","Patience without my love, turning back from the one I love: though neither is in my power, my life comes undone over them.","The Way Back"],
+ ["در رفتن جان از بدن، گویند هر نوعی سخن","من خود به چشم خویشتن، دیدم که جانم می‌رود","Of the soul leaving the body people say every kind of thing. I saw it with my own eyes: my soul was going.","The Crest"],
+ ["سعدی! فغان از دست ما، لایق نبود ای بی‌وفا!","طاقت نمی‌آرم جفا، کار از فغانم می‌رود","Saadi, it was not fitting, faithless one, to cry out against us. I cannot bear the cruelty; it has gone beyond my crying.","Saadi"]
+];
+const NB=POEM.length,BD=18,F=1.8,TOTAL=NB*BD;
+const wordDelays=b=>{const a=POEM[b][0].split(" ").length,out=[];for(let i=0;i<a;i++)out.push(i*.16);const off=a*.16+.5;POEM[b][1].split(" ").forEach((_,j)=>out.push(off+j*.16));return out};
+// the radif «می‌رود»: the last word of any hemistich that ends with it
+const isRf=(b,k,i)=>{const ws=POEM[b][k].split(" ");return ws[ws.length-1]==="می‌رود"&&i===ws.length-1};
+const refrainIdx=b=>POEM[b][0].split(" ").length+POEM[b][1].split(" ").length-1;
+
+/* ---------- audio: Homayoun on G. Ney, soft pad, santur; every couplet closes on a camel bell, a little farther off each time ---------- */
+let AC=null,bus=null,master=null,soundOn=true,noiseBuf=null,neyPrev=392;const KSC={};
+const KO=Math.pow(2,-1/24);
+const NT={G2:98,C3:130.81,D3:146.83,Eb3:155.56,F3:174.61,G3:196,Ak3:220*KO,B3:246.94,C4:261.63,D4:293.66,Eb4:311.13,F4:349.23,G4:392,Ak4:440*KO,B4:493.88,C5:523.25,D5:587.33,Eb5:622.25};
+function impulse(d,decay){const n=Math.floor(AC.sampleRate*d),b=AC.createBuffer(2,n,AC.sampleRate);for(let ch=0;ch<2;ch++){const x=b.getChannelData(ch);for(let i=0;i<n;i++)x[i]=(Math.random()*2-1)*Math.pow(1-i/n,decay)}return b}
+function ksBuf(f,bright=.45){const key=Math.round(f*10)+"_"+bright;if(KSC[key])return KSC[key];const sr=AC.sampleRate,n=Math.floor(sr*4),b=AC.createBuffer(1,n,sr),y=b.getChannelData(0),P=Math.max(2,Math.round(sr/f-.5));let lp=0;for(let i=0;i<P;i++){lp=lp*(1-bright)+(Math.random()*2-1)*bright;y[i]=lp}const dec=.998;y[P]=y[0]*dec;for(let i=P+1;i<n;i++)y[i]=dec*.5*(y[i-P]+y[i-P-1]);return KSC[key]=b}
+function initAudio(){if(AC)return;try{AC=new(window.AudioContext||window.webkitAudioContext)();
+  const comp=AC.createDynamicsCompressor();comp.threshold.value=-22;comp.ratio.value=2.5;comp.connect(AC.destination);
+  const warm=AC.createBiquadFilter();warm.type="lowpass";warm.frequency.value=4200;warm.connect(comp);
+  master=AC.createGain();master.gain.value=soundOn?1:0;master.connect(warm);
+  const conv=AC.createConvolver();conv.buffer=impulse(5.5,2.2);const wet=AC.createGain();wet.gain.value=.62;conv.connect(wet);wet.connect(master);
+  bus=AC.createGain();bus.gain.value=.85;bus.connect(master);bus.connect(conv);
+  noiseBuf=AC.createBuffer(1,AC.sampleRate*2,AC.sampleRate);const nd=noiseBuf.getChannelData(0);for(let i=0;i<nd.length;i++)nd[i]=Math.random()*2-1;
+  const f=AC.createBiquadFilter();f.type="lowpass";f.frequency.value=380;const dg=AC.createGain();dg.gain.value=0;dg.gain.setTargetAtTime(.012,AC.currentTime,5);f.connect(dg);dg.connect(bus);
+  [[NT.G2,.5],[NT.G2*1.003,.5],[NT.D3,.25]].forEach(([fr,a])=>{const o=AC.createOscillator();o.type="triangle";o.frequency.value=fr;const g=AC.createGain();g.gain.value=a;o.connect(g);g.connect(f);o.start()});
+  Object.values(NT).forEach(fr=>ksBuf(fr));
+ }catch(e){AC=null}}
+function out(node,pan){if(AC.createStereoPanner){const p=AC.createStereoPanner();p.pan.value=pan;node.connect(p);p.connect(bus)}else node.connect(bus)}
+function strike(f,v,when=0){if(!AC)return;const b=ksBuf(f),t0=AC.currentTime+when;[[1,.8,0],[1.0022,.45,-.3],[.9978,.45,.3]].forEach(([r,a,pan])=>{const s=AC.createBufferSource();s.buffer=b;s.playbackRate.value=r;const lp=AC.createBiquadFilter();lp.type="lowpass";lp.frequency.value=Math.min(3000,f*5);const g=AC.createGain();g.gain.value=v*a;s.connect(lp);lp.connect(g);out(g,pan);s.start(t0)})}
+function pad(freqs,dur,v=.016){if(!AC)return;const t0=AC.currentTime,end=t0+dur;const lp=AC.createBiquadFilter();lp.type="lowpass";lp.frequency.setValueAtTime(420,t0);lp.frequency.linearRampToValueAtTime(700,t0+dur*.5);lp.frequency.linearRampToValueAtTime(420,end);lp.Q.value=.4;
+  const env=AC.createGain();env.gain.setValueAtTime(0,t0);env.gain.linearRampToValueAtTime(v,t0+2.8);env.gain.setValueAtTime(v,Math.max(t0+2.9,end-1));env.gain.linearRampToValueAtTime(0,end+2.5);lp.connect(env);env.connect(bus);
+  freqs.forEach(fr=>[1.003,.997].forEach((d,k)=>{const o=AC.createOscillator();o.type="sawtooth";o.frequency.value=fr*d;const g=AC.createGain();g.gain.value=1/(freqs.length);o.connect(g);if(AC.createStereoPanner){const p=AC.createStereoPanner();p.pan.value=k?.4:-.4;g.connect(p);p.connect(lp)}else g.connect(lp);o.start(t0);o.stop(end+2.7)}))}
+function ney(f,dur,v=.055){if(!AC)return;const t0=AC.currentTime,end=t0+dur,env=AC.createGain();
+  env.gain.setValueAtTime(0,t0);env.gain.linearRampToValueAtTime(v,t0+Math.min(.7,dur*.35));env.gain.setValueAtTime(v,Math.max(t0+.71,end-.7));env.gain.linearRampToValueAtTime(0,end+.4);
+  const lp=AC.createBiquadFilter();lp.type="lowpass";lp.frequency.value=1700;env.connect(lp);out(lp,.1);
+  const vib=AC.createOscillator();vib.frequency.value=4.6;const vg=AC.createGain();vg.gain.setValueAtTime(0,t0);vg.gain.setValueAtTime(0,t0+Math.min(.9,dur*.4));vg.gain.linearRampToValueAtTime(f*.008,t0+Math.min(2,dur*.8));vib.connect(vg);
+  [[1,.95],[2,.13],[3,.04]].forEach(([m,a])=>{const o=AC.createOscillator();o.type="sine";o.frequency.setValueAtTime(neyPrev*m,t0);o.frequency.exponentialRampToValueAtTime(f*m,t0+.28);const vm=AC.createGain();vm.gain.value=m;vg.connect(vm);vm.connect(o.frequency);const g=AC.createGain();g.gain.value=a;o.connect(g);g.connect(env);o.start(t0);o.stop(end+.5)});
+  const nz=AC.createBufferSource();nz.buffer=noiseBuf;nz.loop=true;const bp=AC.createBiquadFilter();bp.type="bandpass";bp.frequency.value=f*2;bp.Q.value=1.6;const ng=AC.createGain();ng.gain.setValueAtTime(.45,t0);ng.gain.linearRampToValueAtTime(.16,t0+.6);nz.connect(bp);bp.connect(ng);ng.connect(env);nz.start(t0,Math.random());nz.stop(end+.5);
+  vib.start(t0);vib.stop(end+.5);neyPrev=f}
+function click(v=.08){if(!AC)return;const t0=AC.currentTime,s=AC.createBufferSource();s.buffer=noiseBuf;const bp=AC.createBiquadFilter();bp.type="bandpass";bp.frequency.value=2600+Math.random()*900;bp.Q.value=5;const g=AC.createGain();g.gain.setValueAtTime(v,t0);g.gain.exponentialRampToValueAtTime(.001,t0+.04);s.connect(bp);bp.connect(g);out(g,Math.random()-.5);s.start(t0,Math.random());s.stop(t0+.06)}
+function hiss(f0,f1,dur,v,type="bandpass"){if(!AC)return;const s=AC.createBufferSource();s.buffer=noiseBuf;s.loop=true;const bp=AC.createBiquadFilter();bp.type=type;bp.Q.value=2.2;const t0=AC.currentTime;bp.frequency.setValueAtTime(f0,t0);bp.frequency.exponentialRampToValueAtTime(f1,t0+dur*.6);const g=AC.createGain();g.gain.setValueAtTime(0,t0);g.gain.linearRampToValueAtTime(v,t0+dur*.2);g.gain.exponentialRampToValueAtTime(.001,t0+dur);s.connect(bp);bp.connect(g);out(g,.2);s.start(t0,Math.random());s.stop(t0+dur+.1)}
+// a small harness bell
+function bell(f,v,when=0,pan=.35){if(!AC)return;const t0=AC.currentTime+when;[[1,1,2.4],[2.76,.35,1.2],[5.4,.15,.6]].forEach(([m,a,d])=>{const o=AC.createOscillator();o.type="sine";o.frequency.value=f*m;const g=AC.createGain();g.gain.setValueAtTime(0,t0);g.gain.linearRampToValueAtTime(v*a,t0+.006);g.gain.exponentialRampToValueAtTime(.0001,t0+d);o.connect(g);out(g,pan);o.start(t0);o.stop(t0+d+.1)})}
+// the big camel bell (درای): low, hollow, with a clapper's knock; cut = how far off it is (a lower cutoff sounds farther)
+function drai(f,v,when,cut){if(!AC)return;const t0=AC.currentTime+when,lp=AC.createBiquadFilter();lp.type="lowpass";lp.frequency.value=cut;out(lp,.45);
+  [[1,1,3.2],[2.21,.45,2],[3.86,.22,1.3],[5.3,.1,.8]].forEach(([m,a,d])=>{const o=AC.createOscillator();o.type="sine";o.frequency.value=f*m;const g=AC.createGain();g.gain.setValueAtTime(0,t0);g.gain.linearRampToValueAtTime(v*a,t0+.01);g.gain.exponentialRampToValueAtTime(.0001,t0+d);o.connect(g);g.connect(lp);o.start(t0);o.stop(t0+d+.1)});
+  const s=AC.createBufferSource();s.buffer=noiseBuf;const bp=AC.createBiquadFilter();bp.type="bandpass";bp.frequency.value=900;bp.Q.value=3;const g=AC.createGain();g.gain.setValueAtTime(v*.5,t0);g.gain.exponentialRampToValueAtTime(.0005,t0+.08);s.connect(bp);bp.connect(g);g.connect(lp);s.start(t0,Math.random());s.stop(t0+.1)}
+// the musical radif of «می‌رود»: the santur steps down onto the tonic, and the camel bell answers twice, farther off in every couplet
+function cadence(b){const d=b/(NB-1),v=.06*(1-.8*d),cut=2600*(1-.78*d);strike(NT.Ak4,.05,0);strike(NT.G4,.06,.42);drai(NT.G3*1.5,v,1,cut);drai(NT.G3*1.5*.994,v*.7,1.75,cut)}
+
+/* ---------- scenes ---------- */
+
+/* 1. The caravan leaves at sunset. The camels set out slowly from the caravanserai; the one who stays stands by the gate.
+      A small light leaves their chest, crosses to the mahmal and settles in its window: the heart goes with the heart-taker. */
+function r1(c,t,W,H){const S=Math.min(W,H),gy=H*.58,dusk=ss(0,18,t);
+  bg(c,W,H,[[0,mix([40,36,78],[22,22,52],dusk)],[.34,mix([140,88,104],[86,60,92],dusk)],[.58,mix([246,170,104],[206,116,86],dusk)],[1,[40,30,34]]]);
+  stars(c,W,H,t,.45*ss(9,18,t),.34);
+  const sx=W*.8,sy=gy-S*.05+S*.08*easeInOut(dusk);glow(c,sx,sy,S*.8,[255,170,110],.3);glow(c,sx,sy,S*.12,[255,214,160],.55);c.fillStyle="rgb(255,222,170)";c.beginPath();c.arc(sx,sy,S*.034,0,TAU);c.fill();
+  duneLayer(c,W,H,gy+S*.005,S*.035,2.1,.8,mix([156,102,88],[112,74,74],dusk),[84,56,58]);
+  ground(c,W,H,gy+S*.02,mix([150,104,84],[108,74,70],dusk),[52,36,38]);
+  const col=rgb(mix([46,30,34],[26,18,24],dusk)),cloth=rgb(mix([96,34,40],[66,26,34],dusk));
+  const sxr=W*.14,ss0=S*.16;serai(c,sxr,gy+S*.035,ss0,{col:rgb(mix([74,50,50],[48,34,40],dusk)),lamp:.6+.4*dusk,detail:1});
+  // the caravan: standing, then walking slowly away toward the horizon
+  const d=S*.024*Math.max(0,t-1.5),ph=d/(S*.024)*3.2,x0=W*.3,P=[];
+  for(let k=0;k<5;k++){const x=x0+(4-k)*S*.1+d,u=clamp((x-x0)/(W*.75)),s=S*.075*(1-.35*u);P.push([x,gy+S*.07-u*S*.04,s])}
+  caravan(c,P,ph,col,{m:1,lit:ss(11.2,12.6,t),cloth,driver:1,moving:t>1.5});
+  // the one who stays, by the gate
+  const fx=sxr+ss0+S*.07,fy=H*.625,fh=S*.085,bow=.05+.25*ss(8,12.5,t);person(c,fx,fy,fh,{bow,col:"rgb(20,14,18)"});
+  // the heart's light: gathers at the chest, crosses to the mahmal, and stays in its window
+  const ch=[fx+fh*.03,fy-fh*.45],w=winOf(...P[1]),q=easeInOut(ss(7,12,t)),a=ss(4.5,6.5,t);
+  if(a>0){const p=[lerp(ch[0],w[0],q),lerp(ch[1],w[1],q)-Math.sin(q*Math.PI)*S*.09];
+    for(let k=1;k<14&&q>0&&q<1;k++){const qq=easeInOut(ss(7,12,t-k*.08));if(qq<=0)break;glow(c,lerp(ch[0],w[0],qq),lerp(ch[1],w[1],qq)-Math.sin(qq*Math.PI)*S*.09,S*.01,GOLDL,.18*(1-k/14))}
+    glow(c,p[0],p[1],S*.035,WARM,.45*a*(1-q*.4));c.fillStyle=rgba([255,236,190],a*(1-q*.5));c.beginPath();c.arc(p[0],p[1],S*.005,0,TAU);c.fill()}
+}
+
+/* 2. Left behind. Dusk turns to a cold night; the caravan is a thin line on the horizon and then gone. Gusts drive the sand;
+      the figure sinks down, arms drawn in, and frost glints on the sand: the cold that goes into the bones. */
+const FROST=randArr(2202,120,3),SAND2=randArr(2203,70,3);
+function r2(c,t,W,H){const S=Math.min(W,H),gy=H*.54,night=ss(0,12,t),cold=ss(3,13,t);
+  bg(c,W,H,[[0,mix([24,24,58],[6,8,24],night)],[.4,mix([84,64,98],[18,22,50],night)],[.58,mix([180,112,100],[40,46,74],night)],[1,[14,16,26]]]);
+  stars(c,W,H,t,.85*ss(3,12,t),.55);
+  hillLayer(c,W,H,gy,S*.018,mix([80,62,70],[30,34,52],night),21);
+  const ca=1-ss(8,12.5,t);if(ca>0){c.save();c.globalAlpha=ca;for(let k=0;k<4;k++){const x=W*.76+t*S*.004+(3-k)*S*.032,y=hillAt(x/W,gy,S*.018,21)+1;camel(c,x,y,S*.022,t*3+k,"rgb(22,20,32)")}c.restore()}
+  ground(c,W,H,gy+S*.01,mix(mix([130,96,90],[52,54,78],night),[70,84,112],cold*.4),[20,22,34]);
+  for(const f of FROST){if(f[2]>cold)continue;const x=f[0]*W,y=gy+S*.02+f[1]*(H*.7-gy),tw=Math.max(0,Math.sin(t*2.3+f[2]*40));c.fillStyle=rgba([220,236,255],.7*tw*ss(f[2],f[2]+.1,cold));c.fillRect(x,y,1.3,1.3)}
+  // gusts
+  const gust=[2.4,6.4,10.4,14.2].reduce((a,g)=>{const q=t-g;return a+(q<0?0:q<.6?q/.6:Math.exp(-(q-.6)*.9))},0);
+  const wind=clamp(.25+gust);c.strokeStyle=rgba([200,206,226],.2*wind);c.lineWidth=1;for(const d of SAND2){const q=(t*(.5+d[2]*.4)+d[0])%1,x=W*(1.05-q*1.2),y=gy+S*.01+d[1]*(H*.68-gy)-Math.sin(q*6+d[2]*9)*S*.01,l=S*(.03+.05*d[2])*wind;c.beginPath();c.moveTo(x,y);c.lineTo(x+l,y+S*.002);c.stroke()}
+  const fx=W*.36+Math.sin(t*29)*S*.0006*cold,fy=H*.62,fh=S*.15,kn=easeInOut(ss(4,8.5,t)),bow=.08+.42*kn,col="rgb(14,14,22)";
+  person(c,fx,fy,fh,{kneel:kn,bow,col});
+  c.fillStyle=rgba([60,90,150],.14*cold);c.fillRect(0,0,W,H);
+}
+
+/* 3. The threshold. At night the one who stays stands in the lit gateway of the caravanserai; the doors swing shut to hide
+      the wound inside. Then, on the stone threshold in the lamplight, red tulips with dark hearts rise one by one: it will not stay hidden. */
+const TUL=randArr(3303,8,4);
+function tulip(c,x,y,h,g,sw){if(g<=0)return;const k=ss(.45,1,g),top=[x+sw,y-h*Math.min(1,g*1.4)];
+  c.strokeStyle="rgb(58,92,50)";c.lineWidth=Math.max(1,h*.035);c.lineCap="round";c.beginPath();c.moveTo(x,y);c.quadraticCurveTo(x,y-h*.5,top[0],top[1]);c.stroke();
+  const lg=ss(0,.5,g);c.fillStyle="rgb(62,98,52)";[[-1,.5],[1,.35]].forEach(([s,l])=>{c.save();c.translate(x,y);c.rotate(s*.35);c.beginPath();c.ellipse(0,-h*l*.5*lg,h*.05*lg,h*l*.5*lg,0,0,TAU);c.fill();c.restore()});
+  if(k<=0)return;const w=h*.2*k,hc=h*.24*k,[tx,ty]=top;
+  c.fillStyle="rgb(122,14,26)";c.beginPath();c.ellipse(tx,ty-hc,w*.5,w*.18,0,0,TAU);c.fill();
+  c.fillStyle="rgb(26,8,12)";c.beginPath();c.ellipse(tx,ty-hc+w*.03,w*.22,w*.08,0,0,TAU);c.fill();
+  const gr=c.createLinearGradient(tx-w*.5,0,tx+w*.5,0);gr.addColorStop(0,"rgb(150,20,34)");gr.addColorStop(.45,"rgb(214,40,52)");gr.addColorStop(1,"rgb(140,18,30)");c.fillStyle=gr;
+  c.beginPath();c.moveTo(tx-w*.5,ty-hc);c.bezierCurveTo(tx-w*.52,ty-hc*.3,tx-w*.25,ty,tx,ty);c.bezierCurveTo(tx+w*.25,ty,tx+w*.52,ty-hc*.3,tx+w*.5,ty-hc);c.ellipse(tx,ty-hc,w*.5,w*.18,0,0,Math.PI,false);c.closePath();c.fill();
+  c.beginPath();[[-.5,-.22],[0,-.3],[.5,-.22]].forEach(([u,v])=>{c.moveTo(tx+u*w-w*.12,ty-hc+w*.05);c.lineTo(tx+u*w*.8,ty-hc+v*w);c.lineTo(tx+u*w+w*.12,ty-hc+w*.05)});c.fill();
+  c.strokeStyle="rgba(90,8,20,.6)";c.lineWidth=1;c.beginPath();c.moveTo(tx,ty-hc+w*.18);c.lineTo(tx,ty-hc*.25);c.stroke()}
+function r3(c,t,W,H){const S=Math.min(W,H),cx=W/2,gy=H*.58,door=easeInOut(ss(3.2,7.2,t));
+  bg(c,W,H,[[0,[6,8,22]],[.5,[20,22,42]],[1,[12,12,18]]]);stars(c,W,H,t,.8,.5);
+  glow(c,W*.82,H*.14,S*.18,IV,.12);c.save();c.translate(W*.82,H*.14);c.rotate(-.5);moonPhase(c,0,0,S*.03,.2,"rgb(240,232,210)");c.restore();
+  hillLayer(c,W,H,gy-S*.12,S*.03,[22,22,36],31);
+  ground(c,W,H,gy,[46,40,50],[22,20,26]);
+  const s=S*.42;serai(c,cx,gy,s,{col:"rgb(44,38,46)",lamp:1,door,fig:S*.1*(1-door*.3),figBow:.05,detail:1});
+  // the lamp hanging in front of the gate, and the stone threshold
+  const lx=cx,ly=gy-s*.44;c.strokeStyle="rgba(120,90,50,.8)";c.lineWidth=1;c.beginPath();c.moveTo(lx,gy-s*.48);c.lineTo(lx,ly);c.stroke();glow(c,lx,ly+S*.02,S*.22,WARM,.4);
+  c.fillStyle="rgb(170,120,60)";c.beginPath();c.moveTo(lx-S*.012,ly);c.lineTo(lx+S*.012,ly);c.lineTo(lx+S*.008,ly+S*.03);c.lineTo(lx-S*.008,ly+S*.03);c.closePath();c.fill();c.fillStyle="rgb(255,226,160)";c.beginPath();c.ellipse(lx,ly+S*.017,S*.005,S*.008,0,0,TAU);c.fill();
+  const th=S*.028,tw=s*.62;const tg=c.createLinearGradient(0,gy,0,gy+th);tg.addColorStop(0,"rgb(112,92,80)");tg.addColorStop(1,"rgb(62,52,50)");c.fillStyle=tg;c.fillRect(cx-tw/2,gy,tw,th);
+  glow(c,cx,gy+th*.5,S*.3,WARM,.18);
+  // tulips on the threshold, one after another
+  TUL.forEach((r,i)=>{const x=cx+(i/7-.5)*tw*.86+(r[0]-.5)*S*.012,tb=8+r[1]*.9+i*.95*((i*5)%8)/8+i*.25,g=ss(tb,tb+2.6,t);tulip(c,x,gy+th*(.3+r[2]*.5),S*(.08+r[3]*.035),g,Math.sin(t*.9+i)*S*.003)});
+}
+
+/* 4. The long shadows. A low moon behind the one who stays; the caravan hurries away across the plain. As the moon sinks
+      every shadow lengthens: the mahmal's becomes a tall slim cypress lying on the sand, and the figure's own shadow,
+      stretching after it, reaches toward the caravan: «روانم می‌رود». */
+function figureWithArm(c,x,y,h,col,up){person(c,x,y,h,{col,bow:-.05*up});if(up>0){const sh=shoulderOf(x,y,h,0,0);arm(c,sh,[sh[0]+h*lerp(.1,.24,up),sh[1]+h*lerp(.3,-.12,up)],h*.05,col)}}
+function shadowed(c,x,y,k,fn){c.save();c.translate(x,y);c.transform(1,0,-k,-.34,0,0);fn();c.restore()}
+function r4(c,t,W,H){const S=Math.min(W,H),gy=H*.48,q=easeInOut(ss(.5,17.5,t)),k=lerp(1.8,4.6,q);
+  bg(c,W,H,[[0,[6,8,24]],[.48,[34,34,58]],[1,[16,16,24]]]);stars(c,W,H,t,.7,.46);
+  const mx=W*.08,my=gy-S*.075+S*.06*q;glow(c,mx,my,S*.7,[240,200,150],.18);glow(c,mx,my,S*.12,[255,226,180],.35);c.fillStyle="rgb(250,230,190)";c.beginPath();c.arc(mx,my,S*.05,0,TAU);c.fill();
+  hillLayer(c,W,H,gy,S*.014,[30,30,48],41);
+  ground(c,W,H,gy+S*.004,[70,66,84],[30,28,38]);
+  const pg=c.createLinearGradient(0,0,W,0);pg.addColorStop(0,"rgba(255,226,180,.14)");pg.addColorStop(.6,"rgba(255,226,180,0)");c.fillStyle=pg;c.fillRect(0,gy+S*.004,W,S*.06);
+  const d=S*.03*t,P=[],cy=H*.56,s=S*.068;for(let i=0;i<4;i++)P.push([W*.36+(3-i)*S*.11+d,cy,s]);
+  const shade="rgba(16,14,26,.8)",fx=W*.17,fy=H*.62,fh=S*.13,up=ss(1.5,3,t)*(1-ss(7.5,9.5,t));
+  // shadows first, all cast away from the moon
+  P.forEach(([x,y,s],i)=>shadowed(c,x,y,k*(1+(x-mx)/W*.08),()=>camelM(c,0,0,s,t*4.4+i*1.3,shade,{mahmal:i===1})));
+  shadowed(c,fx,fy,k,()=>figureWithArm(c,0,0,fh,shade,up));
+  const col="rgb(18,16,24)";caravan(c,P,t*4.4,col,{m:1,lit:1,cloth:"rgb(70,26,34)",driver:1});
+  figureWithArm(c,fx,fy,fh,"rgb(12,10,16)",up);
+}
+
+/* 5. The trailing hem. The mahmal's long cloth drags over the sand behind the camel and smooths away its tracks.
+      The one who stays follows on foot, leaving a line of footprints; then the wind rises and the footprints fill in,
+      the oldest first, until there is no trace even at their feet. */
+const RIP5=randArr(5505,30,3),DRIFT5=randArr(5506,60,3);
+function r5(c,t,W,H){const S=Math.min(W,H),hz=H*.36,gy=H*.6;
+  bg(c,W,H,[[0,[6,8,24]],[.36,[28,30,56]],[1,[20,18,26]]]);stars(c,W,H,t,.8,.34);
+  duneLayer(c,W,H,hz+S*.02,S*.03,.7,2.2,[64,60,80],[40,38,52]);
+  ground(c,W,H,hz+S*.03,[70,64,80],[40,36,46]);
+  c.strokeStyle="rgba(120,112,130,.28)";c.lineWidth=1;for(const r of RIP5){const x=r[0]*W,y=hz+S*.05+r[1]*(H*.68-hz),w=S*(.04+r[2]*.06);c.beginPath();c.moveTo(x-w,y);c.quadraticCurveTo(x,y-S*.004,x+w,y);c.stroke()}
+  const s=S*.2,xc=W*.1+t*(W*.95+s)/13,ph=xc/(s*.6);
+  // the smoothed band behind the train
+  const tail=xc-s*.8-S*.26;if(tail>0){const bgd=c.createLinearGradient(0,gy-S*.02,0,gy+S*.03);bgd.addColorStop(0,"rgba(96,90,108,0)");bgd.addColorStop(.5,"rgba(96,90,108,.55)");bgd.addColorStop(1,"rgba(96,90,108,0)");c.fillStyle=bgd;c.fillRect(0,gy-S*.02,tail,S*.05)}
+  // pad prints only under the camel itself
+  for(let x=-s;x<xc+s*.3;x+=s*.34){if(x>xc-s*.45)padPrint(c,x,gy+((x/(s*.34)|0)%2?S*.005:-S*.004),S*.012,1)}
+  // the trailing cloth
+  const cl="rgb(92,30,38)",L=S*.26,g1=xc-s*.8,g2=xc-s*.5;c.fillStyle=cl;c.beginPath();c.moveTo(xc-s*.34,gy-s*.84);c.quadraticCurveTo(xc-s*.7,gy-s*.62,g1,gy-S*.012);
+  for(let i=1;i<=8;i++){const u=i/8;c.lineTo(g1-L*u,gy-S*.01*(1-u)-S*.004+Math.sin(u*7+t*2.4)*S*.003)}
+  for(let i=8;i>=0;i--){const u=i/8;c.lineTo(lerp(g2,g1,1)-L*u+(1-u)*(g2-g1),gy+S*.006+Math.sin(u*9+t*2)*S*.002)}
+  c.quadraticCurveTo(xc-s*.44,gy-s*.3,xc-s*.36,gy-s*.6);c.closePath();c.fill();
+  c.strokeStyle="rgba(40,10,16,.5)";c.lineWidth=1;for(let i=1;i<4;i++){const u=i/4;c.beginPath();c.moveTo(lerp(xc-s*.34,xc-s*.36,u),lerp(gy-s*.84,gy-s*.6,u));c.quadraticCurveTo(lerp(xc-s*.7,xc-s*.44,u),lerp(gy-s*.62,gy-s*.3,u),lerp(g1,g2,u),gy);c.stroke()}
+  c.strokeStyle="rgba(200,160,90,.5)";c.lineWidth=1;for(let i=0;i<6;i++){const x=g1-L+i*S*.004;c.beginPath();c.moveTo(x,gy);c.lineTo(x-S*.008,gy+S*.006);c.stroke()}
+  camelM(c,xc,gy,s,ph,"rgb(34,30,38)",{mahmal:1,lit:.8,cloth:cl});
+  // the one who follows, and their footprints, which the wind takes back
+  const x0=-S*.06,x1=W*.46,ts=3.5,te=12,fxp=lerp(x0,x1,clamp((t-ts)/(te-ts))),moving=t>ts&&t<te,fy=gy+S*.008;
+  for(let x=x0+S*.02,i=0;x<fxp-S*.02;x+=S*.028,i++){const u=(x-x0)/(x1-x0),tw=9.5+u*5;footPrint(c,x,fy+(i%2?S*.004:-S*.002),S*.009,1-ss(tw,tw+1.6,t))}
+  const wind=ss(9,10.5,t);if(wind>0){c.strokeStyle=rgba([170,166,190],.3*wind);c.lineWidth=1;for(const d of DRIFT5){const q=(t*(.6+d[2]*.4)+d[0])%1,x=W*(1.05-q*1.2),y=hz+S*.04+d[1]*(H*.68-hz),l=S*(.03+.05*d[2]);c.beginPath();c.moveTo(x,y);c.lineTo(x+l,y);c.stroke()}}
+  walker(c,fxp,fy,S*.13,t*5.4,moving,"rgb(14,12,18)",{lean:moving?.02:0});
+}
+
+/* 6. The brazier. The empty camp at night. A brass brazier full of coals is left on the sand, and its smoke goes up
+      steadily from its head and drifts off the way the caravan went. The one who stays sits beside it. */
+const COAL=randArr(6606,26,3),STONE6=randArr(6607,9,3);
+function brazier(c,x,y,s,t,heat){const by=y-s*.38,R=s*.3;
+  c.strokeStyle="rgb(96,68,34)";c.lineWidth=Math.max(1.4,s*.025);c.lineCap="round";[[-.7,-.9],[0,-.1],[.7,.9]].forEach(([a,b])=>{c.beginPath();c.moveTo(x+a*R*.6,by+R*.35);c.lineTo(x+b*R*.9,y);c.stroke()});
+  glow(c,x,by-R*.1,s*1.1,[255,140,70],.28*heat);
+  // coals heaped in the bowl
+  c.fillStyle="rgb(30,16,12)";c.beginPath();c.ellipse(x,by,R*.94,R*.28,0,Math.PI,TAU);c.fill();
+  for(const k of COAL){const u=(k[0]-.5)*1.7,v=k[1];const px=x+u*R*.9*(1-v*.3),py=by-R*.05-v*R*.18*(1-Math.abs(u)),f=.55+.45*Math.sin(t*(1.3+k[2]*2)+k[0]*20);const hot=k[2]<heat;
+    c.fillStyle=hot?rgba(mix([200,60,24],[255,170,80],f),1):"rgb(70,62,58)";c.beginPath();c.ellipse(px,py,R*.11,R*.07,k[1]*2,0,TAU);c.fill()}
+  const bg2=c.createLinearGradient(x-R,0,x+R,0);bg2.addColorStop(0,"rgb(90,58,26)");bg2.addColorStop(.45,"rgb(196,142,64)");bg2.addColorStop(1,"rgb(80,50,22)");c.fillStyle=bg2;
+  c.beginPath();c.ellipse(x,by,R,R*.28,0,0,Math.PI);c.bezierCurveTo(x-R*.95,by+R*.55,x+R*.95,by+R*.55,x+R,by);c.closePath();c.fill();
+  c.beginPath();c.moveTo(x-R,by);c.bezierCurveTo(x-R*.95,by+R*.62,x+R*.95,by+R*.62,x+R,by);c.lineTo(x+R,by+R*.02);c.ellipse(x,by,R,R*.28,0,0,Math.PI);c.fill();
+  c.strokeStyle="rgba(255,210,130,.5)";c.lineWidth=1;c.beginPath();c.ellipse(x,by,R,R*.28,0,0,Math.PI);c.stroke();
+  return[x,by-R*.2]}
+const SMOKE=randArr(6608,46,3);
+function smoke(c,x,y,S,t,a,drift){for(let j=0;j<SMOKE.length;j++){const r=SMOKE[j],age=(t/7+j/SMOKE.length+r[0]*.02)%1;
+  const px=x+drift*S*.34*age*age+Math.sin(age*5+r[1]*6+t*.4)*S*.025*age,py=y-age*S*.6,rad=S*(.012+.06*age);glow(c,px,py,rad,[150,142,146],a*.16*Math.sin(age*Math.PI)*(1-age*.4))}}
+function r6(c,t,W,H){const S=Math.min(W,H),gy=H*.56;
+  bg(c,W,H,[[0,[5,7,18]],[.5,[16,18,34]],[1,[10,9,12]]]);stars(c,W,H,t,.8,.52);
+  hillLayer(c,W,H,gy,S*.02,[22,22,34],61);
+  const fa=.6*(1-ss(3,11,t));if(fa>0){glow(c,W*.9,hillAt(.9,gy,S*.02,61)-S*.004,S*.02,WARM,fa);c.fillStyle=rgba([255,220,160],fa);c.fillRect(W*.9-1,hillAt(.9,gy,S*.02,61)-S*.005,2,2)}
+  ground(c,W,H,gy+S*.01,[34,30,38],[16,14,18]);
+  const bx=W*.52,by=H*.61,bs=S*.22;glow(c,bx,by,S*.4,[255,150,80],.12);
+  for(const st of STONE6){c.fillStyle="rgb(40,34,36)";c.beginPath();c.ellipse(bx+(st[0]-.5)*S*.5,by+(st[1]-.3)*S*.05,S*.012*(.6+st[2]),S*.006*(.6+st[2]),0,0,TAU);c.fill()}
+  person(c,bx-S*.16,by,S*.14,{kneel:1,bow:.32,col:"rgb(20,12,12)"});
+  const top=brazier(c,bx,by,bs,t,.85);smoke(c,top[0],top[1],S,t,1,1);
+}
+
+/* 7. The tent without foundation. By the brazier, now almost ash, the one who stays warms their hands at a single ember.
+      A gust pulls the tent's pegs out of the sand one by one, and the tent folds and falls: a promise with no footing.
+      The ember keeps glowing: the memory kept in the breast. */
+function r7(c,t,W,H){const S=Math.min(W,H),gy=H*.56;
+  bg(c,W,H,[[0,[5,7,18]],[.5,[16,18,34]],[1,[10,9,12]]]);stars(c,W,H,t,.8,.52);
+  hillLayer(c,W,H,gy,S*.02,[22,22,34],61);ground(c,W,H,gy+S*.01,[34,30,38],[16,14,18]);
+  const gusts=[2.8,4.9,6.9,11],env=g=>{const q=t-g;return q<0?0:q<.4?q/.4:Math.exp(-(q-.4)*1.4)},wind=clamp(gusts.reduce((a,g)=>a+env(g),0));
+  // the tent
+  const tx=W*.66,base=H*.6,w=S*.36,h=S*.17,p1=ss(4.9,5.4,t),p2=ss(6.9,7.4,t),fall=easeInOut(ss(7.2,10.5,t)),shake=wind*(1-fall)*Math.sin(t*14)*S*.003;
+  const a1=fall*1.35+p1*.08,a2=fall*1.25,poleL=[tx-w*.28,base],poleR=[tx+w*.28,base];
+  const top1=[poleL[0]-Math.sin(a1)*h+shake,base-Math.cos(a1)*h],top2=[poleR[0]-Math.sin(a2)*h+shake,base-Math.cos(a2)*h];
+  const pegL0=[tx-w*.85,base+S*.012],pegR0=[tx+w*.85,base+S*.012];
+  const pegL=[lerp(pegL0[0],tx-w*.6,p1),pegL0[1]-Math.sin(p1*Math.PI)*S*.05],pegR=[lerp(pegR0[0],tx+w*.3,p2)-p2*fall*S*.1,pegR0[1]-Math.sin(p2*Math.PI)*S*.05];
+  c.strokeStyle="rgba(150,130,110,.6)";c.lineWidth=1;[[top1,pegL,p1],[top2,pegR,p2]].forEach(([a,b,sl])=>{c.beginPath();c.moveTo(a[0],a[1]);c.quadraticCurveTo((a[0]+b[0])/2,(a[1]+b[1])/2+sl*S*.05,b[0],b[1]);c.stroke()});
+  [pegL,pegR].forEach(p=>{c.fillStyle="rgb(90,70,50)";c.fillRect(p[0]-1,p[1]-S*.012,2,S*.012)});
+  const sag=S*.02+fall*S*.01;c.fillStyle="rgb(28,22,26)";c.beginPath();c.moveTo(tx-w*.5-fall*S*.06,base);c.lineTo(top1[0],top1[1]);c.quadraticCurveTo((top1[0]+top2[0])/2,(top1[1]+top2[1])/2+sag,top2[0],top2[1]);c.lineTo(tx+w*.5-fall*S*.04,base);c.closePath();c.fill();
+  c.strokeStyle="rgba(120,100,90,.35)";c.lineWidth=1;for(let i=1;i<5;i++){const u=i/5;c.beginPath();c.moveTo(lerp(tx-w*.5-fall*S*.06,tx+w*.5-fall*S*.04,u),base);c.lineTo(lerp(top1[0],top2[0],u),lerp(top1[1],top2[1],u)+Math.sin(u*Math.PI)*sag);c.stroke()}
+  if(fall<.6){c.fillStyle=rgba([6,4,6],1-fall/.6);c.beginPath();c.moveTo(tx-w*.08,base);c.lineTo(lerp(tx,top1[0]+w*.28,.1),lerp(base-h*.7,top1[1]+S*.02,.5));c.lineTo(tx+w*.08,base);c.closePath();c.fill()}
+  c.strokeStyle="rgb(60,44,32)";c.lineWidth=Math.max(1.2,S*.005);[[poleL,top1],[poleR,top2]].forEach(([a,b])=>{c.beginPath();c.moveTo(a[0],a[1]);c.lineTo(b[0],b[1]);c.stroke()});
+  // the brazier gone to ash but for one ember, and the hands held to it
+  const bx=W*.3,by=H*.61,bs=S*.2;const top=brazier(c,bx,by,bs,t,.12);
+  const pulse=.75+.25*Math.sin(t*1.6);glow(c,top[0],top[1]+bs*.04,S*.08,[255,110,50],.5*pulse);c.fillStyle=rgba([255,150,70],pulse);c.beginPath();c.ellipse(top[0]+bs*.02,top[1]+bs*.05,bs*.035,bs*.022,0,0,TAU);c.fill();
+  smoke(c,top[0],top[1],S*.6,t,.4,-.5);
+  const fx=bx-S*.1,fh=S*.14,col="rgb(22,12,12)";person(c,fx,by,fh,{kneel:1,bow:.3,col});const sh=shoulderOf(fx,by,fh,1,.3);arm(c,sh,[bx-bs*.3,by-bs*.36],fh*.05,col,fh*.04);
+  if(wind>.05){c.strokeStyle=rgba([170,170,200],.2*wind);c.lineWidth=1;for(let i=0;i<24;i++){const q=(t*1.2+i*.137)%1,x=W*(1.05-q*1.2),y=gy+S*.01+((i*.61)%1)*S*.14;c.beginPath();c.moveTo(x,y);c.lineTo(x+S*.05,y);c.stroke()}}
+}
+
+/* 8. The whirlwind. On the open desert a dust devil gathers at the ground and climbs, turning, until it reaches the sky
+      and blots out the stars: turmoil going up from the earth to heaven. The one who stays shades their eyes, looking for the caravan. */
+const DUST8=randArr(8808,1100,3);
+function r8(c,t,W,H){const S=Math.min(W,H),gy=H*.58,grow=easeInOut(ss(1,10,t));
+  bg(c,W,H,[[0,[6,8,22]],[.58,[30,28,46]],[1,[16,14,18]]]);stars(c,W,H,t,.85*(1-grow*.35),.58);
+  hillLayer(c,W,H,gy,S*.02,[30,28,40],81);ground(c,W,H,gy+S*.01,[52,44,50],[24,20,24]);
+  const wx=W*.62,wy=H*.6,full=wy+H*.05,top=full*grow;
+  c.fillStyle=rgba([70,58,56],.18*grow);c.fillRect(0,0,W,H);
+  const X=v=>wx+Math.sin(t*.6+v*2.6)*S*.05*v+Math.sin(t*1.3+v*6)*S*.012*v;
+  for(let i=0;i<22;i++){const v=i/21;if(v*full>top)break;const r=S*(.02+.16*Math.pow(v,1.4));c.save();c.translate(X(v),wy-v*full);c.scale(1,.55);glow(c,0,0,r*1.35,[92,76,66],.3);c.restore()}
+  for(let i=0;i<16;i++){const v=(i+.5)/16;if(v*full>top)break;const r=S*(.015+.16*Math.pow(v,1.4)),y=wy-v*full,a0=((t*(3.6-v*1.8)+i*1.7)%TAU);c.strokeStyle=rgba([180,152,124],.12);c.lineWidth=Math.max(1,S*.003*(1+v));c.beginPath();c.ellipse(X(v),y,r,r*.14,0,a0,a0+1.4);c.stroke();c.beginPath();c.ellipse(X(v),y,r,r*.14,0,a0+Math.PI,a0+Math.PI+1);c.stroke()}
+  for(const p of DUST8){const v=p[0];if(v*full>top)continue;const r=S*(.015+.16*Math.pow(v,1.4)),an=p[1]*TAU+t*(3.6-v*1.8),x=X(v)+Math.cos(an)*r,y=wy-v*full+Math.sin(an)*r*.12,front=.5+.5*Math.sin(an);
+    c.fillStyle=rgba(mix([90,74,66],[196,170,140],front),(.2+.35*front)*ss(0,.15,top/full-v+.1));c.fillRect(x,y,1.8,1.8)}
+  glow(c,wx,wy,S*.3*grow,[150,124,104],.25*grow);
+  const fx=W*.2,fy=H*.62,fh=S*.14,col="rgb(16,12,16)",bow=-.06;person(c,fx,fy,fh,{col,bow});const sh=shoulderOf(fx,fy,fh,0,bow),hd=headOf(fx,fy,fh,0,bow),up=ss(2,3.5,t);
+  arm(c,sh,[lerp(sh[0]+fh*.08,hd[0]+fh*.07,up),lerp(sh[1]+fh*.28,hd[1]-fh*.01,up)],fh*.05,col,-fh*.04*up);
+}
+
+/* 9. The loose reins. All night the one who stays rides after the caravan. Back at the caravanserai someone waves them back;
+      they do not turn. The reins slip from their hand and hang loose, and the horse follows the camel tracks by itself until dawn. */
+function horse(c,x,y,s,ph,col,o={}){c.save();c.translate(x,y);c.fillStyle=col;c.strokeStyle=col;c.lineCap="round";c.lineJoin="round";
+  // legs: a thick upper part, a thin cannon, a small hoof; hind legs bend back at the hock
+  [[-.27,0,-1],[-.19,Math.PI,-1],[.22,Math.PI*.5,1],[.3,Math.PI*1.5,1]].forEach(([lx,of,fr])=>{const sw=Math.sin(ph+of)*.08*s,lift=Math.max(0,Math.sin(ph+of+1.4))*.05*s,kx=lx*s+sw*.4-fr*.035*s,ky=-s*.27,fx=lx*s+sw,fy=-lift*.4;
+    c.lineWidth=s*.08;c.beginPath();c.moveTo(lx*s,-s*.5);c.lineTo(kx,ky);c.stroke();c.lineWidth=s*.038;c.beginPath();c.moveTo(kx,ky);c.lineTo(fx,fy-s*.03);c.stroke();c.beginPath();c.ellipse(fx+s*.012,fy-s*.018,s*.028,s*.02,0,0,TAU);c.fill()});
+  c.beginPath();c.ellipse(0,-s*.6,s*.34,s*.15,0,0,TAU);c.fill();c.beginPath();c.arc(-s*.24,-s*.62,s*.16,0,TAU);c.fill();c.beginPath();c.arc(s*.24,-s*.6,s*.15,0,TAU);c.fill();
+  // neck rising from the withers, head hanging low at the end of it
+  const hd=o.headDown||0,P=[lerp(.5,.56,hd)*s,lerp(-1.0,-.86,hd)*s],ang=lerp(1.0,1.3,hd),hl=s*.3,M=[P[0]+Math.cos(ang)*hl,P[1]+Math.sin(ang)*hl],nx=-Math.sin(ang),ny=Math.cos(ang);
+  c.beginPath();c.moveTo(s*.12,-s*.72);c.quadraticCurveTo(s*.34,-s*.86,P[0]-s*.03,P[1]-s*.02);c.lineTo(P[0]+nx*-s*.02+s*.05,P[1]+s*.08);c.quadraticCurveTo(s*.42,-s*.66,s*.36,-s*.5);c.closePath();c.fill();
+  c.beginPath();c.moveTo(P[0]-nx*s*.06,P[1]-ny*s*.06);c.lineTo(M[0]-nx*s*.035,M[1]-ny*s*.035);c.quadraticCurveTo(M[0]+Math.cos(ang)*s*.03,M[1]+Math.sin(ang)*s*.03,M[0]+nx*s*.035,M[1]+ny*s*.035);c.lineTo(P[0]+nx*s*.065,P[1]+ny*s*.065);c.closePath();c.fill();
+  c.beginPath();c.moveTo(P[0]-s*.03,P[1]-s*.02);c.lineTo(P[0]-s*.035,P[1]-s*.1);c.lineTo(P[0]+s*.01,P[1]-s*.03);c.closePath();c.fill();
+  c.lineWidth=s*.012;for(let i=0;i<6;i++){const u=i/6,mx=lerp(s*.14,P[0]-s*.02,u),my=lerp(-s*.74,P[1],u)-s*.02;c.beginPath();c.moveTo(mx,my);c.lineTo(mx-s*.05,my+s*.03+Math.sin(ph*.5+i)*s*.005);c.stroke()}
+  c.lineWidth=s*.06;c.beginPath();c.moveTo(-s*.36,-s*.7);c.quadraticCurveTo(-s*.5,-s*.6,-s*.44,-s*.3+Math.sin(ph*.5)*s*.02);c.stroke();
+  // the rider
+  const rx=-s*.04,ry=-s*.72;c.lineWidth=s*.07;c.beginPath();c.moveTo(rx+s*.02,ry);c.lineTo(rx+s*.1,ry+s*.17);c.lineTo(rx+s*.06,ry+s*.3);c.stroke();
+  person(c,rx,ry+s*.02,s*.62,{kneel:.75,bow:.12,col});
+  const hand=[rx+s*.16,ry-s*.04];c.lineWidth=s*.035;c.beginPath();c.moveTo(rx+s*.05,ry-s*.2);c.quadraticCurveTo(rx+s*.12,ry-s*.1,hand[0],hand[1]);c.stroke();
+  // reins: held, then slipping, then hanging loose from the bit
+  const drop=o.drop||0,bit=[M[0]-Math.cos(ang)*s*.05,M[1]-Math.sin(ang)*s*.05],end=[lerp(hand[0],s*.3,drop),lerp(hand[1],-s*.6,drop)];c.lineWidth=Math.max(.8,s*.01);c.strokeStyle="rgba(120,90,70,.9)";c.beginPath();c.moveTo(bit[0],bit[1]);c.quadraticCurveTo((bit[0]+end[0])/2,Math.max(bit[1],end[1])+s*(.04+.16*drop),end[0],end[1]);c.stroke();
+  c.restore()}
+function r9(c,t,W,H){const S=Math.min(W,H),gy=H*.56,dawn=ss(7,18,t);
+  bg(c,W,H,[[0,mix([5,6,18],[36,46,86],dawn)],[.4,mix([12,14,30],[110,88,112],dawn)],[.56,mix([22,22,38],[232,160,120],dawn)],[1,[12,10,14]]]);
+  wheel(c,W,H,t,.85*(1-dawn*.9),W*.8,H*.08,.03,.54);if(dawn>0)glow(c,W*.95,gy,S*.8,[255,190,140],.3*dawn);
+  hillLayer(c,W,H,gy,S*.02,mix([22,20,32],[80,58,60],dawn),91);ground(c,W,H,gy+S*.01,mix([34,30,40],[98,74,68],dawn),[18,16,20]);
+  const col=rgb(mix([8,8,14],[34,26,30],dawn));
+  const sx=W*.08,ss0=S*.075;serai(c,sx,gy+S*.02,ss0,{col:rgb(mix([28,24,32],[62,46,48],dawn)),lamp:1});
+  // someone at the gate calling them back, who stops waving and stands
+  const ax=sx+ss0+S*.03,ay=gy+S*.03,ah=S*.06,wav=1-ss(8,9.5,t);person(c,ax,ay,ah,{col});const ash=shoulderOf(ax,ay,ah,0,0);arm(c,ash,[ash[0]+ah*lerp(.1,.18,wav),ash[1]+ah*lerp(.32,-.2+.06*Math.sin(t*7),wav)],ah*.06,col);
+  // the camel tracks, and the rider following them
+  const TY=x=>H*.6+Math.sin(x/S*3)*S*.008;for(let x=W*.18;x<W*1.02;x+=S*.03)padPrint(c,x,TY(x),S*.006*(1-.3*x/W),1-.3*dawn);
+  const hx=W*.25+t*S*.028,s=S*.13;horse(c,hx,TY(hx)+S*.004,s,hx/(s*.22),col,{headDown:.7,drop:easeInOut(ss(3,5.5,t))});
+}
+
+/* 10. The rain. Grey before dawn, the rain comes down on the caravan (the tears). The ground turns to mud, one camel sinks to its
+      knees and the line halts; the one who weeps stands far off. Then the rain stops, the camel pulls free, and they go on. */
+const RAIN10=randArr(1010,170,3),PUD10=randArr(1011,10,3);
+const stop10=x=>ss(5.8,7.2,x)*(1-ss(13.2,14.8,x));
+function r10(c,t,W,H){const S=Math.min(W,H),gy=H*.5,rain=ss(0,2,t)*(1-ss(9.5,12,t)),wet=ss(2,7,t);
+  bg(c,W,H,[[0,[40,44,56]],[.5,[80,82,92]],[1,[30,30,34]]]);
+  for(let k=0;k<8;k++)cloud(c,((k*.21+t*.006)%1.3-.15)*W,H*(.06+(k%3)*.06),S*.34,[58,60,72],.8*(1-ss(11,17,t)*.5));
+  hillLayer(c,W,H,gy,S*.02,[58,54,62],101);
+  ground(c,W,H,gy+S*.01,mix([108,90,78],[66,52,46],wet),mix([54,44,40],[34,28,26],wet));
+  const cy=gy+S*.1,s=S*.09;let d=0;for(let x=0;x<t;x+=.05)d+=(1-stop10(x))*.05;d*=S*.026;
+  const sink=s*.22*ss(6,8,t)*(1-easeInOut(ss(12.2,14.6,t))),ph=d/(S*.026)*3.4,P=[];for(let i=0;i<4;i++)P.push([W*.34+(3-i)*S*.12+d,cy+(i===2?sink:0),s]);
+  const col="rgb(34,30,34)";c.strokeStyle=col;c.lineWidth=1;
+  for(let k=0;k<3;k++){const[a,ay,as]=P[k],[b,by,bs]=P[k+1];c.beginPath();c.moveTo(b+.66*bs,by-.97*bs);c.quadraticCurveTo((a-.4*as+b+.66*bs)/2,Math.max(ay-.55*as,by-.97*bs)+as*.08,a-.4*as,ay-.58*as)
+    ;c.stroke()}
+  const strug=ss(12,12.6,t)*(1-ss(14.4,15,t));
+  for(let k=3;k>=0;k--){const[x,y]=P[k];camelM(c,x,y,s,k===2?ph+strug*t*9:ph+k*1.3,col,{mahmal:k===1,lit:.5,cloth:"rgb(70,34,40)",headUp:k===2?ss(6,8,t)*(1-ss(14,15,t)):0})}
+  // the mud closes over the sunken legs
+  const mg=c.createLinearGradient(0,cy,0,H);mg.addColorStop(0,rgb(mix([96,80,70],[60,48,42],wet)));mg.addColorStop(1,rgb(mix([54,44,40],[34,28,26],wet)));c.fillStyle=mg;c.fillRect(0,cy,W,H-cy);
+  if(sink>1){c.fillStyle="rgba(36,28,24,.8)";c.beginPath();c.ellipse(P[2][0],cy+S*.002,s*.5,s*.05,0,0,TAU);c.fill()}
+  for(const p of PUD10){const a=ss(3+p[2]*3,6+p[2]*3,t);if(a<=0)continue;const x=p[0]*W,y=gy+S*.04+p[1]*(H*.68-gy-S*.04);c.fillStyle=rgba([150,154,168],.35*a);c.beginPath();c.ellipse(x,y,S*(.03+.04*p[2]),S*.006,0,0,TAU);c.fill();
+    if(rain>0)for(let k=0;k<2;k++){const q=(t*1.4+p[0]*7+k*.5)%1;c.strokeStyle=rgba([200,204,220],.4*(1-q)*rain);c.lineWidth=1;c.beginPath();c.ellipse(x+(k-.5)*S*.02,y,S*.012*q,S*.003*q,0,0,TAU);c.stroke()}}
+  const fx=W*.12,fy=H*.63,fh=S*.14;person(c,fx,fy,fh,{bow:.42,col:"rgb(22,20,24)"});
+  if(rain>0){c.strokeStyle=rgba([200,206,222],.35*rain);c.lineWidth=1;for(const r of RAIN10){const q=(t*1.3+r[0])%1,x=r[1]*W*1.1-q*S*.06,y=q*H*.72;c.beginPath();c.moveTo(x,y);c.lineTo(x-S*.008,y+S*.04);c.stroke()}}
+}
+
+/* 11. The way back. Early morning. The one who stays sets off on foot for home, toward the caravanserai; but the footprints
+      bend round in a loop, and the walk turns back after the caravan's tracks toward the far horizon. */
+const PATH11=[[.7,.6],[.52,.55],[.36,.5],[.24,.5],[.2,.57],[.28,.62],[.45,.61],[.62,.56],[.78,.5],[.92,.45]];
+function r11(c,t,W,H){const S=Math.min(W,H),hz=H*.3,m=ss(0,18,t);
+  bg(c,W,H,[[0,mix([30,40,74],[54,72,110],m)],[.3,mix([150,120,130],[210,170,150],m)],[1,[60,50,52]]]);
+  glow(c,W*.85,hz,S*.6,[255,200,150],.22+.15*m);
+  duneLayer(c,W,H,hz+S*.01,S*.03,1.9,.3,mix([120,96,96],[150,118,106],m),[92,74,76]);
+  ground(c,W,H,hz+S*.03,mix([130,104,98],[160,126,110],m),[80,62,62]);
+  serai(c,W*.12,hz+S*.03,S*.045,{col:"rgb(74,58,62)"});
+  // the caravan's tracks going off to the east
+  for(let u=0;u<1;u+=.025){const x=lerp(W*.16,W*.98,u),y=lerp(H*.66,hz+S*.03,Math.pow(u,.7)),sz=S*lerp(.01,.003,u);padPrint(c,x,y,sz,.9)}
+  // the walker's path: a smooth curve through the points
+  const Pp=PATH11.map(([u,v])=>[u*W,v*H]),N=240,pts=[];for(let i=0;i<=N;i++){const f=i/N*(Pp.length-1),j=Math.min(Pp.length-2,Math.floor(f)),q=f-j,p0=Pp[Math.max(0,j-1)],p1=Pp[j],p2=Pp[j+1],p3=Pp[Math.min(Pp.length-1,j+2)];
+    pts.push([.5*(2*p1[0]+(-p0[0]+p2[0])*q+(2*p0[0]-5*p1[0]+4*p2[0]-p3[0])*q*q+(-p0[0]+3*p1[0]-3*p2[0]+p3[0])*q*q*q),.5*(2*p1[1]+(-p0[1]+p2[1])*q+(2*p0[1]-5*p1[1]+4*p2[1]-p3[1])*q*q+(-p0[1]+3*p1[1]-3*p2[1]+p3[1])*q*q*q)])}
+  const L=[0];for(let i=1;i<pts.length;i++)L.push(L[i-1]+Math.hypot(pts[i][0]-pts[i-1][0],pts[i][1]-pts[i-1][1]));
+  const at=l=>{let i=1;while(i<L.length-1&&L[i]<l)i++;const q=clamp((l-L[i-1])/((L[i]-L[i-1])||1));return[lerp(pts[i-1][0],pts[i][0],q),lerp(pts[i-1][1],pts[i][1],q),pts[i][0]-pts[i-1][0]]};
+  const cur=L[L.length-1]*clamp(t/17.2),step=S*.022;
+  for(let l=step,i=0;l<cur-step*.6;l+=step,i++){const p=at(l),sc=lerp(.6,1.1,(p[1]-hz)/(H*.7-hz));footPrint(c,p[0],p[1]+(i%2?1:-1)*S*.003,S*.007*sc,.9)}
+  const p=at(cur),sc=lerp(.6,1.1,(p[1]-hz)/(H*.7-hz));walker(c,p[0],p[1],S*.13*sc,cur/(S*.02),t<17.2,"rgb(30,22,26)",{dir:p[2]<0?-1:1});
+}
+
+/* 12. The crest (the high point). Dawn. Against the brightening sky the whole caravan climbs a great dune and goes over the crest,
+      camel after camel, bells ringing all at once; the mahmal with the light is last, and its light sinks behind the ridge.
+      The one who stays sees it go. The sky keeps brightening; the sun does not come up over the crest. */
+const SAND12=randArr(1212,50,3);
+function r12(c,t,W,H){const S=Math.min(W,H),m=ss(0,18,t),px=W*.6,py=H*.36;
+  bg(c,W,H,[[0,mix([20,26,62],[46,62,112],m)],[.22,mix([80,64,104],[150,110,130],m)],[.4,mix([220,130,110],[255,190,130],m)],[.6,[60,40,40]],[1,[20,16,18]]]);
+  stars(c,W,H,t,.5*(1-ss(0,9,t)),.2);
+  glow(c,px+S*.05,py+S*.02,S*1.1,[255,190,120],.35+.3*m);glow(c,px+S*.05,py+S*.03,S*.3,[255,230,180],.35+.4*m);
+  const Y=x=>x<px?py+(H*.47-py)*Math.pow((px-x)/px,1.4):py+(H*.52-py)*Math.pow(clamp((x-px)/(W-px)),.8);
+  // the caravan: on the near slope, then over the crest and down the far side (hidden)
+  const v=S*.047,col="rgb(20,14,18)",s=S*.06,P=[],G=x=>x<px?Y(x)+s*.02:py+(x-px)*1.5;for(let k=0;k<6;k++){const x=px-3*v-k*S*.1+v*t;P.push([x,G(x),s])}
+  caravan(c,P,t*3,col,{m:5,lit:1,cloth:"rgb(70,24,30)",driver:1,ground:G});
+  const w=winOf(...P[5]),la=1-ss(13.2,15.2,t);if(P[5][0]>px-s*.2)glow(c,w[0],Math.min(w[1],py-S*.004),S*.06,GOLDL,.5*la);
+  // the great dune, dark against the sky, its crest line catching the light
+  const dg=c.createLinearGradient(0,py,0,H);dg.addColorStop(0,"rgb(52,32,34)");dg.addColorStop(1,"rgb(20,14,16)");c.fillStyle=dg;c.beginPath();c.moveTo(0,H);for(let i=0;i<=120;i++){const x=i/120*W;c.lineTo(x,Y(x))}c.lineTo(W,H);c.closePath();c.fill();
+  c.strokeStyle=rgba([255,210,150],.5+.3*m);c.lineWidth=1.5;c.beginPath();for(let i=0;i<=120;i++){const x=i/120*W;i?c.lineTo(x,Y(x)):c.moveTo(x,Y(x))}c.stroke();
+  // sand lifting off the crest
+  for(const sd of SAND12){const q=(t*.25+sd[0])%1,x=px+(sd[1]-.3)*S*.5+q*S*.2,y=Y(x)-q*S*.03-sd[2]*S*.01;c.fillStyle=rgba([255,220,170],.4*Math.sin(q*Math.PI)*m);c.fillRect(x,y,1.2,1.2)}
+  // the near dune and the one who watches
+  const ny=x=>H*.6-S*.05*Math.sin(x/W*2.2+.4);c.fillStyle="rgb(14,10,12)";c.beginPath();c.moveTo(0,H);for(let i=0;i<=40;i++){const x=i/40*W;c.lineTo(x,ny(x))}c.lineTo(W,H);c.closePath();c.fill();
+  const fx=W*.16+S*.02*easeInOut(ss(15,16.5,t)),fh=S*.15;person(c,fx,ny(fx)+2,fh,{col:"rgb(8,6,8)",bow:-.08+.2*ss(14.5,16,t)});
+}
+
+/* 13. Saadi. Morning, and the desert is empty. The wind runs over the sand and fills the caravan's tracks one after another,
+      the far ones first. One last bell, very far off. The one who stays sits where the tracks began. */
+const DRIFT13=randArr(1313,60,3);
+function r13(c,t,W,H){const S=Math.min(W,H),hz=H*.4;
+  bg(c,W,H,[[0,[96,116,150]],[.4,[220,196,170]],[1,[110,90,80]]]);glow(c,W*.8,H*.12,S*.45,[255,236,200],.3);glow(c,W*.8,H*.12,S*.05,[255,248,230],.5);
+  duneLayer(c,W,H,hz,S*.04,3.1,1.7,[200,166,132],[160,128,104]);
+  const Y2=duneLayer(c,W,H,hz+S*.09,S*.05,.4,2.9,[190,154,120],[150,118,96]);
+  ground(c,W,H,hz+S*.16,[176,140,110],[120,94,80]);
+  for(let u=0;u<1;u+=.02){const x=lerp(W*.2,W*.9,u),y=lerp(H*.64,hz+S*.02,Math.pow(u,.6)),fade=1-ss(2+(1-u)*10,4+(1-u)*10,t);padPrint(c,x,y,S*lerp(.011,.003,u),fade)}
+  c.strokeStyle="rgba(250,236,214,.35)";c.lineWidth=1;for(const d of DRIFT13){const q=(t*(.35+d[2]*.3)+d[0])%1,x=W*(1.05-q*1.2),y=hz+d[1]*(H*.68-hz),l=S*(.03+.06*d[2]);c.beginPath();c.moveTo(x,y);c.lineTo(x+l,y+S*.002);c.stroke()}
+  person(c,W*.16,H*.625,S*.13,{kneel:1,bow:.18,col:"rgb(46,34,32)"});
+}
+
+/* intro backdrop: the desert at night; a small caravan on a far ridge, one light in its mahmal */
+function rAmbient(c,t,W,H){const S=Math.min(W,H);bg(c,W,H,[[0,[6,8,20]],[.62,[24,22,40]],[1,[8,8,12]]]);stars(c,W,H,t,.7,.62);
+  glow(c,W*.8,H*.18,S*.2,IV,.12);c.save();c.translate(W*.8,H*.18);c.rotate(-.5);moonPhase(c,0,0,S*.032,.18,"rgb(240,232,210)");c.restore();
+  const Y=duneLayer(c,W,H,H*.93,S*.05,1.2,2.4,[34,30,48],[16,14,24]);
+  const P=[],s=S*.03,x0=((t*S*.012+W*.45)%(W+S*.8))-S*.4;for(let k=0;k<5;k++){const x=x0-k*S*.045;P.push([x,Y(x/W)+1,s])}
+  caravan(c,P,t*3,"rgb(10,10,16)",{m:3,lit:1,driver:1})}
+const SCENES=[r1,r2,r3,r4,r5,r6,r7,r8,r9,r10,r11,r12,r13];
+
+/* ---------- music events ---------- */
+const SEG=["D4","Eb4","F4","G4","Ak4","B4","C5","D5","Eb5"];
+const PHR=[
+ [[3,2],[4,1.2],[5,1.4],[4,1],[3,2.2],[2,1],[3,3]],
+ [[5,1.6],[4,1.2],[3,1.6],[2,1.4],[1,2],[2,1.2],[3,3]],
+ [[3,1.4],[4,1.2],[5,1.6],[6,1.2],[5,1.4],[4,1.2],[3,2.6]],
+ [[6,1.2],[7,1.4],[6,1],[5,1.2],[4,1.4],[5,1],[4,1.2],[3,2.4]],
+ [[3,1.6],[2,1.2],[1,1.4],[0,1.6],[1,1.2],[2,1.4],[3,2.8]],
+ [[4,1.8],[5,1.2],[6,1.6],[5,1],[4,1.4],[3,1.2],[4,1.2],[3,2.4]],
+ [[2,1.6],[3,1.2],[4,1.4],[3,1.2],[2,1.4],[1,1.2],[2,1.2],[3,2.4]],
+ [[5,1.4],[6,1.2],[7,1.6],[8,2],[7,1.2],[6,1.2],[5,1.4],[4,2.4]],
+ [[3,2],[4,1.4],[5,1.4],[4,1.2],[3,1.6],[2,1.4],[3,2.6]],
+ [[1,1.6],[2,1.2],[3,1.4],[2,1.2],[1,1.6],[0,1.4],[1,1.2],[3,2.4]],
+ [[3,1.4],[4,1.2],[3,1.2],[2,1.4],[3,1.2],[4,1.4],[5,1.2],[4,2.4]],
+ [[5,1.6],[6,1.4],[7,1.8],[6,1.2],[5,1.4],[4,1.6],[3,3]],
+ [[3,2],[2,1.6],[1,1.8],[2,1.4],[3,4]]
+];
+const NEYSTART=PHR.map(()=>1.2);
+const CH={G:["G2","D3","G3"],C:["C3","G3","C4"],F:["F3","C4","F4"],E:["Eb3","G3","Eb4"]};
+const PADS=[["G","C"],["F","G"],["G","E"],["C","G"],["F","G"],["E","C"],["G","F"],["C","E"],["G","C"],["F","G"],["E","G"],["C","G"],["G","G"]];
+const CAD=PHR.map((p,b)=>Math.min(15.4,NEYSTART[b]+p.reduce((a,[,d])=>a+d+.12,0)+.3));
+const EVENTS=[];
+for(let b=0;b<NB;b++){
+  let tt=NEYSTART[b];PHR[b].forEach(([n,d])=>{const f=NT[SEG[n]];EVENTS.push({t:b*BD+tt,fn:()=>ney(f,d)});tt+=d+.12});
+  PADS[b].forEach((ch,h)=>EVENTS.push({t:b*BD+.2+h*BD/2,fn:()=>pad(CH[ch].map(n=>NT[n]),BD/2+.4,.014)}));
+  EVENTS.push({t:b*BD+.8,fn:()=>strike(NT[CH[PADS[b][0]][0]]*2,.1)});
+  const dl=wordDelays(b);EVENTS.push({t:b*BD+.7+dl[refrainIdx(b)]+.3,fn:()=>strike(NT.G4,.045)});
+  EVENTS.push({t:b*BD+CAD[b],fn:()=>cadence(b)});
+}
+// 1: harness bells as the caravan walks off, fading
+for(let x=1.8;x<17;x+=1.35)EVENTS.push({t:x,fn:()=>bell(1060+((x*7)|0)%3*90,.016*(1-x/22))});
+// 2: gusts
+[2.4,6.4,10.4,14.2].forEach(x=>EVENTS.push({t:BD+x,fn:()=>hiss(500,1200,3,.045)}));
+// 3: the doors shut
+EVENTS.push({t:2*BD+7,fn:()=>hiss(180,70,.9,.09,"lowpass")});
+// 4: bells, hurried
+for(let x=.6;x<17;x+=.9)EVENTS.push({t:3*BD+x,fn:()=>bell(1150,.012)});
+// 5: the cloth over the sand, then wind
+EVENTS.push({t:4*BD+.4,fn:()=>hiss(900,700,9,.02)});EVENTS.push({t:4*BD+9.2,fn:()=>hiss(600,1300,7,.04)});
+// 6-7: the coals crackle; the tent falls
+const CRK=randArr(6660,26,1);CRK.forEach(([r],i)=>EVENTS.push({t:5*BD+.5+i*.66+r*.4,fn:()=>click(.03+.03*r)}));
+[2.8,4.9,6.9,11].forEach(x=>EVENTS.push({t:6*BD+x,fn:()=>hiss(400,1100,2.4,.05)}));EVENTS.push({t:6*BD+9.6,fn:()=>hiss(200,80,1.4,.08,"lowpass")});
+// 8: the whirlwind
+EVENTS.push({t:7*BD+.8,fn:()=>hiss(300,1400,14,.06)});
+// 10: rain
+EVENTS.push({t:9*BD+.2,fn:()=>hiss(3000,2600,12,.035)});
+// 12: all the bells at once on the crest, then one by one gone
+for(let i=0;i<22;i++){const x=.4+i*.62+((i*37)%10)/25;EVENTS.push({t:11*BD+x,fn:()=>bell(900+((i*53)%5)*110,.02*(1-x/16))})}
+EVENTS.push({t:11*BD+14.8,fn:()=>hiss(400,300,4,.02)});
+// 13: one last bell far away, and the wind
+EVENTS.push({t:12*BD+.4,fn:()=>hiss(500,900,10,.03)});EVENTS.push({t:12*BD+2.6,fn:()=>bell(980,.006,0,.6)});
+function fire(a,b){for(const e of EVENTS)if(e.t>a&&e.t<=b)try{e.fn()}catch(_){}}
+
+/* ---------- canvas ---------- */
+const cvs=document.getElementById("cv"),ctx=cvs.getContext("2d");
+const off=document.createElement("canvas"),octx=off.getContext("2d");
+let W=0,H=0,dpr=1;
+function resize(){W=innerWidth;H=innerHeight;dpr=Math.min(window.devicePixelRatio||1,W*H>1.4e6?1.25:1.75);for(const cv of[cvs,off]){cv.width=Math.round(W*dpr);cv.height=Math.round(H*dpr)}}
+addEventListener("resize",resize);resize();
+function sceneFrame(c,Hs){const g=c.createRadialGradient(W/2,Hs*.45,Math.min(W,Hs)*.3,W/2,Hs*.5,Math.max(W,Hs)*.78);g.addColorStop(0,"rgba(0,0,0,0)");g.addColorStop(1,"rgba(2,3,8,.5)");c.fillStyle=g;c.fillRect(0,0,W,Hs);
+  const f=c.createLinearGradient(0,Hs-40,0,Hs);f.addColorStop(0,"rgba(7,9,26,0)");f.addColorStop(1,"rgba(7,9,26,1)");c.fillStyle=f;c.fillRect(0,Hs-40,W,40);c.fillStyle="#07091A";c.fillRect(0,Hs,W,H-Hs);c.fillStyle="rgba(230,190,99,.4)";c.fillRect(W/2-36,Hs+8,72,1)}
+// the scene gets the top of the screen; the caption sits on its own band below it
+let CAPH=0;const sceneH=()=>H-clamp(CAPH+76+34,H*.24,H*.56);
+function vignette(c){const g=c.createRadialGradient(W/2,H*.42,Math.min(W,H)*.3,W/2,H*.5,Math.max(W,H)*.78);g.addColorStop(0,"rgba(0,0,0,0)");g.addColorStop(1,"rgba(2,3,8,.55)");c.fillStyle=g;c.fillRect(0,0,W,H);const b=c.createLinearGradient(0,H*.52,0,H);b.addColorStop(0,"rgba(3,4,10,0)");b.addColorStop(1,"rgba(3,4,10,.8)");c.fillStyle=b;c.fillRect(0,H*.52,W,H*.48)}
+
+/* ---------- UI ---------- */
+const $=id=>document.getElementById(id);
+// anonymous, cookie-free stats (Umami): how far people get into the poem
+const track=e=>{try{window.umami&&umami.track(e,{poem:"saadi-ghazal-268"})}catch(_){}};const seen=new Set();let finished=false;
+const intro=$("intro"),cap=$("caption"),bar=$("bar"),outro=$("outro"),mark=$("mark");
+const verse=$("verse"),gloss=$("gloss"),label=$("label"),segs=$("segs"),pp=$("pp"),snd=$("snd"),clockEl=$("clock"),markLabel=$("markLabel");
+if(GALLERY_URL){["galleryLink","galleryLink2"].forEach(id=>{const a=$(id);a.href=GALLERY_URL;a.hidden=false})}
+const segEls=POEM.map((P,i)=>{const b=document.createElement("button");b.className="seg";b.setAttribute("aria-label",`Couplet ${i+1}: ${P[3]}`);b.innerHTML="<i></i>";b.addEventListener("click",()=>jump(i));segs.appendChild(b);return b.firstChild});
+POEM.forEach((P,b)=>{const row=document.createElement("button");row.className="bayt";row.title=P[2];row.innerHTML=`<span></span><span></span>`;row.children[0].textContent=P[0];row.children[1].textContent=P[1];row.addEventListener("click",()=>jump(b));$("poem").appendChild(row)});
+let mode="intro",playing=false,time=0,clock=0,outroStart=0,last=performance.now(),capS=-1,capState="";
+function build(b){verse.textContent="";const dl=wordDelays(b);let n=0;[0,1].forEach(k=>{const m=document.createElement("span");m.className="m";const ws=POEM[b][k].split(" ");ws.forEach((w,i)=>{const sp=document.createElement("span");sp.className="w"+(isRf(b,k,i)?" rf":"");sp.textContent=w;sp.style.setProperty("--d",dl[n++].toFixed(2)+"s");m.appendChild(sp);if(i<ws.length-1)m.appendChild(document.createTextNode(" "))});verse.appendChild(m)});
+  gloss.textContent=POEM[b][2];label.textContent=POEM[b][3];markLabel.textContent=`${b+1} / ${NB}`;cap.classList.remove("on","out")}
+function updateCaption(b,t){if(t>3&&!seen.has(b)){seen.add(b);track("couplet-"+(b+1))}if(b!==capS){capS=b;build(b);capState=""}const st=t<.7?"pre":t<BD-.8?"on":"out";if(st!==capState){capState=st;cap.classList.toggle("on",st==="on");cap.classList.toggle("out",st==="out")}}
+const fmt=x=>{x=Math.max(0,Math.floor(x));return`${Math.floor(x/60)}:${String(x%60).padStart(2,"0")}`};
+function updateBar(){segEls.forEach((el,i)=>{el.style.transform=`scaleX(${clamp((time-i*BD)/BD).toFixed(4)})`});clockEl.textContent=fmt(time)}
+function setPlaying(p){playing=p;pp.textContent=p?"Pause":"Play";if(AC){try{p?AC.resume():AC.suspend()}catch(_){}}}
+function measureCaps(){if(cap.hidden)return;let m=0;for(let b=0;b<NB;b++){build(b);m=Math.max(m,cap.offsetHeight)}CAPH=m;capS=-1;capState=""}
+addEventListener("resize",()=>{if(mode==="play")measureCaps()});
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>{if(mode==="play")measureCaps()}).catch(()=>{});
+function start(at=0){initAudio();mode="play";time=at;capS=-1;intro.classList.add("gone");setTimeout(()=>{if(mode!=="intro")intro.hidden=true},1000);outro.classList.remove("show");outro.hidden=true;cap.hidden=false;bar.hidden=false;mark.hidden=false;measureCaps();setPlaying(true)}
+function toOutro(){if(mode==="play"&&!finished){finished=true;track("finish")}mode="outro";outroStart=clock;setPlaying(false);cap.hidden=true;bar.hidden=true;mark.hidden=true;intro.hidden=true;outro.hidden=false;requestAnimationFrame(()=>outro.classList.add("show"))}
+function jump(i){if(mode!=="play"){start(i*BD);return}time=i*BD;capS=-1;if(!playing)setPlaying(true)}
+$("begin").addEventListener("click",()=>{track("begin");start(0)});
+$("again").addEventListener("click",()=>start(0));
+$("readBtn").addEventListener("click",()=>{track("read-text");intro.classList.add("gone");setTimeout(()=>{intro.hidden=true},900);toOutro()});
+pp.addEventListener("click",()=>setPlaying(!playing));
+$("prev").addEventListener("click",()=>{const s=Math.floor(time/BD);jump(time-s*BD>2?s:Math.max(0,s-1))});
+$("next").addEventListener("click",()=>{const s=Math.floor(time/BD);if(s+1<NB)jump(s+1);else toOutro()});
+snd.addEventListener("click",()=>{soundOn=!soundOn;if(!soundOn)track("sound-off");snd.textContent=soundOn?"Sound on":"Sound off";if(master)master.gain.setTargetAtTime(soundOn?1:0,AC.currentTime,.1)});
+addEventListener("keydown",e=>{if(mode!=="play")return;if(e.code==="Space"){e.preventDefault();setPlaying(!playing)}else if(e.key==="ArrowRight")$("next").click();else if(e.key==="ArrowLeft")$("prev").click()});
+function frame(now){
+  const dt=Math.min(.05,(now-last)/1000);last=now;clock+=dt;
+  if(mode==="play"&&playing){const p=time;time+=dt;fire(p,time);if(time>=TOTAL){time=TOTAL;toOutro()}}
+  ctx.setTransform(dpr,0,0,dpr,0,0);
+  if(mode==="intro"){ctx.save();rAmbient(ctx,clock,W,H);ctx.restore()}
+  else if(mode==="outro"){ctx.save();r13(ctx,17+(clock-outroStart)*.3,W,H);ctx.restore();ctx.fillStyle="rgba(3,4,10,.3)";ctx.fillRect(0,0,W,H)}
+  else{const s=Math.min(NB-1,Math.floor(time/BD)),t=time-s*BD,Hs=sceneH(),Hv=Hs/.7;
+    ctx.save();ctx.beginPath();ctx.rect(0,0,W,Hs);ctx.clip();SCENES[s](ctx,t,W,Hv);ctx.restore();
+    if(s>0&&t<F){octx.setTransform(1,0,0,1,0,0);octx.clearRect(0,0,off.width,off.height);octx.setTransform(dpr,0,0,dpr,0,0);octx.save();octx.beginPath();octx.rect(0,0,W,Hs);octx.clip();SCENES[s-1](octx,t+BD,W,Hv);octx.restore();ctx.save();ctx.setTransform(1,0,0,1,0,0);ctx.globalAlpha=1-ss(0,F,t);ctx.drawImage(off,0,0);ctx.restore()}
+    ctx.setTransform(dpr,0,0,dpr,0,0);sceneFrame(ctx,Hs);updateCaption(s,t);updateBar()}
+  if(mode!=="play")vignette(ctx);requestAnimationFrame(frame)}
+window.__seek=x=>{if(mode!=="play")start(x);time=x;capS=-1;setPlaying(false)};
+requestAnimationFrame(frame);
+
+})();
+</script>
+</body>
+</html>

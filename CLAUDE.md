@@ -21,7 +21,7 @@ https://kimzify.github.io/naqsh-e-khiyal/ · repo https://github.com/Kimzify/naq
 
 ## Layout
 - `index.html`: gallery; `POEMS` array + `COVERS` functions at the top of its script.
-- `hafez/ghazal-1/`, `hafez/ghazal-179/`, `hafez/ghazal-255/`: one self-contained HTML page per poem (inline CSS/JS, canvas scenes, Web Audio music). Ghazal 255 is the newest and the template.
+- `hafez/ghazal-1/`, `hafez/ghazal-179/`, `hafez/ghazal-255/`, `saadi/ghazal-268/`: one self-contained HTML page per poem (inline CSS/JS, canvas scenes, Web Audio music). Ghazal 255 is the newest approved page and the template; Saadi 268 is a first draft waiting for review.
 - `assets/og/*.png`: 1200×630 link previews; `assets/favicon.svg`.
 - `docs/ADDING-A-POEM.md`: page anatomy, music, checking, publishing.
 - `tests/smoke.mjs` + `.github/workflows/check.yml`: loads every page headless and fails on JS errors.
@@ -32,7 +32,7 @@ https://kimzify.github.io/naqsh-e-khiyal/ · repo https://github.com/Kimzify/naq
 - The caption sits on its own dark band. Scenes are drawn at a virtual height of sceneHeight/0.7, so keep content above 70% of H.
 - Nastaliq glyphs are very tall. A `<style id="nastaliq-fix">` block before `</head>` gives Persian headings and verse lines room. Keep it when editing.
 - `window.__seek(sec)` jumps to any moment, for testing.
-- Music: each poem has its own dastgah (Shur, Bayat-e Esfahan, Segah so far), a ney phrase per couplet, and a recurring santur cadence at the end of each couplet as a musical radif. No drums.
+- Music: each poem has its own dastgah (Shur, Bayat-e Esfahan, Segah, Homayoun so far), a ney phrase per couplet, and a recurring santur cadence at the end of each couplet as a musical radif. No drums.
 
 ## Ghazal 255 scenes (current, approved)
 1. Joseph's shirt comes down into Jacob's hands at the hut door.
@@ -45,6 +45,22 @@ https://kimzify.github.io/naqsh-e-khiyal/ · repo https://github.com/Kimzify/naq
 8. A lantern traveller reaches a caravanserai.
 9. A candle in a glass lantern; wind keeps throwing a moth back; the lantern door opens by itself.
 10. The hut far off in a long stormy night, one window lit with a small reader inside, until dawn.
+
+## Saadi Ghazal 268 scenes (first draft, not yet reviewed)
+One caravan leaves at dusk and is watched by the one left behind until dawn; radif «می‌رود». The cadence is santur plus a camel bell (درای) that sounds farther off each couplet. Umami label: `saadi-ghazal-268`.
+1. Caravan leaves the caravanserai at sunset; a small light leaves the figure and settles in the mahmal's window.
+2. Cold night; the caravan vanishes on the horizon; the figure sinks down in the wind; frost.
+3. Doors of the caravanserai close on the figure; red tulips with dark hearts rise on the threshold.
+4. Low moon behind the figure; long shadows; the mahmal's shadow is a lying cypress, the figure's shadow reaches after it.
+5. The mahmal's trailing cloth smooths the tracks; the figure's footprints fill in with wind.
+6. A brazier full of coals, smoke rising from its head toward the caravan's way.
+7. The tent's pegs pull out of the sand and it falls; one ember keeps glowing.
+8. A whirlwind rises from the ground to the sky; the figure shades their eyes.
+9. Night rider on the camel tracks, reins slipping loose; someone at the caravanserai waves them back.
+10. Rain; one camel sinks in the mud and the caravan halts, then pulls free and goes on.
+11. Footprints head home, loop round, and turn back after the caravan.
+12. Climax: dawn, the caravan crosses a great dune crest; the mahmal's light sinks behind it.
+13. Empty morning; wind fills the tracks; one far bell.
 
 ## Open items
 - Umami analytics (done): one Umami site for the whole domain. Every page's `<head>` has the script with website ID `2786b32f-32db-4029-a82f-e0adbcf506d7` and `data-domains="kimzify.github.io"` so local runs aren't counted.

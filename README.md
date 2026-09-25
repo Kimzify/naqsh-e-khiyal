@@ -10,6 +10,7 @@ Each poem is one self-contained web page: every couplet gets its own scene, draw
 | [Hafez, Ghazal 1 · «اَلا یا اَیُّهَا السّاقی»](https://kimzify.github.io/naqsh-e-khiyal/hafez/ghazal-1/) | 7 | Shur |
 | [Hafez, Ghazal 179 · «رسید مژده که ایّام غم نخواهد ماند»](https://kimzify.github.io/naqsh-e-khiyal/hafez/ghazal-179/) | 9 | Bayat-e Esfahan |
 | [Hafez, Ghazal 255 · «یوسف گم‌گشته بازآید به کنعان، غم مخور»](https://kimzify.github.io/naqsh-e-khiyal/hafez/ghazal-255/) | 10 | Segah |
+| [Saadi, Ghazal 268 · «ای ساربان آهسته رو کآرام جانم می‌رود»](https://kimzify.github.io/naqsh-e-khiyal/saadi/ghazal-268/) | 13 | Homayoun |
 
 ![Hafez, Ghazal 255](assets/og/ghazal-255.png)
 
@@ -47,7 +48,7 @@ npm run serve &  npm test
 
 ```
 index.html                  the gallery (home page)
-hafez/ghazal-<n>/index.html one page per poem
+<poet>/ghazal-<n>/index.html one page per poem
 assets/                     favicon and link-preview images
 docs/ADDING-A-POEM.md       how a poem page is built, step by step
 docs/DESIGN-NOTES.md        the principles the scenes follow
@@ -60,7 +61,7 @@ Read [`docs/ADDING-A-POEM.md`](docs/ADDING-A-POEM.md). In short: copy the newest
 
 ## License
 
-Code: [MIT](LICENSE). Glosses, scene designs, music and notes: [CC BY 4.0](LICENSE-CONTENT.md). The poems of Hafez are in the public domain; texts follow [Ganjoor](https://ganjoor.net).
+Code: [MIT](LICENSE). Glosses, scene designs, music and notes: [CC BY 4.0](LICENSE-CONTENT.md). The poems of Hafez and Saadi are in the public domain; texts follow [Ganjoor](https://ganjoor.net).
 
 ---
 

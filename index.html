@@ -87,7 +87,8 @@ header h1{line-height:1.5;padding:.28em 0 .5em}
 const POEMS=[
   {url:"hafez/ghazal-1/",poet:"Hafez",poetFa:"حافظ",first:"اَلا یا اَیُّهَا السّاقی",en:"O cupbearer, bring round the cup",source:"Divan · Ghazal 1",couplets:7,secs:126,mode:"Shur",cover:"cup"},
   {url:"hafez/ghazal-179/",poet:"Hafez",poetFa:"حافظ",first:"رسید مژده",en:"Good news has come",source:"Divan · Ghazal 179",couplets:9,secs:162,mode:"Esfahan",cover:"portico"},
-  {url:"hafez/ghazal-255/",poet:"Hafez",poetFa:"حافظ",first:"یوسفِ گم‌گشته",en:"Lost Joseph will return",source:"Divan · Ghazal 255",couplets:10,secs:180,mode:"Segah",cover:"shirt"}
+  {url:"hafez/ghazal-255/",poet:"Hafez",poetFa:"حافظ",first:"یوسفِ گم‌گشته",en:"Lost Joseph will return",source:"Divan · Ghazal 255",couplets:10,secs:180,mode:"Segah",cover:"shirt"},
+  {url:"saadi/ghazal-268/",poet:"Saadi",poetFa:"سعدی",first:"ای ساربان",en:"Camel driver, go slowly",source:"Divan · Ghazal 268",couplets:13,secs:234,mode:"Homayoun",cover:"caravan"}
 ];
 const TAU=Math.PI*2;
 const fmt=s=>`${Math.floor(s/60)}:${String(s%60).padStart(2,"0")}`;
@@ -120,7 +121,16 @@ const COVERS={
     for(let k=1;k<18;k++){const p=path(Math.max(0,q-k*.012));glow(c,p[0],p[1],S*.018,"255,234,176",.22*(1-k/18))}
     const p=path(q),s=S*.07;c.save();c.translate(p[0],p[1]);c.rotate(Math.sin(t*1.3)*.2);c.globalAlpha=Math.sin(q*Math.PI);
     const P=[[-.07,-.56],[-.3,-.5],[-.62,-.34],[-.8,-.12],[-.68,-.06],[-.46,-.24],[-.3,-.26],[-.36,.2],[-.44,.66],[.44,.66],[.36,.2],[.3,-.26],[.46,-.24],[.68,-.06],[.8,-.12],[.62,-.34],[.3,-.5],[.07,-.56],[0,-.42]];
-    c.beginPath();P.forEach(([u,v],i)=>{const x=u*s+Math.sin(v*4+t*4)*s*.05,y=v*s+Math.sin(u*5+t*3)*s*.06;i?c.lineTo(x,y):c.moveTo(x,y)});c.closePath();c.fillStyle="#F2EADA";c.fill();c.restore()}
+    c.beginPath();P.forEach(([u,v],i)=>{const x=u*s+Math.sin(v*4+t*4)*s*.05,y=v*s+Math.sin(u*5+t*3)*s*.06;i?c.lineTo(x,y):c.moveTo(x,y)});c.closePath();c.fillStyle="#F2EADA";c.fill();c.restore()},
+  // Saadi, Ghazal 268: a caravan crossing a dune crest at dawn, one light in the mahmal
+  caravan(c,W,H,t){const S=Math.min(W,H),g=c.createLinearGradient(0,0,0,H);g.addColorStop(0,"#141A3E");g.addColorStop(.45,"#7A4E66");g.addColorStop(.7,"#E8A070");g.addColorStop(1,"#2A1A1C");c.fillStyle=g;c.fillRect(0,0,W,H);starfield(c,W,H*.35,t,40,31);
+    const px=W*.62,py=H*.52,Y=x=>x<px?py+(H*.66-py)*Math.pow((px-x)/px,1.4):py+(H*.7-py)*Math.pow(Math.min(1,(x-px)/(W-px)),.8);glow(c,px,py,S*.9,"255,196,130",.45);
+    const s=S*.085,v=S*.03,ink="#140E12";for(let k=0;k<5;k++){const x=((t*v+k*S*.13)%(W*.9))+W*.05,y=x<px?Y(x):py+(x-px)*1.5;c.save();c.translate(x,y);c.fillStyle=ink;c.strokeStyle=ink;c.lineCap="round";c.lineWidth=s*.07;
+      [[-.3,0],[-.2,3.1],[.26,1.6],[.36,4.7]].forEach(([lx,o])=>{const sw=Math.sin(t*3+k+o)*.1*s;c.beginPath();c.moveTo(lx*s,-s*.56);c.lineTo(lx*s+sw,0);c.stroke()});
+      c.beginPath();c.ellipse(0,-s*.62,s*.42,s*.16,0,0,TAU);c.fill();c.beginPath();c.ellipse(-s*.04,-s*.74,s*.21,s*.17,0,Math.PI,TAU);c.fill();c.lineWidth=s*.1;c.beginPath();c.moveTo(s*.34,-s*.66);c.quadraticCurveTo(s*.52,-s*.62,s*.55,-s*.97);c.stroke();c.beginPath();c.ellipse(s*.63,-s*.99,s*.11,s*.05,.15,0,TAU);c.fill();
+      if(k===0){c.fillRect(-s*.31,-s*1.07,s*.5,s*.24);c.beginPath();c.moveTo(-s*.33,-s*1.06);c.bezierCurveTo(-s*.33,-s*1.24,-s*.12,-s*1.28,-s*.06,-s*1.42);c.bezierCurveTo(0,-s*1.28,s*.21,-s*1.24,s*.21,-s*1.06);c.fill();glow(c,-s*.06,-s*.95,s*.3,"255,200,120",.7);c.fillStyle="#FFD68A";c.fillRect(-s*.1,-s*1.0,s*.08,s*.1)}
+      c.restore()}
+    c.fillStyle="#1E1418";c.beginPath();c.moveTo(0,H);for(let i=0;i<=60;i++){const x=i/60*W;c.lineTo(x,Y(x))}c.lineTo(W,H);c.fill();c.strokeStyle="rgba(255,214,150,.6)";c.beginPath();for(let i=0;i<=60;i++){const x=i/60*W;i?c.lineTo(x,Y(x)):c.moveTo(x,Y(x))}c.stroke()}
 };
 const grid=document.getElementById("grid"),covers=[];
 POEMS.forEach(p=>{const a=document.createElement("a");a.className="card";a.href=p.url;a.setAttribute("aria-label",`${p.poet}: ${p.en}`);
