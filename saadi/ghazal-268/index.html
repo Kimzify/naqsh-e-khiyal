@@ -83,8 +83,8 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--sun);outline-offset
 .poem{display:grid;gap:4px;width:100%}
 .bayt{display:grid;grid-template-columns:1fr 1fr;gap:0 3em;align-items:baseline;background:none;border:0;padding:0 6px;border-radius:8px;color:var(--ivory);transition:background .2s,color .2s}
 .bayt span{font-size:clamp(16px,1.8vw,24px);line-height:2.4}
-.bayt span:first-child{text-align:right}
-.bayt span:last-child{text-align:left}
+.bayt span:first-child{text-align:left}
+.bayt span:last-child{text-align:right}
 .bayt:hover{background:rgba(230,190,99,.08);color:var(--sunl)}
 .outro-note{margin:0;font-style:italic;color:var(--mute);font-size:16px}
 .actions{display:flex;gap:22px;align-items:center;flex-wrap:wrap;justify-content:center;margin-top:8px}
@@ -223,11 +223,11 @@ function camel(c,x,y,s,ph,col,dir=1,o={}){c.save();c.translate(x,y);c.scale(dir,
   c.lineWidth=s*.04;c.beginPath();c.moveTo(-s*.4,-s*.66);c.quadraticCurveTo(-s*.5,-s*.55,-s*.47,-s*.42);c.stroke();c.restore()}
 // the mahmal: an open litter on the camel's hump, a small canopy on four posts with its curtains tied back, and the beloved
 // seated inside in silhouette, a long scarf moving behind; the light, when it comes, rests at the beloved's breast
-function kajaveh(c,s,col,cloth,lit,t=0){c.fillStyle=cloth;c.beginPath();c.moveTo(-s*.34,-s*.84);c.lineTo(s*.22,-s*.84);c.lineTo(s*.24,-s*.6);
+function kajaveh(c,s,col,cloth,lit,t=0,face=1){c.fillStyle=cloth;c.beginPath();c.moveTo(-s*.34,-s*.84);c.lineTo(s*.22,-s*.84);c.lineTo(s*.24,-s*.6);
   for(let i=1;i<=6;i++){const x0=lerp(.24,-.36,(i-1)/6),x1=lerp(.24,-.36,i/6);c.quadraticCurveTo((x0+x1)/2*s,-s*.53,x1*s,-s*.6)}c.closePath();c.fill();
   c.fillStyle=col;c.fillRect(-s*.36,-s*.9,s*.62,s*.07);
   // the beloved, seated facing the way they go, and the scarf blown back
-  const bx=-s*.05,by=-s*.88,bh=s*.64;c.save();c.translate(bx,by);c.fillStyle=col;
+  const bx=-s*.05,by=-s*.88,bh=s*.64;c.save();c.translate(bx,by);c.scale(face,1);c.fillStyle=col;
   c.beginPath();c.moveTo(-bh*.24,0);c.quadraticCurveTo(-bh*.22,-bh*.2,-bh*.09,-bh*.34);c.lineTo(bh*.08,-bh*.34);c.quadraticCurveTo(bh*.2,-bh*.18,bh*.26,0);c.closePath();c.fill();
   c.beginPath();c.moveTo(-bh*.09,-bh*.32);c.lineTo(-bh*.07,-bh*.48);c.quadraticCurveTo(0,-bh*.53,bh*.07,-bh*.48);c.lineTo(bh*.09,-bh*.32);c.closePath();c.fill();
   c.beginPath();c.arc(bh*.01,-bh*.58,bh*.075,0,TAU);c.fill();
@@ -238,9 +238,9 @@ function kajaveh(c,s,col,cloth,lit,t=0){c.fillStyle=cloth;c.beginPath();c.moveTo
   c.beginPath();c.moveTo(-s*.4,-s*1.42);c.bezierCurveTo(-s*.36,-s*1.56,-s*.14,-s*1.58,-s*.05,-s*1.72);c.bezierCurveTo(s*.04,-s*1.58,s*.26,-s*1.56,s*.3,-s*1.42);c.closePath();c.fill();
   c.strokeStyle=col;c.lineWidth=Math.max(1,s*.02);c.beginPath();c.moveTo(-s*.05,-s*1.7);c.lineTo(-s*.05,-s*1.8);c.stroke();c.beginPath();c.arc(-s*.05,-s*1.81,s*.02,0,TAU);c.fill();
   c.fillStyle=cloth;[[-.33,1],[.23,-1]].forEach(([u,d])=>{c.beginPath();c.moveTo(u*s-d*s*.01,-s*1.42);c.quadraticCurveTo(u*s+d*s*.07,-s*1.2,u*s+d*s*.02,-s*1.06);c.quadraticCurveTo(u*s+d*s*.05,-s*.96,u*s,-s*.9);c.lineTo(u*s-d*s*.02,-s*.9);c.lineTo(u*s-d*s*.02,-s*1.42);c.closePath();c.fill()});
-  if(lit>0){const hx=bx+bh*.04,hy=by-bh*.24;glow(c,hx,hy,s*.3,WARM,.4*lit);c.fillStyle=rgba([255,236,190],lit);c.beginPath();c.arc(hx,hy,Math.max(1,s*.022),0,TAU);c.fill()}}
+  if(lit>0){const hx=bx+bh*.04*face,hy=by-bh*.24;glow(c,hx,hy,s*.3,WARM,.4*lit);c.fillStyle=rgba([255,236,190],lit);c.beginPath();c.arc(hx,hy,Math.max(1,s*.022),0,TAU);c.fill()}}
 function camelM(c,x,y,s,ph,col,o={}){camel(c,x,y,s,ph,col,1,o);c.save();c.translate(x,y);
-  if(o.mahmal)kajaveh(c,s,col,o.cloth||col,o.lit||0,ph);
+  if(o.mahmal)kajaveh(c,s,col,o.cloth||col,o.lit||0,ph,o.face===undefined?1:o.face);
   else{c.fillStyle=col;c.beginPath();c.ellipse(-s*.04,-s*.88,s*.2,s*.08,0,0,TAU);c.fill();c.beginPath();c.ellipse(-s*.17,-s*.72,s*.1,s*.13,0,0,TAU);c.fill();c.beginPath();c.ellipse(s*.09,-s*.72,s*.1,s*.13,0,0,TAU);c.fill()}
   c.restore()}
 // where the light rests: the beloved's breast, in world coordinates
@@ -248,7 +248,7 @@ const winOf=(x,y,s)=>[x-s*.03,y-s*1.0];
 // a line of camels walking toward +x, k=0 leading; P[k]=[x,y,s]; ropes run from each nose to the saddle ahead
 function caravan(c,P,ph,col,o={}){c.strokeStyle=col;c.lineWidth=1;
   for(let k=0;k<P.length-1;k++){const[a,ay,as]=P[k],[b,by,bs]=P[k+1];c.beginPath();c.moveTo(b+.66*bs,by-.97*bs);c.quadraticCurveTo((a-.4*as+b+.66*bs)/2,Math.max(ay-.55*as,by-.97*bs)+as*.12,a-.4*as,ay-.58*as);c.stroke()}
-  for(let k=P.length-1;k>=0;k--){const[x,y,s]=P[k],m=k===o.m;camelM(c,x,y,s,ph+k*1.3,col,{mahmal:m,lit:m?o.lit:0,cloth:o.cloth})}
+  for(let k=P.length-1;k>=0;k--){const[x,y,s]=P[k],m=k===o.m;camelM(c,x,y,s,ph+k*1.3,col,{mahmal:m,lit:m?o.lit:0,cloth:o.cloth,face:o.face})}
   if(o.driver){const[x,y,s]=P[0],h=s*1.05,dx=x+s*1.02,dy=o.ground?o.ground(dx):y;c.strokeStyle=col;c.lineWidth=1;c.beginPath();c.moveTo(dx-h*.04,dy-h*.5);c.quadraticCurveTo((dx+x+s*.66)/2,Math.max(dy-h*.4,y-s*.9),x+s*.68,y-s*.97);c.stroke();walker(c,dx,dy,h,ph*1.6,o.moving!==false,col,{staff:1})}}
 function padPrint(c,x,y,s,a){if(a<=.01)return;c.fillStyle=rgba([14,12,18],.32*a);c.beginPath();c.ellipse(x-s*.22,y,s*.3,s*.2,0,0,TAU);c.ellipse(x+s*.2,y,s*.3,s*.2,0,0,TAU);c.fill()}
 function footPrint(c,x,y,s,a){if(a<=.01)return;c.fillStyle=rgba([14,12,18],.4*a);c.beginPath();c.ellipse(x,y,s,s*.34,0,0,TAU);c.fill()}
@@ -284,7 +284,7 @@ const POEM=[
  ["شب تا سحر می‌نَغنَوَم، واندرز کس می‌نَشنَوَم","وین ره نه قاصد می‌روم، کز کف عنانم می‌رود","From night till dawn I do not sleep, and I listen to no one's advice. I do not take this road by choice: the reins are slipping from my hand.","The Loose Reins"],
  ["گفتم بگریم تا اِبِل، چون خَر فرو ماند به گِل","وین نیز نتوانم که دل، با کاروانم می‌رود","I said I would weep until the camels stuck fast, like a donkey in mud. I cannot do even this, for my heart is going with the caravan.","The Rain"],
  ["صبر از وصال یار من، برگشتن از دلدار من","گر چه نباشد کار من، هم کار از آنم می‌رود","Patience without my love, turning back from the one I love: though neither is in my power, my life comes undone over them.","The Way Back"],
- ["در رفتن جان از بدن، گویند هر نوعی سخن","من خود به چشم خویشتن، دیدم که جانم می‌رود","Of the soul leaving the body people say every kind of thing. I saw it with my own eyes: my soul was going.","The Crest"],
+ ["در رفتن جان از بدن، گویند هر نوعی سخن","من خود به چشم خویشتن، دیدم که جانم می‌رود","Of the soul leaving the body people say every kind of thing. I saw it with my own eyes: my soul was going.","The Soul"],
  ["سعدی! فغان از دست ما، لایق نبود ای بی‌وفا!","طاقت نمی‌آرم جفا، کار از فغانم می‌رود","Saadi, it was not fitting, faithless one, to cry out against us. I cannot bear the cruelty; it has gone beyond my crying.","Saadi"]
 ];
 const NB=POEM.length,BD=18,F=1.8,TOTAL=NB*BD;
@@ -453,9 +453,10 @@ function r5(c,t,W,H){const S=Math.min(W,H),hz=H*.36,gy=H*.6;
   walker(c,fxp,fy,S*.13,t*5.4,moving,"rgb(14,12,18)",{lean:moving?.02:0});
 }
 
-/* 6. The brazier. The empty camp at night. A brass brazier full of coals is left on the sand, and its smoke goes up
-      steadily from its head and drifts off the way the caravan went. The one who stays sits beside it. */
-const COAL=randArr(6606,26,3),STONE6=randArr(6607,9,3);
+/* 6. The lover is the brazier. Night; the caravan has stopped a little way off. In the open mahmal the beloved looks back once,
+      then turns away, and the caravan moves on. The one who stays sits still, and inside their dark shape coals begin to glow,
+      brighter and brighter, until smoke rises from their head and drifts after the caravan: «چون مجمری پرآتشم کز سر دخانم می‌رود». */
+const COAL=randArr(6606,26,3),EMB6=randArr(6607,22,4);
 function brazier(c,x,y,s,t,heat){const by=y-s*.38,R=s*.3;
   c.strokeStyle="rgb(96,68,34)";c.lineWidth=Math.max(1.4,s*.025);c.lineCap="round";[[-.7,-.9],[0,-.1],[.7,.9]].forEach(([a,b])=>{c.beginPath();c.moveTo(x+a*R*.6,by+R*.35);c.lineTo(x+b*R*.9,y);c.stroke()});
   glow(c,x,by-R*.1,s*1.1,[255,140,70],.28*heat);
@@ -471,15 +472,26 @@ function brazier(c,x,y,s,t,heat){const by=y-s*.38,R=s*.3;
 const SMOKE=randArr(6608,46,3);
 function smoke(c,x,y,S,t,a,drift){for(let j=0;j<SMOKE.length;j++){const r=SMOKE[j],age=(t/7+j/SMOKE.length+r[0]*.02)%1;
   const px=x+drift*S*.34*age*age+Math.sin(age*5+r[1]*6+t*.4)*S*.025*age,py=y-age*S*.6,rad=S*(.012+.06*age);glow(c,px,py,rad,[150,142,146],a*.16*Math.sin(age*Math.PI)*(1-age*.4))}}
-function r6(c,t,W,H){const S=Math.min(W,H),gy=H*.56;
+let FIG6=null;
+// a seated figure with coals glowing inside it; returns the top of the head
+function emberFigure(c,x,y,h,t,heat,bow){if(!FIG6)FIG6=document.createElement("canvas");const k=2,w=Math.ceil(h*.8*k),hh=Math.ceil(h*1.02*k);if(FIG6.width!==w||FIG6.height!==hh){FIG6.width=w;FIG6.height=hh}
+  const f=FIG6.getContext("2d"),ox=h*.4,oy=h;f.setTransform(1,0,0,1,0,0);f.clearRect(0,0,w,hh);f.setTransform(k,0,0,k,0,0);
+  person(f,ox,oy,h,{kneel:1,bow,col:"rgb(14,8,8)"});
+  if(heat>0){f.globalCompositeOperation="source-atop";const cx=ox+h*.02,cy=oy-h*.26,g=f.createRadialGradient(cx,cy,0,cx,cy,h*.26);g.addColorStop(0,rgba([255,170,86],.85*heat));g.addColorStop(.45,rgba([190,56,24],.6*heat));g.addColorStop(1,rgba([40,10,8],0));f.fillStyle=g;f.fillRect(0,0,w,hh);
+    f.lineCap="round";for(const e of EMB6){const a=e[0]*TAU,r=h*.16*Math.sqrt(e[1]),fl=.5+.5*Math.sin(t*(1.5+e[2]*2.5)+e[3]*20),px=cx+Math.cos(a)*r,py=cy+Math.sin(a)*r*.9,l=h*(.02+.03*e[2]),b=e[3]*TAU;f.strokeStyle=rgba(mix([220,70,24],[255,214,130],fl),heat*(.35+.65*fl));f.lineWidth=Math.max(.6,h*.007);f.beginPath();f.moveTo(px,py);f.lineTo(px+Math.cos(b)*l,py+Math.sin(b)*l);f.lineTo(px+Math.cos(b+.9)*l*1.6,py+Math.sin(b+.9)*l*1.6);f.stroke()}
+    f.globalCompositeOperation="source-over"}
+  glow(c,x+h*.02,y-h*.26,h*.6,[255,120,60],.14*heat);c.drawImage(FIG6,x-ox,y-oy,w/k,hh/k);
+  const hd=headOf(x,y,h,1,bow);return[hd[0],hd[1]-h*.08]}
+function r6(c,t,W,H){const S=Math.min(W,H),gy=H*.55,turn=ss(3.2,5,t),heat=ss(5,11,t);
   bg(c,W,H,[[0,[5,7,18]],[.5,[16,18,34]],[1,[10,9,12]]]);stars(c,W,H,t,.8,.52);
-  hillLayer(c,W,H,gy,S*.02,[22,22,34],61);
-  const fa=.6*(1-ss(3,11,t));if(fa>0){glow(c,W*.9,hillAt(.9,gy,S*.02,61)-S*.004,S*.02,WARM,fa);c.fillStyle=rgba([255,220,160],fa);c.fillRect(W*.9-1,hillAt(.9,gy,S*.02,61)-S*.005,2,2)}
-  ground(c,W,H,gy+S*.01,[34,30,38],[16,14,18]);
-  const bx=W*.52,by=H*.61,bs=S*.22;glow(c,bx,by,S*.4,[255,150,80],.12);
-  for(const st of STONE6){c.fillStyle="rgb(40,34,36)";c.beginPath();c.ellipse(bx+(st[0]-.5)*S*.5,by+(st[1]-.3)*S*.05,S*.012*(.6+st[2]),S*.006*(.6+st[2]),0,0,TAU);c.fill()}
-  person(c,bx-S*.16,by,S*.14,{kneel:1,bow:.32,col:"rgb(20,12,12)"});
-  const top=brazier(c,bx,by,bs,t,.85);smoke(c,top[0],top[1],S,t,1,1);
+  glow(c,W*.72,gy,S*.9,[120,120,170],.22);glow(c,W*.72,gy-S*.02,S*.3,[200,200,230],.18);
+  hillLayer(c,W,H,gy,S*.02,[22,22,34],61);ground(c,W,H,gy+S*.01,[40,38,52],[16,14,18]);
+  // the caravan, halted; the beloved looks back, turns away, and they go on
+  const d=S*.02*Math.max(0,t-5.6),P=[];for(let k=0;k<4;k++){const x=W*.5+(3-k)*S*.12+d;P.push([x,H*.585,S*.1])}
+  caravan(c,P,d/(S*.02)*3.2,"rgb(10,9,14)",{m:1,lit:1,cloth:"rgb(70,28,36)",driver:1,moving:t>5.6,face:-Math.cos(Math.PI*turn)});
+  // the one who stays: coals kindle inside, and smoke goes up from the head toward the road
+  const fx=W*.2,fy=H*.62,fh=S*.2,top=emberFigure(c,fx,fy,fh,t,heat,.12);
+  smoke(c,top[0],top[1],S*.8,t,ss(7,11,t),1.2);
 }
 
 /* 7. The tent without foundation. By the brazier, now almost ash, the one who stays warms their hands at a single ember.
@@ -607,40 +619,45 @@ function r11(c,t,W,H){const S=Math.min(W,H),hz=H*.3,m=ss(0,18,t);
   const p=at(cur),sc=lerp(.6,1.1,(p[1]-hz)/(H*.7-hz));walker(c,p[0],p[1],S*.13*sc,cur/(S*.02),t<17.2,"rgb(30,22,26)",{dir:p[2]<0?-1:1});
 }
 
-/* 12. The crest (the high point). Dawn. Against the brightening sky the whole caravan climbs a great dune and goes over the crest,
-      camel after camel, bells ringing all at once; the mahmal with the light is last, and its light sinks behind the ridge.
-      The one who stays sees it go. The sky keeps brightening; the sun does not come up over the crest. */
-const SAND12=randArr(1212,50,3);
-function r12(c,t,W,H){const S=Math.min(W,H),m=ss(0,18,t),px=W*.6,py=H*.36;
-  bg(c,W,H,[[0,mix([20,26,62],[46,62,112],m)],[.22,mix([80,64,104],[150,110,130],m)],[.4,mix([220,130,110],[255,190,130],m)],[.6,[60,40,40]],[1,[20,16,18]]]);
-  stars(c,W,H,t,.5*(1-ss(0,9,t)),.2);
-  glow(c,px+S*.05,py+S*.02,S*1.1,[255,190,120],.35+.3*m);glow(c,px+S*.05,py+S*.03,S*.3,[255,230,180],.35+.4*m);
-  const Y=x=>x<px?py+(H*.47-py)*Math.pow((px-x)/px,1.4):py+(H*.52-py)*Math.pow(clamp((x-px)/(W-px)),.8);
-  // the caravan: on the near slope, then over the crest and down the far side (hidden)
-  const v=S*.047,col="rgb(20,14,18)",s=S*.06,P=[],G=x=>x<px?Y(x)+s*.02:py+(x-px)*1.5;for(let k=0;k<6;k++){const x=px-3*v-k*S*.1+v*t;P.push([x,G(x),s])}
-  caravan(c,P,t*3,col,{m:5,lit:1,cloth:"rgb(70,24,30)",driver:1,ground:G});
-  const w=winOf(...P[5]),la=1-ss(13.2,15.2,t);if(P[5][0]>px-s*.2)glow(c,w[0],Math.min(w[1],py-S*.004),S*.06,GOLDL,.5*la);
-  // the great dune, dark against the sky, its crest line catching the light
-  const dg=c.createLinearGradient(0,py,0,H);dg.addColorStop(0,"rgb(52,32,34)");dg.addColorStop(1,"rgb(20,14,16)");c.fillStyle=dg;c.beginPath();c.moveTo(0,H);for(let i=0;i<=120;i++){const x=i/120*W;c.lineTo(x,Y(x))}c.lineTo(W,H);c.closePath();c.fill();
-  c.strokeStyle=rgba([255,210,150],.5+.3*m);c.lineWidth=1.5;c.beginPath();for(let i=0;i<=120;i++){const x=i/120*W;i?c.lineTo(x,Y(x)):c.moveTo(x,Y(x))}c.stroke();
-  // sand lifting off the crest
-  for(const sd of SAND12){const q=(t*.25+sd[0])%1,x=px+(sd[1]-.3)*S*.5+q*S*.2,y=Y(x)-q*S*.03-sd[2]*S*.01;c.fillStyle=rgba([255,220,170],.4*Math.sin(q*Math.PI)*m);c.fillRect(x,y,1.2,1.2)}
-  // the near dune and the one who watches
-  const ny=x=>H*.6-S*.05*Math.sin(x/W*2.2+.4);c.fillStyle="rgb(14,10,12)";c.beginPath();c.moveTo(0,H);for(let i=0;i<=40;i++){const x=i/40*W;c.lineTo(x,ny(x))}c.lineTo(W,H);c.closePath();c.fill();
-  const fx=W*.16+S*.02*easeInOut(ss(15,16.5,t)),fh=S*.15;person(c,fx,ny(fx)+2,fh,{col:"rgb(8,6,8)",bow:-.08+.2*ss(14.5,16,t)});
+/* 12. The soul (the high point). Dawn over the open desert; the caravan is a small line on the far ridge, its bells ringing
+      all at once. Out of the standing figure a second figure of light steps free and walks away after the caravan, leaving
+      footprints of light that fade; it grows small, reaches the mahmal and becomes one with the light there. The body left
+      behind sinks to its knees. The sky keeps brightening; the sun does not come up. */
+function r12(c,t,W,H){const S=Math.min(W,H),hz=H*.43,m=ss(0,18,t);
+  bg(c,W,H,[[0,mix([16,20,52],[42,56,106],m)],[.24,mix([62,52,92],[134,102,132],m)],[.43,mix([206,124,108],[252,184,132],m)],[.44,[80,56,60]],[1,[24,18,22]]]);
+  stars(c,W,H,t,.6*(1-ss(0,10,t)),.3);glow(c,W*.74,hz,S*.9,[255,190,130],.3+.3*m);glow(c,W*.74,hz,S*.25,[255,226,180],.3+.35*m);
+  const Y=duneLayer(c,W,H,hz+S*.01,S*.02,2.3,1.1,mix([120,78,78],[168,112,96],m),[70,48,52]);
+  const s=S*.034,P=[];for(let k=0;k<5;k++){const x=W*.58+(4-k)*S*.05+t*S*.005;P.push([x,Y(x/W)+1,s])}
+  const mw=winOf(...P[1]),merge=ss(12.8,14,t);caravan(c,P,t*3,"rgb(30,20,26)",{m:1,lit:1,cloth:"rgb(90,34,40)",driver:1});
+  glow(c,mw[0],mw[1],S*.12,GOLDL,.8*merge*(1-.3*ss(15,18,t)));glow(c,mw[0],mw[1],S*.03,[255,250,230],.9*merge);
+  duneLayer(c,W,H,hz+S*.09,S*.035,.6,2.4,mix([96,64,66],[140,96,86],m),[48,34,38]);
+  ground(c,W,H,hz+S*.16,mix([80,56,56],[120,84,76],m),[36,26,28]);
+  // the soul's path, from the body out to the mahmal
+  const fx=W*.18,fy=H*.62,fh=S*.16,end=[mw[0],P[1][1]],zOf=q=>1+(fh/(s*1.05)-1)*Math.pow(q,1.8),pos=q=>{const z=zOf(q),k=(1-1/z)/(1-(s*1.05)/fh);return[lerp(fx+fh*.05,end[0],k),lerp(fy,end[1],k)]},scl=q=>fh/zOf(q);
+  for(let tt=4.4;tt<Math.min(t,13.2);tt+=.42){const q=easeInOut(ss(4,13.5,tt)),p=pos(q),sc=scl(q),a=.5*(1-ss(tt+.4,tt+4,t));if(a>.01){glow(c,p[0],p[1],sc*.12,GOLDL,a*.7);c.fillStyle=rgba([255,236,190],a);c.beginPath();c.ellipse(p[0],p[1],sc*.05,sc*.017,0,0,TAU);c.fill()}}
+  const kn=easeInOut(ss(13.5,16.5,t));person(c,fx,fy,fh,{kneel:kn,bow:.05+.3*kn,col:"rgb(12,8,10)"});
+  const e=ss(1.5,4,t),q=easeInOut(ss(4,13.5,t)),p=pos(q),sc=scl(q),a=e*(1-ss(12.8,14,t));
+  if(a>0){glow(c,p[0],p[1]-sc*.45,Math.max(sc*.9,S*.05),GOLDL,.35*a);c.globalAlpha=a*.85;walker(c,p[0],p[1],sc,t*4.6,q>0&&q<1,"rgb(255,238,200)");c.globalAlpha=1}
 }
 
-/* 13. Saadi. Morning, and the desert is empty. The wind runs over the sand and fills the caravan's tracks one after another,
-      the far ones first. One last bell, very far off. The one who stays sits where the tracks began. */
-const DRIFT13=randArr(1313,60,3);
+/* 13. Saadi. Morning, and the desert is empty; the caravan's tracks are filling with sand. The one who stays lifts their head
+      and cries out: the cry goes over the sand in rings, like wind over a dune, reaches the far dunes and fades. Nothing comes back.
+      They sit down where the tracks began. */
+const DRIFT13=randArr(1313,40,3);
 function r13(c,t,W,H){const S=Math.min(W,H),hz=H*.4;
   bg(c,W,H,[[0,[96,116,150]],[.4,[220,196,170]],[1,[110,90,80]]]);glow(c,W*.8,H*.12,S*.45,[255,236,200],.3);glow(c,W*.8,H*.12,S*.05,[255,248,230],.5);
   duneLayer(c,W,H,hz,S*.04,3.1,1.7,[200,166,132],[160,128,104]);
-  const Y2=duneLayer(c,W,H,hz+S*.09,S*.05,.4,2.9,[190,154,120],[150,118,96]);
+  duneLayer(c,W,H,hz+S*.09,S*.05,.4,2.9,[190,154,120],[150,118,96]);
   ground(c,W,H,hz+S*.16,[176,140,110],[120,94,80]);
-  for(let u=0;u<1;u+=.02){const x=lerp(W*.2,W*.9,u),y=lerp(H*.64,hz+S*.02,Math.pow(u,.6)),fade=1-ss(2+(1-u)*10,4+(1-u)*10,t);padPrint(c,x,y,S*lerp(.011,.003,u),fade)}
-  c.strokeStyle="rgba(250,236,214,.35)";c.lineWidth=1;for(const d of DRIFT13){const q=(t*(.35+d[2]*.3)+d[0])%1,x=W*(1.05-q*1.2),y=hz+d[1]*(H*.68-hz),l=S*(.03+.06*d[2]);c.beginPath();c.moveTo(x,y);c.lineTo(x+l,y+S*.002);c.stroke()}
-  person(c,W*.16,H*.625,S*.13,{kneel:1,bow:.18,col:"rgb(46,34,32)"});
+  for(let u=0;u<1;u+=.02){const x=lerp(W*.22,W*.9,u),y=lerp(H*.63,hz+S*.02,Math.pow(u,.6)),fade=1-ss(2+(1-u)*10,4+(1-u)*10,t);padPrint(c,x,y,S*lerp(.011,.003,u),fade)}
+  c.strokeStyle="rgba(250,236,214,.22)";c.lineWidth=1;for(const d of DRIFT13){const q=(t*(.35+d[2]*.3)+d[0])%1,x=W*(1.05-q*1.2),y=hz+d[1]*(H*.68-hz),l=S*(.03+.05*d[2]);c.beginPath();c.moveTo(x,y);c.lineTo(x+l,y+S*.002);c.stroke()}
+  const fx=W*.2,fy=H*.62,fh=S*.15,cry=ss(1.4,2.2,t)*(1-ss(6.5,8.5,t)),kn=easeInOut(ss(9.5,12.5,t));
+  // the cry, in rings over the sand; they reach the dunes and fade, and none returns
+  c.save();c.beginPath();c.rect(0,hz-S*.03,W,H);c.clip();
+  [2,3.4,4.8].forEach((w,i)=>{const age=t-w;if(age<=0||age>8)return;const r=age*S*.22,a=.5*(1-age/8)*ss(0,.4,age)*(1-i*.2);
+    for(let j=0;j<3;j++){const rr=r*(1-j*.035);c.strokeStyle=rgba([255,246,228],a*(1-j*.3));c.lineWidth=Math.max(1,S*.003*(1-j*.3));c.beginPath();c.ellipse(fx,fy,rr,rr*.2,0,Math.PI,TAU);c.stroke()}});
+  c.restore();
+  const bw=-.28*cry+.22*kn,col13="rgb(46,34,32)";person(c,fx,fy,fh,{kneel:kn,bow:bw,col:col13});
 }
 
 /* intro backdrop: the desert at night; a small caravan on a far ridge, one light in its mahmal */
