@@ -15,7 +15,7 @@ Each poem is one self-contained web page: every couplet gets its own scene, draw
 
 ## Why "Naqsh-e Khiyal"?
 
-**Naqsh (نقش)** means an image, a design, a pattern: the mark something leaves. It is one of Hafez's favourite words; in Ghazal 179, one of the poems on this site, he writes «نقشِ جور و نشانِ ستم», *the mark of cruelty and the scar of injustice*.
+**Naqsh (نقش)** means an image, a design, a pattern: the mark something leaves. Hafez uses it in his ghazals; in Ghazal 179, one of the poems on this site, he writes «نقشِ جور و نشانِ ستم», *the mark of cruelty and the scar of injustice*.
 
 **Khiyal (خیال)** is the imagination, and in Persian poetry also the imagined face of the beloved that stays with the lover.
 
@@ -75,7 +75,7 @@ Code: [MIT](LICENSE). Glosses, scene designs, music and notes: [CC BY 4.0](LICEN
 
 ### چرا «نقش خیال»؟
 
-**نقش** یعنی تصویر، طرح و نگاره؛ اثری که چیزی از خود به جا می‌گذارد. از کلمه‌های محبوب حافظ است؛ در غزل ۱۷۹، که یکی از شعرهای همین سایت است، می‌گوید: «که نقشِ جور و نشانِ ستم نخواهد ماند».
+**نقش** یعنی تصویر، طرح و نگاره؛ اثری که چیزی از خود به جا می‌گذارد. حافظ هم آن را در غزل‌هایش به کار برده؛ در غزل ۱۷۹، که یکی از شعرهای همین سایت است، می‌گوید: «که نقشِ جور و نشانِ ستم نخواهد ماند».
 
 **خیال** یعنی تخیل، و در شعر فارسی تصویرِ معشوق که در ذهن عاشق می‌ماند.
 
