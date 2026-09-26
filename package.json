@@ -4,7 +4,8 @@
   "type": "module",
   "scripts": {
     "serve": "python3 -m http.server 8000",
-    "test": "node tests/smoke.mjs"
+    "test": "node tests/smoke.mjs",
+    "test:saadi-187": "node tests/saadi-187.mjs"
   },
   "devDependencies": {
     "playwright": "^1.47.0"

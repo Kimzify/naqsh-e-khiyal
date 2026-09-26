@@ -31,7 +31,7 @@ The scene is drawn only in the top part of the screen, and the caption has its o
 
 ## 3. Music
 
-- Give each poem a **different dastgah**. Used so far: Shur (Hafez 1), Bayat-e Esfahan (Hafez 179), Segah (Hafez 255), Homayoun (Saadi 268). Quarter tones are written as, for example, `Ek4 = E4 × 2^(-1/24)`.
+- Give each poem a **different dastgah**. Used so far: Shur (Hafez 1), Bayat-e Esfahan (Hafez 179), Segah (Hafez 255), Homayoun (Saadi 268), Chahargah-inspired (Saadi 187, No Retreat). Quarter tones are written as, for example, `Ek4 = E4 × 2^(-1/24)`.
 - The ney plays **one composed phrase per couplet**. No drums, and no note on every word.
 - End every couplet with the same short santur figure (`cadence()`), so the music has a radif of its own.
 

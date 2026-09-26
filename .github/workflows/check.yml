@@ -14,3 +14,4 @@ jobs:
       - run: npx playwright install --with-deps chromium
       - run: python3 -m http.server 8000 &
       - run: sleep 2 && npm test
+      - run: npm run test:saadi-187
