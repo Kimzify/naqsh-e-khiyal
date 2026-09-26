@@ -85,17 +85,24 @@ header h1{line-height:1.5;padding:.28em 0 .5em}
 (()=>{
 /* Add a poem here and it appears in the gallery. */
 const POEMS=[
+  {url:"saadi/ghazal-187/",poet:"Saadi",poetFa:"سعدی",first:"هشیار کسی باید",en:"No Retreat",source:"Divan · Ghazal 187",couplets:8,secs:176,mode:"Chahargah-inspired",cover:"earthAndStars"},
   {url:"hafez/ghazal-1/",poet:"Hafez",poetFa:"حافظ",first:"اَلا یا اَیُّهَا السّاقی",en:"O cupbearer, bring round the cup",source:"Divan · Ghazal 1",couplets:7,secs:126,mode:"Shur",cover:"cup"},
   {url:"hafez/ghazal-179/",poet:"Hafez",poetFa:"حافظ",first:"رسید مژده",en:"Good news has come",source:"Divan · Ghazal 179",couplets:9,secs:162,mode:"Esfahan",cover:"portico"},
   {url:"hafez/ghazal-255/",poet:"Hafez",poetFa:"حافظ",first:"یوسفِ گم‌گشته",en:"Lost Joseph will return",source:"Divan · Ghazal 255",couplets:10,secs:180,mode:"Segah",cover:"shirt"},
-  {url:"saadi/ghazal-268/",poet:"Saadi",poetFa:"سعدی",first:"ای ساربان",en:"Camel driver, go slowly",source:"Divan · Ghazal 268",couplets:13,secs:234,mode:"Homayoun",cover:"caravan"},
-  {url:"saadi/ghazal-187/",poet:"Saadi",poetFa:"سعدی",first:"هشیار کسی باید",en:"Only the sober can avoid love",source:"Divan · Ghazal 187",couplets:8,secs:144,mode:"Nava",cover:"trail"}
+  {url:"saadi/ghazal-268/",poet:"Saadi",poetFa:"سعدی",first:"ای ساربان",en:"Camel driver, go slowly",source:"Divan · Ghazal 268",couplets:13,secs:234,mode:"Homayoun",cover:"caravan"}
 ];
 const TAU=Math.PI*2;
 const fmt=s=>`${Math.floor(s/60)}:${String(s%60).padStart(2,"0")}`;
 function glow(c,x,y,r,col,a){const g=c.createRadialGradient(x,y,0,x,y,r);g.addColorStop(0,`rgba(${col},${a})`);g.addColorStop(1,`rgba(${col},0)`);c.fillStyle=g;c.beginPath();c.arc(x,y,r,0,TAU);c.fill()}
 function starfield(c,W,H,t,n,seed){let s=seed;const r=()=>(s=(s*16807)%2147483647)/2147483647;for(let i=0;i<n;i++){const x=r()*W,y=r()*H,f=r(),a=.3+.5*Math.abs(Math.sin(t*(.5+f)+i));c.fillStyle=`rgba(244,234,212,${(a*.6).toFixed(2)})`;c.fillRect(x,y,1.2,1.2)}}
 const COVERS={
+  // No Retreat: earth and stars share a reflection at the beloved's feet.
+  earthAndStars(c,W,H,t){const S=Math.min(W,H),water=H*.47,g=c.createLinearGradient(0,0,0,H);g.addColorStop(0,"#0c172b");g.addColorStop(.47,"#536975");g.addColorStop(1,"#102431");c.fillStyle=g;c.fillRect(0,0,W,H);starfield(c,W,H*.42,t*.3,75,1876);
+    const ridge=(base,amp,col,flip=false)=>{c.beginPath();c.moveTo(0,water);for(let i=0;i<=60;i++){const u=i/60,x=u*W,y=base-amp*(.55+.3*Math.sin(u*7+2)+.15*Math.sin(u*13));c.lineTo(x,flip?water+(water-y)*.75:y)}c.lineTo(W,water);c.closePath();c.fillStyle=col;c.fill()};
+    ridge(water,S*.21,"#6c7f8a");ridge(water+S*.03,S*.16,"#354f60");c.save();c.globalAlpha=.38;ridge(water,S*.21,"#6c7f8a",true);ridge(water+S*.03,S*.16,"#354f60",true);c.restore();
+    for(let i=0;i<40;i++){const y=water+(i/40)**1.5*H*.35,x=(Math.sin(i*8.7)*.5+.5)*W;c.strokeStyle=`rgba(188,207,198,${.025+(i%4)*.016})`;c.beginPath();c.moveTo(x,y);c.lineTo(x+S*(.025+.04*Math.sin(t+i)**2),y);c.stroke()}
+    const x=W*.69,y=water,h=S*.23;c.fillStyle="#52635f";c.fillRect(x-h*.6,y-2,W-x+h*.6,4);c.fillStyle="#232a2a";c.beginPath();c.ellipse(x,y-h*.88,h*.06,h*.085,-.1,0,TAU);c.fill();c.beginPath();c.moveTo(x-h*.04,y-h*.79);c.quadraticCurveTo(x-h*.17,y-h*.4,x-h*.39,y);c.quadraticCurveTo(x-h*.1,y+h*.02,x+h*.15,y);c.lineTo(x+h*.08,y-h*.68);c.closePath();const cloth=c.createLinearGradient(x-h*.4,0,x+h*.15,0);cloth.addColorStop(0,"#594131");cloth.addColorStop(.68,"#ae7950");cloth.addColorStop(1,"#443932");c.fillStyle=cloth;c.fill();
+    glow(c,x,y+S*.09,S*.13,"190,161,114",.09);c.fillStyle="rgba(9,20,30,.3)";c.fillRect(0,H*.73,W,H*.27)},
   cup(c,W,H,t){const g=c.createLinearGradient(0,0,0,H);g.addColorStop(0,"#0E0B28");g.addColorStop(1,"#2A0A24");c.fillStyle=g;c.fillRect(0,0,W,H);starfield(c,W,H,t,60,7);
     const S=Math.min(W,H),cx=W/2,cy=H*.36;glow(c,cx,cy,S*.7,"155,29,63",.45);
     c.save();c.translate(cx,cy);c.rotate(t*.1);c.strokeStyle="rgba(233,180,76,.25)";c.beginPath();for(let i=0;i<=12;i++){const k=(i*5)%12,a=k/12*TAU;const R=S*.42;i?c.lineTo(Math.cos(a)*R,Math.sin(a)*R):c.moveTo(Math.cos(a)*R,Math.sin(a)*R)}c.stroke();c.restore();
@@ -123,13 +130,6 @@ const COVERS={
     const p=path(q),s=S*.07;c.save();c.translate(p[0],p[1]);c.rotate(Math.sin(t*1.3)*.2);c.globalAlpha=Math.sin(q*Math.PI);
     const P=[[-.07,-.56],[-.3,-.5],[-.62,-.34],[-.8,-.12],[-.68,-.06],[-.46,-.24],[-.3,-.26],[-.36,.2],[-.44,.66],[.44,.66],[.36,.2],[.3,-.26],[.46,-.24],[.68,-.06],[.8,-.12],[.62,-.34],[.3,-.5],[.07,-.56],[0,-.42]];
     c.beginPath();P.forEach(([u,v],i)=>{const x=u*s+Math.sin(v*4+t*4)*s*.05,y=v*s+Math.sin(u*5+t*3)*s*.06;i?c.lineTo(x,y):c.moveTo(x,y)});c.closePath();c.fillStyle="#F2EADA";c.fill();c.restore()},
-  // Saadi, Ghazal 187: the beloved stays ahead on the road, the lover does not turn away
-  trail(c,W,H,t){const S=Math.min(W,H),g=c.createLinearGradient(0,0,0,H);g.addColorStop(0,"#101828");g.addColorStop(.6,"#68485a");g.addColorStop(1,"#46303d");c.fillStyle=g;c.fillRect(0,0,W,H);starfield(c,W,H*.56,t,55,187);
-    glow(c,W*.79,H*.37,S*.35,"250,214,161",.28);c.fillStyle="#eac69f";c.beginPath();c.arc(W*.79,H*.37,S*.023,0,TAU);c.fill();
-    c.fillStyle="#342937";c.beginPath();c.moveTo(0,H);c.lineTo(0,H*.68);c.quadraticCurveTo(W*.5,H*.51,W,H*.69);c.lineTo(W,H);c.fill();
-    c.strokeStyle="rgba(252,212,161,.46)";c.lineWidth=1.5;c.beginPath();c.moveTo(W*.18,H*.69);c.quadraticCurveTo(W*.46,H*.59,W*.78,H*.68);c.stroke();
-    const x=W*.23,y=H*.68,h=S*.18;c.fillStyle="#13141e";c.beginPath();c.moveTo(x-h*.17,y);c.lineTo(x-h*.09,y-h*.57);c.lineTo(x+h*.09,y-h*.57);c.lineTo(x+h*.18,y);c.fill();c.beginPath();c.arc(x,y-h*.8,h*.08,0,TAU);c.fill();
-    const bx=W*.79,by=H*.68,bh=S*.14;c.fillStyle="#16121c";c.beginPath();c.moveTo(bx-bh*.16,by);c.lineTo(bx-bh*.08,by-bh*.69);c.lineTo(bx+bh*.08,by-bh*.69);c.lineTo(bx+bh*.2,by);c.fill();c.beginPath();c.arc(bx,by-bh*.82,bh*.08,0,TAU);c.fill();c.fillStyle="#b35053";c.beginPath();c.moveTo(bx-bh*.1,by-bh*.65);c.quadraticCurveTo(bx-bh*.3,by-bh*.38,bx-bh*.28,by);c.lineTo(bx+bh*.12,by);c.lineTo(bx+bh*.09,by-bh*.65);c.fill()},
   // Saadi, Ghazal 268: a caravan crossing a dune crest at dawn, one light in the mahmal
   caravan(c,W,H,t){const S=Math.min(W,H),g=c.createLinearGradient(0,0,0,H);g.addColorStop(0,"#141A3E");g.addColorStop(.45,"#7A4E66");g.addColorStop(.7,"#E8A070");g.addColorStop(1,"#2A1A1C");c.fillStyle=g;c.fillRect(0,0,W,H);starfield(c,W,H*.35,t,40,31);
     const px=W*.62,py=H*.52,Y=x=>x<px?py+(H*.66-py)*Math.pow((px-x)/px,1.4):py+(H*.7-py)*Math.pow(Math.min(1,(x-px)/(W-px)),.8);glow(c,px,py,S*.9,"255,196,130",.45);

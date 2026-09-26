@@ -11,7 +11,9 @@ Each poem is one self-contained web page: every couplet gets its own scene, draw
 | [Hafez, Ghazal 179 · «رسید مژده که ایّام غم نخواهد ماند»](https://kimzify.github.io/naqsh-e-khiyal/hafez/ghazal-179/) | 9 | Bayat-e Esfahan |
 | [Hafez, Ghazal 255 · «یوسف گم‌گشته بازآید به کنعان، غم مخور»](https://kimzify.github.io/naqsh-e-khiyal/hafez/ghazal-255/) | 10 | Segah |
 | [Saadi, Ghazal 268 · «ای ساربان آهسته رو کآرام جانم می‌رود»](https://kimzify.github.io/naqsh-e-khiyal/saadi/ghazal-268/) | 13 | Homayoun |
-| [Saadi, Ghazal 187 · «هشیار کسی باید کز عشق بپرهیزد»](https://kimzify.github.io/naqsh-e-khiyal/saadi/ghazal-187/) | 8 | Nava |
+| [Saadi, Ghazal 187 · No Retreat](https://kimzify.github.io/naqsh-e-khiyal/saadi/ghazal-187/) | 8 | Chahargah-inspired |
+
+The **No Retreat** interpretation is the sole version of Ghazal 187. Its eight scenes run for 2:56, with earth-and-stars reflections, a storm-crossed threshold, and an unresolved final hold on the beloved’s hem. [Scene and implementation notes](docs/SAADI-187-NO-RETREAT.md).
 
 ![Hafez, Ghazal 255](assets/og/ghazal-255.png)
 
@@ -43,6 +45,7 @@ Check every page for errors (this also runs on every push, in GitHub Actions):
 npm install
 npx playwright install chromium
 npm run serve &  npm test
+npm run test:saadi-187     # No Retreat: seeking, layout, audio, keyboard, reduced motion
 ```
 
 ## Repository layout
