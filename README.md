@@ -11,6 +11,7 @@ Each poem is one self-contained web page: every couplet gets its own scene, draw
 | [Hafez, Ghazal 179 · «رسید مژده که ایّام غم نخواهد ماند»](https://kimzify.github.io/naqsh-e-khiyal/hafez/ghazal-179/) | 9 | Bayat-e Esfahan |
 | [Hafez, Ghazal 255 · «یوسف گم‌گشته بازآید به کنعان، غم مخور»](https://kimzify.github.io/naqsh-e-khiyal/hafez/ghazal-255/) | 10 | Segah |
 | [Saadi, Ghazal 268 · «ای ساربان آهسته رو کآرام جانم می‌رود»](https://kimzify.github.io/naqsh-e-khiyal/saadi/ghazal-268/) | 13 | Homayoun |
+| [Saadi, Ghazal 187 · «هشیار کسی باید کز عشق بپرهیزد»](https://kimzify.github.io/naqsh-e-khiyal/saadi/ghazal-187/) | 8 | Nava |
 
 ![Hafez, Ghazal 255](assets/og/ghazal-255.png)
 

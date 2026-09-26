@@ -1,0 +1,488 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Hoshyar Kasi Bayad · Saadi, Ghazal 187 · Naqsh-e Khiyal</title>
+<meta name="description" content="«هشیار کسی باید کز عشق بپرهیزد»: Saadi’s Ghazal 187, animated couplet by couplet with music in Nava.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hoshyar Kasi Bayad · Saadi, Ghazal 187 · Naqsh-e Khiyal">
+<meta property="og:description" content="«هشیار کسی باید کز عشق بپرهیزد»: Saadi’s Ghazal 187, animated couplet by couplet with music in Nava.">
+<meta property="og:url" content="https://kimzify.github.io/naqsh-e-khiyal/saadi/ghazal-187/">
+<meta property="og:image" content="https://kimzify.github.io/naqsh-e-khiyal/assets/og/saadi-ghazal-187.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#07091A">
+<link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+<script defer src="https://cloud.umami.is/script.js" data-website-id="2786b32f-32db-4029-a82f-e0adbcf506d7" data-domains="kimzify.github.io"></script>
+<style>html,body{margin:0;padding:0}</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Marcellus+SC&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme:dark;
+  --night:#07091A;
+  --sun:#E6BE63;
+  --sunl:#FFE9B0;
+  --ivory:#F6EEDC;
+  --mute:#B8BCC8;
+  --line:rgba(246,238,220,.32);
+}
+[hidden]{display:none!important}
+html,body{height:100%}
+body{background:var(--night);color:var(--ivory);overflow:hidden;font-family:"Cormorant Garamond",Georgia,serif}
+#stage{position:fixed;inset:0;overflow:hidden;background:var(--night)}
+canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.fa{font-family:"Noto Nastaliq Urdu","Noto Naskh Arabic","Geeza Pro","Tahoma",serif}
+button,a{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,a:focus-visible{outline:2px solid var(--sun);outline-offset:4px}
+#intro{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding-inline:16px;gap:10px;transition:opacity 1s ease}
+#intro.gone{opacity:0;pointer-events:none}
+.eyebrow{margin:0;font-family:"Marcellus SC",Georgia,serif;font-size:13px;letter-spacing:.3em;color:var(--sun)}
+#intro h1{margin:0;font-weight:400;font-size:clamp(44px,8vw,110px);line-height:1.95;text-shadow:0 0 50px rgba(230,190,99,.4)}
+.sub{margin:0;font-style:italic;font-size:clamp(18px,1.8vw,23px);color:var(--mute)}
+.refrain{margin:0 0 18px;max-width:34em;font-size:clamp(15px,1.4vw,18px);color:var(--mute);opacity:.9}
+.refrain .fa{color:var(--sunl);font-size:1.15em}
+.begin{background:var(--sunl);color:#0c0f18;border:0;border-radius:999px;padding:12px 40px;font-size:21px;font-weight:500;letter-spacing:.04em;box-shadow:0 0 40px rgba(230,190,99,.4);transition:transform .3s ease,box-shadow .3s ease}
+.begin:hover{transform:translateY(-2px);box-shadow:0 0 60px rgba(230,190,99,.6)}
+.hint{margin:14px 0 0;font-size:15px;color:var(--mute);opacity:.85}
+.links{display:flex;gap:22px;flex-wrap:wrap;justify-content:center}
+.textlink{background:none;border:0;padding:4px 2px;color:var(--mute);font-style:italic;font-size:17px;text-decoration:underline;text-underline-offset:4px;text-decoration-color:rgba(184,188,200,.4)}
+.textlink:hover{color:var(--ivory)}
+#mark{position:absolute;top:calc(14px + env(safe-area-inset-top,0px));left:16px;right:16px;display:flex;justify-content:space-between;font-family:"Marcellus SC",Georgia,serif;font-size:12px;letter-spacing:.28em;color:rgba(246,238,220,.55);pointer-events:none}
+#caption{position:absolute;left:16px;right:16px;bottom:calc(76px + env(safe-area-inset-bottom,0px));display:grid;justify-items:center;gap:2px;text-align:center;pointer-events:none}
+#meta{font-family:"Marcellus SC",Georgia,serif;font-size:12px;letter-spacing:.3em;color:var(--sun);opacity:0;transition:opacity 1s ease}
+#verse{margin:0;max-width:26em;font-size:clamp(19px,2.2vw,36px);line-height:1.95;text-shadow:0 0 22px rgba(3,4,10,.95),0 0 30px rgba(230,190,99,.2)}
+#verse .m{display:block}
+#verse .w{display:inline-block;opacity:0;filter:blur(10px);transform:translateY(.35em) scale(.96);transition:opacity 1.1s ease,filter 1.2s ease,transform 1.5s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
+#verse .w.rf{color:var(--sunl)}
+#gloss{margin:0;max-width:40em;font-style:italic;font-size:clamp(15px,1.35vw,19px);color:var(--mute);opacity:0;transition:opacity 1.2s ease}
+#caption.on #verse .w{opacity:1;filter:blur(0);transform:none}
+#caption.on #meta{opacity:.9}
+#caption.on #gloss{opacity:.95;transition-delay:1.1s}
+#caption.out #verse .w{opacity:0;filter:blur(6px);transform:translateY(-.25em);transition-duration:.7s;transition-delay:0s}
+#caption.out #meta,#caption.out #gloss{opacity:0;transition-delay:0s;transition-duration:.6s}
+#bar{position:absolute;left:0;right:0;bottom:0;display:flex;align-items:center;gap:10px;padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px));background:linear-gradient(rgba(3,4,10,0),rgba(3,4,10,.6))}
+.ctl{flex:none;height:34px;min-width:34px;padding:0 14px;border:1px solid var(--line);border-radius:999px;background:rgba(7,9,26,.4);font-family:"Marcellus SC",Georgia,serif;font-size:13px;letter-spacing:.12em;transition:border-color .2s,background .2s}
+.ctl:hover{border-color:var(--sun);background:rgba(230,190,99,.1)}
+.ctl.icon{padding:0;width:34px;font-size:18px;letter-spacing:0}
+#pp{min-width:78px}
+#segs{flex:1;display:flex;gap:3px;min-width:0}
+.seg{flex:1;min-width:0;height:24px;border:0;padding:0;background:none;position:relative}
+.seg::before,.seg i{content:"";position:absolute;left:0;right:0;top:11px;height:2px;border-radius:2px}
+.seg::before{background:rgba(246,238,220,.2)}
+.seg i{background:var(--sun);transform-origin:left center;transform:scaleX(0)}
+.seg:hover::before{background:rgba(246,238,220,.45)}
+#clock{flex:none;font-variant-numeric:tabular-nums;font-size:14px;color:var(--mute);min-width:3.2em;text-align:right}
+#outro{position:absolute;inset:0;overflow-y:auto;background:rgba(4,5,12,.66);opacity:0;transition:opacity 1.4s ease}
+#outro.show{opacity:1}
+.outro-in{max-width:1000px;margin:0 auto;padding-inline:16px;padding-block:calc(48px + env(safe-area-inset-top,0px)) 56px;display:grid;justify-items:center;gap:16px;text-align:center}
+.outro-in h2{margin:0;font-weight:400;font-size:clamp(40px,6vw,70px);line-height:1.9;color:var(--sunl);text-shadow:0 0 40px rgba(230,190,99,.45)}
+.poem{display:grid;gap:4px;width:100%}
+.bayt{display:grid;grid-template-columns:1fr 1fr;gap:0 .5em;align-items:baseline;background:none;border:0;padding:0 6px;border-radius:8px;color:var(--ivory);transition:background .2s,color .2s}
+.bayt span{font-size:clamp(16px,1.8vw,24px);line-height:2.4}
+.bayt span:first-child{text-align:left}
+.bayt span:last-child{text-align:right}
+.bayt:hover{background:rgba(230,190,99,.08);color:var(--sunl)}
+.outro-note{margin:0;font-style:italic;color:var(--mute);font-size:16px}
+.actions{display:flex;gap:22px;align-items:center;flex-wrap:wrap;justify-content:center;margin-top:8px}
+@media (max-width:720px){
+  .bayt{grid-template-columns:1fr;margin-bottom:10px}
+  .bayt span:first-child,.bayt span:last-child{text-align:center}
+  #clock{display:none}
+  .ctl{padding:0 10px}
+  #pp{min-width:64px}
+}
+@media (prefers-reduced-motion:reduce){#verse .w{transition-duration:.2s!important;filter:none!important}}
+</style>
+<style id="nastaliq-fix">
+/* Nastaliq has very tall ascenders and deep descenders: give the Persian headings and lines room so they don't touch the text around them */
+#intro h1{line-height:1.5;padding:.32em 0 .5em;margin:0}
+#intro .sub{margin-top:.1em}
+.refrain{line-height:2.2}
+.refrain .fa{line-height:1}
+#verse{line-height:2.3}
+#verse .m + .m{margin-top:0}
+#gloss{margin-top:.4em}
+.outro-in h2{line-height:1.5;padding:.28em 0 .4em}
+</style>
+</head>
+<body>
+<div id="stage">
+  <canvas id="cv" aria-hidden="true"></canvas>
+  <div id="mark" hidden><span>Saadi · Divan · Ghazal 187</span><span id="markLabel"></span></div>
+
+  <section id="intro">
+    <p class="eyebrow">Saadi · Divan · Ghazal 187 · Eight Couplets</p>
+    <h1 class="fa" lang="fa" dir="rtl">هشیار کسی باید</h1>
+    <p class="sub">Only the sober can avoid love</p>
+    <p class="refrain">The lover never turns away. Across eight couplets, the path to the beloved changes, but the gaze does not.</p>
+    <button class="begin" id="begin">Begin</button>
+    <p class="hint">Sound on · Space to pause · ← → to move between couplets</p>
+    <div class="links">
+      <button class="textlink" id="readBtn">Read the whole ghazal</button>
+      <a class="textlink" id="galleryLink" href="#" hidden>All poems</a>
+      <a class="textlink" href="https://ganjoor.net/saadi/divan/ghazals/sh187">Text on Ganjoor</a>
+    </div>
+  </section>
+
+  <div id="caption" hidden>
+    <div id="meta"><span id="label"></span></div>
+    <p id="verse" class="fa" lang="fa" dir="rtl"></p>
+    <p id="gloss"></p>
+  </div>
+
+  <nav id="bar" hidden aria-label="Playback">
+    <button class="ctl" id="pp">Pause</button>
+    <button class="ctl icon" id="prev" aria-label="Previous couplet">‹</button>
+    <div id="segs"></div>
+    <button class="ctl icon" id="next" aria-label="Next couplet">›</button>
+    <span id="clock">0:00</span>
+    <button class="ctl" id="snd">Sound on</button>
+  </nav>
+
+  <section id="outro" hidden>
+    <div class="outro-in">
+      <p class="eyebrow">Saadi · Divan · Ghazal 187</p>
+      <h2 class="fa" lang="fa" dir="rtl">سعدی</h2>
+      <div class="poem fa" id="poem" lang="fa" dir="rtl"></div>
+      <p class="outro-note">Tap any couplet to watch it again.</p>
+      <div class="actions">
+        <button class="begin" id="again">Play again</button>
+        <a class="textlink" id="galleryLink2" href="#" hidden>All poems</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+(()=>{
+/* ---------- helpers ---------- */
+const TAU=Math.PI*2;
+const clamp=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+const lerp=(a,b,t)=>a+(b-a)*t;
+const ss=(a,b,x)=>{const t=clamp((x-a)/(b-a));return t*t*(3-2*t)};
+const easeOut=t=>1-Math.pow(1-clamp(t),3);
+const easeInOut=t=>{t=clamp(t);return t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2};
+const mix=(a,b,t)=>[lerp(a[0],b[0],t),lerp(a[1],b[1],t),lerp(a[2],b[2],t)];
+const rgb=c=>`rgb(${c[0]|0},${c[1]|0},${c[2]|0})`;
+const rgba=(c,a)=>`rgba(${c[0]|0},${c[1]|0},${c[2]|0},${clamp(a).toFixed(3)})`;
+function rng(seed){return()=>{seed|=0;seed=seed+0x6D2B79F5|0;let t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+const randArr=(seed,n,k)=>{const r=rng(seed);return Array.from({length:n},()=>Array.from({length:k},()=>r()))};
+
+/* shared drawing colors and helpers */
+const GOLD=[232,188,96],GOLDL=[255,234,176],IV=[246,238,220],ROSE=[214,92,116];
+
+function bg(c,W,H,stops){const g=c.createLinearGradient(0,0,0,H);stops.forEach(([o,col])=>g.addColorStop(o,rgb(col)));c.fillStyle=g;c.fillRect(0,0,W,H)}
+function glow(c,x,y,r,col,a=1){if(r<=0||a<=0)return;const g=c.createRadialGradient(x,y,0,x,y,r);g.addColorStop(0,rgba(col,a));g.addColorStop(.4,rgba(col,a*.35));g.addColorStop(1,rgba(col,0));c.fillStyle=g;c.beginPath();c.arc(x,y,r,0,TAU);c.fill()}
+const STARS=(()=>{const r=rng(255);return Array.from({length:260},()=>({x:r(),y:r(),s:r()*1.5+.3,p:r()*TAU,f:.5+r()*2}))})();
+function stars(c,W,H,t,a,ymax=1){if(a<=0)return;for(const s of STARS){if(s.y>ymax)continue;const tw=.55+.45*Math.sin(t*s.f+s.p);c.fillStyle=`rgba(244,232,208,${(a*tw*(.3+s.s/1.8*.7)).toFixed(3)})`;c.fillRect(s.x*W,s.y*H,s.s,s.s)}}
+function star8(c,x,y,r){c.beginPath();for(let k=0;k<=16;k++){const a=k/16*TAU-Math.PI/2,rr=k%2?r*.55:r;k?c.lineTo(x+Math.cos(a)*rr,y+Math.sin(a)*rr):c.moveTo(x+Math.cos(a)*rr,y+Math.sin(a)*rr)}c.closePath()}
+function archPath(c,x,y,w,h){c.moveTo(x-w/2,y);c.lineTo(x-w/2,y-h*.58);c.quadraticCurveTo(x-w/2,y-h*.92,x,y-h);c.quadraticCurveTo(x+w/2,y-h*.92,x+w/2,y-h*.58);c.lineTo(x+w/2,y);c.closePath()}
+function hillAt(u,y,amp,seed){const r=rng(seed),a=r()*6,b=r()*6;return y-amp*(.55+.3*Math.sin(u*5+a)+.15*Math.sin(u*13+b))}
+function hillLayer(c,W,H,y,amp,col,seed){c.fillStyle=rgb(col);c.beginPath();c.moveTo(0,H);for(let i=0;i<=60;i++){const u=i/60;c.lineTo(u*W,hillAt(u,y,amp,seed))}c.lineTo(W,H);c.closePath();c.fill()}
+function ridgeAt(u,y,amp,seed){const r=rng(seed),a=r()*6,b=r()*6,d=r()*6;return y-amp*(Math.abs(Math.sin(u*3.1+a))*.55+Math.abs(Math.sin(u*7.3+b))*.3+Math.abs(Math.sin(u*17+d))*.15)}
+function mountains(c,W,H,y,amp,col,seed){c.fillStyle=col;c.beginPath();c.moveTo(0,H);for(let i=0;i<=90;i++){const u=i/90;c.lineTo(u*W,ridgeAt(u,y,amp,seed))}c.lineTo(W,H);c.closePath();c.fill()}
+function cypress(c,x,y,h,col){c.fillStyle=col;c.beginPath();c.moveTo(x-h*.09,y);c.bezierCurveTo(x-h*.15,y-h*.45,x-h*.06,y-h*.8,x+h*.03,y-h);c.bezierCurveTo(x+h*.02,y-h*.9,x+h*.13,y-h*.5,x+h*.09,y);c.closePath();c.fill()}
+const bez=(p0,p1,p2,p3,u)=>{const v=1-u;return[v*v*v*p0[0]+3*v*v*u*p1[0]+3*v*u*u*p2[0]+u*u*u*p3[0],v*v*v*p0[1]+3*v*v*u*p1[1]+3*v*u*u*p2[1]+u*u*u*p3[1]]};
+// a robed figure; kneel=1 reads as seated, bow tilts the head toward +x; taj, bare (no head cover) or turban
+function person(c,x,y,h,o={}){const col=o.col||"rgb(8,10,12)",kn=o.kneel||0,bow=o.bow||0;c.save();c.translate(x,y);c.fillStyle=col;
+  const bh=h*(.6-kn*.3),bw=h*(.17+kn*.07);
+  c.beginPath();c.moveTo(-bw,0);c.quadraticCurveTo(-bw*.85,-bh*.55,-h*.075,-bh);c.lineTo(h*.075,-bh);c.quadraticCurveTo(bw*.85,-bh*.55,bw,0);c.closePath();c.fill();
+  c.translate(0,-bh+h*.02);c.rotate(bow);
+  c.beginPath();c.moveTo(-h*.088,0);c.lineTo(-h*.075,-h*.15);c.quadraticCurveTo(0,-h*.2,h*.075,-h*.15);c.lineTo(h*.088,0);c.closePath();c.fill();
+  c.beginPath();c.arc(0,-h*.215,h*.05,0,TAU);c.fill();
+  if(o.taj){c.beginPath();c.moveTo(-h*.04,-h*.24);c.lineTo(-h*.03,-h*.38);c.quadraticCurveTo(0,-h*.41,h*.03,-h*.38);c.lineTo(h*.04,-h*.24);c.closePath();c.fill()}
+  else if(!o.bare){c.beginPath();c.ellipse(0,-h*.262,h*.07,h*.042,0,0,TAU);c.fill();c.beginPath();c.arc(0,-h*.292,h*.022,0,TAU);c.fill()}
+  if(o.crown>0){glow(c,0,-h*.34,h*.24,GOLDL,.45*o.crown);c.fillStyle=rgba(GOLD,o.crown);crownPath(c,0,-h*.25,h*.13);c.fill()}
+  c.restore()}
+// head position of person() (for things that land on it)
+function headOf(x,y,h,kn,bow){const bh=h*(.6-kn*.3),py=y-bh+h*.02;return[x+Math.sin(bow)*h*.215,py-Math.cos(bow)*h*.215]}
+function crownPath(c,x,y,s){c.beginPath();c.moveTo(x-s*.5,y);c.lineTo(x-s*.58,y-s*.52);c.lineTo(x-s*.28,y-s*.26);c.lineTo(x,y-s*.68);c.lineTo(x+s*.28,y-s*.26);c.lineTo(x+s*.58,y-s*.52);c.lineTo(x+s*.5,y);c.closePath()}
+function rose(c,x,y,R,open){c.save();c.translate(x,y);c.fillStyle="rgb(140,26,48)";for(let k=0;k<5;k++){const a=k/5*TAU-Math.PI/2;c.beginPath();c.ellipse(Math.cos(a)*R*.42*open,Math.sin(a)*R*.42*open,R*.46,R*.36,a,0,TAU);c.fill()}
+  c.fillStyle="rgb(192,46,70)";c.beginPath();c.arc(0,0,R*.52,0,TAU);c.fill();c.strokeStyle="rgba(104,14,34,.9)";c.lineWidth=Math.max(1,R*.06);c.beginPath();for(let i=0;i<=60;i++){const a=i/60*TAU*2,r=R*(.05+.42*i/60);i?c.lineTo(Math.cos(a)*r,Math.sin(a)*r):c.moveTo(Math.cos(a)*r,Math.sin(a)*r)}c.stroke();c.restore()}
+// the rose stem on the hut wall: dry and grey, then green; a bud, then (later in the poem) the rose
+function vine(c,x,gy,h,green,bud,bloom){c.save();c.lineCap="round";c.strokeStyle=rgb(mix([74,66,62],[62,108,56],green));c.lineWidth=Math.max(1.2,h*.035);
+  const P=v=>[x+Math.sin(v*5.5)*h*.07,gy-v*h];c.beginPath();for(let i=0;i<=30;i++){const p=P(i/30);i?c.lineTo(p[0],p[1]):c.moveTo(p[0],p[1])}c.stroke();
+  c.lineWidth=Math.max(1,h*.014);for(let i=1;i<10;i++){const p=P(i/10),s=i%2?1:-1;c.beginPath();c.moveTo(p[0],p[1]);c.lineTo(p[0]+s*h*.04,p[1]-h*.02);c.stroke()}
+  if(green>0){c.fillStyle=rgba([70,128,62],green);[.25,.45,.62,.8].forEach((v,i)=>{const p=P(v),s=i%2?1:-1;c.beginPath();c.ellipse(p[0]+s*h*.065,p[1]-h*.01,h*.065*green,h*.028*green,s*.5,0,TAU);c.fill()})}
+  const top=P(1);
+  if(bud>0&&bloom<.02){c.fillStyle="rgb(60,108,56)";c.beginPath();c.ellipse(top[0],top[1]+h*.015,h*.03*bud,h*.03*bud,0,0,TAU);c.fill();c.fillStyle="rgb(176,40,62)";c.beginPath();c.ellipse(top[0],top[1]-h*.02*bud,h*.022*bud,h*.042*bud,0,0,TAU);c.fill()}
+  if(bloom>=.02){const R=h*lerp(.045,.1,bloom);rose(c,top[0],top[1]-R*.3,R,bloom)}
+  c.restore()}
+// a mud-brick hut with a small dome (Jacob's «کلبهٔ احزان»)
+function hut(c,x,gy,s,col,o={}){c.save();c.fillStyle=col;const bw=s*.5,bh=s*.36;
+  c.fillRect(x-bw,gy-bh,bw*2,bh);c.fillRect(x-bw-s*.02,gy-bh-s*.028,bw*2+s*.04,s*.032);
+  c.beginPath();c.ellipse(x-s*.12,gy-bh-s*.02,s*.24,s*.21,0,Math.PI,TAU);c.fill();
+  c.strokeStyle=col;c.lineWidth=s*.012;c.beginPath();c.moveTo(x-s*.12,gy-bh-s*.22);c.lineTo(x-s*.12,gy-bh-s*.28);c.stroke();
+  const dx=x-s*.12,dw=s*.15,dh=s*.25;c.beginPath();archPath(c,dx,gy,dw,dh);c.fillStyle="rgb(3,3,6)";c.fill();
+  if(o.lit>0){c.save();c.beginPath();archPath(c,dx,gy,dw,dh);c.clip();c.fillStyle=rgba([255,184,104],.8*o.lit);c.fillRect(dx-dw,gy-dh,dw*2,dh);c.restore();glow(c,dx,gy-dh*.4,s*.3,[255,184,104],.3*o.lit)}
+  c.beginPath();archPath(c,x+s*.26,gy-bh*.42,s*.07,s*.11);c.fillStyle=o.win>0?rgba([255,190,110],.35+.6*o.win):"rgb(3,3,6)";c.fill();
+  if(o.win>0)glow(c,x+s*.26,gy-bh*.42-s*.05,s*.14,[255,184,104],.35*o.win);
+  c.restore()}
+function camel(c,x,y,s,ph,col,dir=-1){c.save();c.translate(x,y);c.scale(dir,1);c.fillStyle=col;c.strokeStyle=col;c.lineCap="round";
+  c.lineWidth=s*.07;[[-.3,0],[-.2,Math.PI],[.26,Math.PI*.5],[.36,Math.PI*1.5]].forEach(([lx,o])=>{const sw=Math.sin(ph+o)*.1*s;c.beginPath();c.moveTo(lx*s,-s*.56);c.lineTo(lx*s+sw,0);c.stroke()});
+  c.beginPath();c.ellipse(0,-s*.62,s*.42,s*.16,0,0,TAU);c.fill();
+  c.beginPath();c.ellipse(-s*.04,-s*.74,s*.21,s*.17,0,Math.PI,TAU);c.fill();
+  c.lineWidth=s*.1;c.beginPath();c.moveTo(s*.34,-s*.66);c.quadraticCurveTo(s*.52,-s*.62,s*.55,-s*.97);c.stroke();
+  c.beginPath();c.ellipse(s*.63,-s*.99,s*.11,s*.05,.15,0,TAU);c.fill();
+  c.lineWidth=s*.04;c.beginPath();c.moveTo(-s*.4,-s*.66);c.quadraticCurveTo(-s*.5,-s*.55,-s*.47,-s*.42);c.stroke();c.restore()}
+function candle(c,x,base,h,t,a=1,steady=0){const w=h*.2;glow(c,x,base-h-h*.3,h*4.5,GOLD,.22*a);c.fillStyle="rgb(226,214,190)";c.fillRect(x-w/2,base-h,w,h);
+  c.fillStyle="rgb(150,110,50)";c.beginPath();c.ellipse(x,base,w*1.7,w*.42,0,0,TAU);c.fill();
+  const fl=lerp(.88+.12*Math.sin(t*13)*Math.sin(t*7.3),1,steady);if(a>0){c.fillStyle=rgba([255,226,150],a);c.beginPath();c.moveTo(x-w*.36,base-h);c.quadraticCurveTo(x-w*.42,base-h-h*.24,x+Math.sin(t*3)*w*.12*(1-steady),base-h-h*.5*fl);c.quadraticCurveTo(x+w*.42,base-h-h*.24,x+w*.36,base-h);c.closePath();c.fill();c.fillStyle=rgba([255,250,236],a);c.beginPath();c.ellipse(x,base-h-h*.1,w*.1,h*.08,0,0,TAU);c.fill()}}
+// footprint (heel, sole, five toes), toes toward -y; pressed into sand
+function footPath(c,s){const P=(...v)=>v.map(q=>q*s);c.beginPath();c.moveTo(0,.5*s);c.bezierCurveTo(...P(.12,.5,.15,.4,.14,.3));c.bezierCurveTo(...P(.13,.15,.17,0,.19,-.12));c.bezierCurveTo(...P(.21,-.22,.15,-.29,.06,-.3));
+  c.bezierCurveTo(...P(-.04,-.31,-.16,-.29,-.18,-.19));c.bezierCurveTo(...P(-.19,-.09,-.06,-.04,.0,.08));c.bezierCurveTo(...P(.04,.18,-.1,.26,-.11,.36));c.bezierCurveTo(...P(-.12,.46,-.07,.5,0,.5));c.closePath();
+  [[-.125,-.4,.058,.074,-.15],[-.035,-.43,.037,.045,0],[.035,-.42,.032,.04,.1],[.095,-.395,.028,.034,.2],[.145,-.355,.024,.029,.3]].forEach(([x,y,rx,ry,r])=>{c.moveTo(x*s+Math.cos(r)*rx*s,y*s+Math.sin(r)*rx*s);c.ellipse(x*s,y*s,rx*s,ry*s,r,0,TAU)})}
+function foot(c,x,y,s,flip,a){if(a<=0)return;c.save();c.translate(x,y);c.scale(flip,.55);c.globalAlpha=clamp(a);
+  c.save();c.translate(0,s*.03);footPath(c,s);c.fillStyle="rgba(170,150,130,.28)";c.fill();c.restore();
+  footPath(c,s);c.fillStyle="rgba(20,16,20,.6)";c.fill();c.restore()}
+
+/* ---------- the poem ---------- */
+const GALLERY_URL="../../";
+const POEM=[
+ ["هشیار کسی باید کز عشق بپرهیزد","وین طبع که من دارم با عقل نیامیزد","Only a sober person could keep away from love; the nature I have cannot mix with reason.","Reason and Love"],
+ ["آن کس که دلی دارد آراستهٔ معنی","گر هر دو جهان باشد در پای یکی ریزد","One whose heart is adorned with meaning would pour both worlds at the feet of one beloved, if they possessed them.","Both Worlds"],
+ ["گر سیلِ عِقاب آید شوریده نیندیشد","ور تیرِ بلا بارد دیوانه نپرهیزد","Should a flood of punishment come, the distraught lover gives it no thought; should arrows of calamity rain down, the mad lover does not flee.","The Flood"],
+ ["آخر نه منم تنها در بادیهٔ سودا","عشقِ لبِ شیرینت بس شور برانگیزد","After all, I am not alone in the wilderness of longing; love of your sweet lips stirs up such commotion.","The Wilderness"],
+ ["بی‌بخت چه فن سازم تا برخورم از وصلت","بی‌مایه زبون باشد هر چند که بستیزد","Unlucky as I am, what device can bring me to union with you? One without means is helpless, however hard they struggle.","Without Means"],
+ ["فضل است اگرَم خوانی، عدل است اگرَم رانی","قدرِ تو نداند آن کز زجرِ تو بگریزد","If you call me, it is kindness; if you send me away, it is justice. Whoever flees your harshness does not know your worth.","Called or Turned Away"],
+ ["تا دل به تو پیوستم راهِ همه در بستم","جایی که تو بنشینی بس فتنه که برخیزد","Since my heart joined yours, I closed every other path. Wherever you sit, so much commotion rises.","The Closed Roads"],
+ ["سعدی نظر از رویت کوتَه نکند هرگز","ور روی بگردانی در دامنت آویزد","Saadi will never turn his gaze from your face; if you turn away, he will cling to your hem.","The Hem"]
+];
+const NB=POEM.length,BD=18,F=1.8,TOTAL=NB*BD;
+const wordDelays=b=>{const a=POEM[b][0].split(" ").length,out=[];for(let i=0;i<a;i++)out.push(i*.16);const off=a*.16+.5;POEM[b][1].split(" ").forEach((_,j)=>out.push(off+j*.16));return out};
+// The poem rhymes on -izad; it has no repeated verbal radif.
+const isRf=(b,k,i)=>k===1&&i===POEM[b][1].split(" ").length-1;
+
+/* ---------- audio: Nava on D. Soft ney, santur and pad; a recurring descending cadence follows the rhyme. ---------- */
+let AC=null,bus=null,master=null,soundOn=true,noiseBuf=null,neyPrev=293.66;const KSC={};
+const KO=Math.pow(2,-1/24);
+const NT={D2:73.42,A2:110,C3:130.81,D3:146.83,Ek3:164.81*Math.pow(2,-1/24),F3:174.61,G3:196,A3:220,Bk3:246.94*Math.pow(2,-1/24),C4:261.63,D4:293.66,Ek4:329.63*Math.pow(2,-1/24),F4:349.23,G4:392,A4:440,Bk4:493.88*Math.pow(2,-1/24),C5:523.25,D5:587.33};
+function impulse(d,decay){const n=Math.floor(AC.sampleRate*d),b=AC.createBuffer(2,n,AC.sampleRate);for(let ch=0;ch<2;ch++){const x=b.getChannelData(ch);for(let i=0;i<n;i++)x[i]=(Math.random()*2-1)*Math.pow(1-i/n,decay)}return b}
+function ksBuf(f,bright=.45){const key=Math.round(f*10)+"_"+bright;if(KSC[key])return KSC[key];const sr=AC.sampleRate,n=Math.floor(sr*4),b=AC.createBuffer(1,n,sr),y=b.getChannelData(0),P=Math.max(2,Math.round(sr/f-.5));let lp=0;for(let i=0;i<P;i++){lp=lp*(1-bright)+(Math.random()*2-1)*bright;y[i]=lp}const dec=.998;y[P]=y[0]*dec;for(let i=P+1;i<n;i++)y[i]=dec*.5*(y[i-P]+y[i-P-1]);return KSC[key]=b}
+function initAudio(){if(AC)return;try{AC=new(window.AudioContext||window.webkitAudioContext)();
+  const comp=AC.createDynamicsCompressor();comp.threshold.value=-22;comp.ratio.value=2.5;comp.connect(AC.destination);
+  const warm=AC.createBiquadFilter();warm.type="lowpass";warm.frequency.value=4200;warm.connect(comp);
+  master=AC.createGain();master.gain.value=soundOn?1:0;master.connect(warm);
+  const conv=AC.createConvolver();conv.buffer=impulse(5.5,2.2);const wet=AC.createGain();wet.gain.value=.62;conv.connect(wet);wet.connect(master);
+  bus=AC.createGain();bus.gain.value=.85;bus.connect(master);bus.connect(conv);
+  noiseBuf=AC.createBuffer(1,AC.sampleRate*2,AC.sampleRate);const nd=noiseBuf.getChannelData(0);for(let i=0;i<nd.length;i++)nd[i]=Math.random()*2-1;
+  const f=AC.createBiquadFilter();f.type="lowpass";f.frequency.value=380;const dg=AC.createGain();dg.gain.value=0;dg.gain.setTargetAtTime(.012,AC.currentTime,5);f.connect(dg);dg.connect(bus);
+  [[NT.D2,.5],[NT.D2*1.003,.5],[NT.A2,.25]].forEach(([fr,a])=>{const o=AC.createOscillator();o.type="triangle";o.frequency.value=fr;const g=AC.createGain();g.gain.value=a;o.connect(g);g.connect(f);o.start()});
+  Object.values(NT).forEach(fr=>ksBuf(fr));
+ }catch(e){AC=null}}
+function out(node,pan){if(AC.createStereoPanner){const p=AC.createStereoPanner();p.pan.value=pan;node.connect(p);p.connect(bus)}else node.connect(bus)}
+function strike(f,v,when=0){if(!AC)return;const b=ksBuf(f),t0=AC.currentTime+when;[[1,.8,0],[1.0022,.45,-.3],[.9978,.45,.3]].forEach(([r,a,pan])=>{const s=AC.createBufferSource();s.buffer=b;s.playbackRate.value=r;const lp=AC.createBiquadFilter();lp.type="lowpass";lp.frequency.value=Math.min(3000,f*5);const g=AC.createGain();g.gain.value=v*a;s.connect(lp);lp.connect(g);out(g,pan);s.start(t0)})}
+function pad(freqs,dur,v=.016){if(!AC)return;const t0=AC.currentTime,end=t0+dur;const lp=AC.createBiquadFilter();lp.type="lowpass";lp.frequency.setValueAtTime(420,t0);lp.frequency.linearRampToValueAtTime(700,t0+dur*.5);lp.frequency.linearRampToValueAtTime(420,end);lp.Q.value=.4;
+  const env=AC.createGain();env.gain.setValueAtTime(0,t0);env.gain.linearRampToValueAtTime(v,t0+2.8);env.gain.setValueAtTime(v,Math.max(t0+2.9,end-1));env.gain.linearRampToValueAtTime(0,end+2.5);lp.connect(env);env.connect(bus);
+  freqs.forEach(fr=>[1.003,.997].forEach((d,k)=>{const o=AC.createOscillator();o.type="sawtooth";o.frequency.value=fr*d;const g=AC.createGain();g.gain.value=1/(freqs.length);o.connect(g);if(AC.createStereoPanner){const p=AC.createStereoPanner();p.pan.value=k?.4:-.4;g.connect(p);p.connect(lp)}else g.connect(lp);o.start(t0);o.stop(end+2.7)}))}
+function ney(f,dur,v=.055){if(!AC)return;const t0=AC.currentTime,end=t0+dur,env=AC.createGain();
+  env.gain.setValueAtTime(0,t0);env.gain.linearRampToValueAtTime(v,t0+Math.min(.7,dur*.35));env.gain.setValueAtTime(v,Math.max(t0+.71,end-.7));env.gain.linearRampToValueAtTime(0,end+.4);
+  const lp=AC.createBiquadFilter();lp.type="lowpass";lp.frequency.value=1700;env.connect(lp);out(lp,.1);
+  const vib=AC.createOscillator();vib.frequency.value=4.6;const vg=AC.createGain();vg.gain.setValueAtTime(0,t0);vg.gain.setValueAtTime(0,t0+Math.min(.9,dur*.4));vg.gain.linearRampToValueAtTime(f*.008,t0+Math.min(2,dur*.8));vib.connect(vg);
+  [[1,.95],[2,.13],[3,.04]].forEach(([m,a])=>{const o=AC.createOscillator();o.type="sine";o.frequency.setValueAtTime(neyPrev*m,t0);o.frequency.exponentialRampToValueAtTime(f*m,t0+.28);const vm=AC.createGain();vm.gain.value=m;vg.connect(vm);vm.connect(o.frequency);const g=AC.createGain();g.gain.value=a;o.connect(g);g.connect(env);o.start(t0);o.stop(end+.5)});
+  const nz=AC.createBufferSource();nz.buffer=noiseBuf;nz.loop=true;const bp=AC.createBiquadFilter();bp.type="bandpass";bp.frequency.value=f*2;bp.Q.value=1.6;const ng=AC.createGain();ng.gain.setValueAtTime(.45,t0);ng.gain.linearRampToValueAtTime(.16,t0+.6);nz.connect(bp);bp.connect(ng);ng.connect(env);nz.start(t0,Math.random());nz.stop(end+.5);
+  vib.start(t0);vib.stop(end+.5);neyPrev=f}
+function click(v=.08){if(!AC)return;const t0=AC.currentTime,s=AC.createBufferSource();s.buffer=noiseBuf;const bp=AC.createBiquadFilter();bp.type="bandpass";bp.frequency.value=2600+Math.random()*900;bp.Q.value=5;const g=AC.createGain();g.gain.setValueAtTime(v,t0);g.gain.exponentialRampToValueAtTime(.001,t0+.04);s.connect(bp);bp.connect(g);out(g,Math.random()-.5);s.start(t0,Math.random());s.stop(t0+.06)}
+function riz(f,when,n=10){for(let i=0;i<n;i++)strike(f,.05*(1-i/n*.6),when+i*.085)}
+// A soft descending santur cadence repeats at the end of each couplet, echoing the end rhyme.
+function cadence(){strike(NT.A4,.055,0);strike(NT.G4,.05,.38);strike(NT.F4,.045,.78);strike(NT.Ek4,.045,1.16);riz(NT.D4,1.52,8);strike(NT.D4,.06,2.37)}
+function hiss(f0,f1,dur,v,type="bandpass"){if(!AC)return;const s=AC.createBufferSource();s.buffer=noiseBuf;s.loop=true;const bp=AC.createBiquadFilter();bp.type=type;bp.Q.value=2.2;const t0=AC.currentTime;bp.frequency.setValueAtTime(f0,t0);bp.frequency.exponentialRampToValueAtTime(f1,t0+dur*.6);const g=AC.createGain();g.gain.setValueAtTime(0,t0);g.gain.linearRampToValueAtTime(v,t0+dur*.2);g.gain.exponentialRampToValueAtTime(.001,t0+dur);s.connect(bp);bp.connect(g);out(g,.2);s.start(t0,Math.random());s.stop(t0+dur+.1)}
+// a small caravan bell
+function bell(f,v,when=0){if(!AC)return;const t0=AC.currentTime+when;[[1,1,2.4],[2.76,.35,1.2],[5.4,.15,.6]].forEach(([m,a,d])=>{const o=AC.createOscillator();o.type="sine";o.frequency.value=f*m;const g=AC.createGain();g.gain.setValueAtTime(0,t0);g.gain.linearRampToValueAtTime(v*a,t0+.006);g.gain.exponentialRampToValueAtTime(.0001,t0+d);o.connect(g);out(g,.35);o.start(t0);o.stop(t0+d+.1)})}
+function chirp(f0,f1,dur,v=.02,when=0){if(!AC)return;const t0=AC.currentTime+when,o=AC.createOscillator();o.type="sine";o.frequency.setValueAtTime(f0,t0);o.frequency.exponentialRampToValueAtTime(f1,t0+dur);const g=AC.createGain();g.gain.setValueAtTime(0,t0);g.gain.linearRampToValueAtTime(v,t0+dur*.2);g.gain.exponentialRampToValueAtTime(.0001,t0+dur);o.connect(g);out(g,-.3);o.start(t0);o.stop(t0+dur+.05)}
+
+/* ---------- eight scenes: the lover keeps the same road toward the beloved ---------- */
+const GRAIN=randArr(187,85,3),DUST=randArr(188,65,3);
+const INK="rgb(18,18,28)", CLOTH=[179,80,83], PALE=[250,214,161];
+// All characters remain small and distant. The coral cloak identifies the beloved without facial detail.
+function land(c,t,W,H,day=0,wind=0){
+  const S=Math.min(W,H),d=clamp(day);
+  bg(c,W,H,[[0,mix([9,17,37],[61,67,93],d)],[.39,mix([44,40,67],[177,122,114],d)],[.7,mix([91,61,69],[236,167,116],d)],[1,[32,26,38]]]);
+  stars(c,W,H,t,(1-d)*.65,.49);
+  glow(c,W*.78,H*.33,S*.32,mix([210,180,169],PALE,d),.18+d*.14);
+  c.fillStyle=rgba(mix([165,144,146],PALE,d),.5);c.beginPath();c.arc(W*.78,H*.33,S*.022,0,TAU);c.fill();
+  mountains(c,W,H,H*.57,S*.1,rgb(mix([53,44,64],[126,97,101],d)),187);
+  hillLayer(c,W,H,H*.59,S*.04,mix([56,43,61],[135,91,91],d),41);
+  hillLayer(c,W,H,H*.65,S*.07,mix([70,49,60],[157,101,88],d),61);
+  c.fillStyle=rgb(mix([51,35,47],[114,72,67],d));c.beginPath();c.moveTo(0,H);c.lineTo(0,H*.66);
+  c.quadraticCurveTo(W*.36,H*.61,W*.7,H*.67);c.quadraticCurveTo(W*.84,H*.7,W,H*.65);c.lineTo(W,H);c.fill();
+  for(const [u,v,w] of GRAIN){const x=u*W,y=(.59+v*.11)*H;c.fillStyle=rgba(PALE,(.08+w*.18)*d);c.fillRect(x+Math.sin(t*1.7+v*7)*wind*W*.02,y,1.5,1)}
+}
+function traveler(c,x,y,h,lean=0,col=INK){person(c,x,y,h,{col,bow:lean,bare:true});
+  c.strokeStyle=col;c.lineWidth=Math.max(1,h*.035);c.lineCap="round";
+  c.beginPath();c.moveTo(x+h*.08,y-h*.48);c.lineTo(x+h*(.18+lean*.15),y-h*.33);c.stroke()}
+function beloved(c,x,y,h,turn=0,sit=false){
+  c.save();c.translate(x,y);c.fillStyle=INK;
+  if(sit){c.fillRect(-h*.21,-h*.24,h*.49,h*.16);c.fillRect(-h*.24,-h*.06,h*.57,h*.06);c.fillRect(-h*.19,-h*.01,h*.06,h*.12)}
+  else {c.beginPath();c.moveTo(-h*.17,0);c.lineTo(-h*.12,-h*.51);c.lineTo(h*.09,-h*.51);c.lineTo(h*.17,0);c.fill()}
+  const by=sit?-h*.3:-h*.54;
+  c.beginPath();c.moveTo(-h*.11,by);c.lineTo(h*.09,by);c.lineTo(h*.07,by-h*.22);c.lineTo(-h*.07,by-h*.22);c.fill();
+  c.beginPath();c.arc(turn*h*.04,by-h*.28,h*.075,0,TAU);c.fill();
+  c.fillStyle=rgb(CLOTH);c.beginPath();c.moveTo(-h*.1,by-h*.17);c.quadraticCurveTo(-h*.23,by+h*.03,-h*.16,by+h*.29);c.quadraticCurveTo(-h*.04,by+h*.33,h*.16,by+h*.18);c.lineTo(h*.08,by-h*.12);c.fill();c.restore()}
+function footway(c,W,H,x0=.16,x1=.8){c.strokeStyle="rgba(243,187,137,.32)";c.lineWidth=Math.max(1,Math.min(W,H)*.003);c.setLineDash([4,9]);c.beginPath();c.moveTo(W*x0,H*.68);c.quadraticCurveTo(W*.5,H*.62,W*x1,H*.67);c.stroke();c.setLineDash([])}
+function sandwind(c,t,W,H,a=1){for(const [u,v,w] of DUST){const x=((u+t*(.009+.013*w))%1)*W,y=H*(.54+v*.16);c.strokeStyle=rgba(PALE,(.08+.24*w)*a);c.lineWidth=1;c.beginPath();c.moveTo(x,y);c.lineTo(x+W*(.008+.025*w),y-2);c.stroke()}}
+function rAmbient(c,t,W,H){land(c,t,W,H,.13,.2);footway(c,W,H);beloved(c,W*.79,H*.68,Math.min(W,H)*.095,0,true);traveler(c,W*.23,H*.67,Math.min(W,H)*.10,0);sandwind(c,t,W,H,.35)}
+// 1. The prudent traveller stops at a fork; this lover alone chooses the beloved's road.
+function r1(c,t,W,H){const S=Math.min(W,H),u=ss(3,14,t);land(c,t,W,H,.23);
+  c.strokeStyle="rgba(241,192,141,.38)";c.lineWidth=S*.004;c.beginPath();c.moveTo(W*.14,H*.7);c.quadraticCurveTo(W*.42,H*.6,W*.79,H*.68);c.moveTo(W*.33,H*.66);c.quadraticCurveTo(W*.49,H*.56,W*.63,H*.55);c.stroke();
+  traveler(c,W*.43,H*.61,S*.09,-.2,INK);beloved(c,W*.79,H*.68,S*.092,0,true);
+  traveler(c,W*(.16+.42*u),H*(.68-.022*Math.sin(u*Math.PI)),S*.11,.15);
+  for(let j=0;j<7;j++){const v=j/7,x=W*(.2+.38*v),y=H*(.675-.02*Math.sin(v*Math.PI));glow(c,x,y,S*.008,PALE,.16*ss(v*.7,v*.7+.12,u))}}
+// 2. Two everyday bowls hold the sky and earth; neither is as precious as the one person.
+function bowl(c,x,y,s,sky,a){if(a<=0)return;c.save();c.globalAlpha=a;c.fillStyle="#322635";c.beginPath();c.ellipse(x,y,s*.64,s*.18,0,0,TAU);c.fill();c.beginPath();c.moveTo(x-s*.6,y);c.quadraticCurveTo(x-s*.45,y+s*.45,x,y+s*.44);c.quadraticCurveTo(x+s*.45,y+s*.45,x+s*.6,y);c.closePath();c.fill();
+  c.beginPath();c.ellipse(x,y,s*.55,s*.15,0,0,TAU);c.fillStyle=sky?"#343e62":"#b58169";c.fill();c.strokeStyle="rgba(255,218,175,.7)";c.lineWidth=Math.max(1,s*.025);c.stroke();
+  if(sky){c.fillStyle="#fae6bb";c.beginPath();c.arc(x+s*.13,y-s*.02,s*.045,0,TAU);c.fill()}else{c.strokeStyle="#eab992";c.beginPath();c.moveTo(x-s*.36,y);c.quadraticCurveTo(x,y-s*.1,x+s*.38,y);c.stroke()}c.restore()}
+function r2(c,t,W,H){const S=Math.min(W,H),u=ss(4,13,t);land(c,t,W,H,.6);footway(c,W,H,.2,.74);
+  beloved(c,W*.78,H*.66,S*.12,0,true);traveler(c,W*.47,H*.68,S*.125,.36);
+  // The dishes are large enough to read, but still sit on the near ground, not in the sky.
+  bowl(c,W*(.37+.15*u),H*(.64+.045*u),S*.12,false,ss(2,5,t));
+  bowl(c,W*(.28+.15*u),H*(.645+.045*u),S*.12,true,ss(3,6,t));
+  glow(c,W*.76,H*.51,S*.1,PALE,.12*u)}
+// 3. A torrent of punishment and arrows of misfortune: no retreat.
+function r3(c,t,W,H){const S=Math.min(W,H),f=ss(2,7,t)*(1-ss(14,18,t));land(c,t,W,H,.04,1);
+  c.fillStyle=rgba([82,105,119],f*.65);c.beginPath();c.moveTo(0,H*.66);for(let i=0;i<=50;i++){let x=i/50*W;c.lineTo(x,H*(.65+.012*Math.sin(i*.7-t*3)))}c.lineTo(W,H*.72);c.lineTo(0,H*.72);c.fill();
+  sandwind(c,t,W,H,.3);beloved(c,W*.82,H*.65,S*.075,0,true);traveler(c,W*.54,H*.63,S*.12,.2);
+  // Falling arrows remain in the distant sky; none enters a body or appears on a face.
+  for(let i=0;i<25;i++){let x=((i*.173+t*.023)%1)*W,y=((i*.217+t*.09)%1)*H*.52;if(x<W*.28||y>H*.51)continue;c.strokeStyle=rgba(PALE,f*(.15+(i%4)*.09));c.lineWidth=1.2;c.beginPath();c.moveTo(x,y);c.lineTo(x-W*.015,y+H*.04);c.stroke();c.beginPath();c.moveTo(x-W*.015,y+H*.04);c.lineTo(x-W*.02,y+H*.032);c.lineTo(x-W*.007,y+H*.034);c.stroke()}}
+// 4. Not one traveller but many: a single distant gesture lifts the sand around them.
+function r4(c,t,W,H){const S=Math.min(W,H),u=ss(5,13,t);land(c,t,W,H,.25,u);sandwind(c,t,W,H,.4+u*.7);
+  for(let j=0;j<6;j++){let x=W*(.16+j*.092),y=H*(.64+(j%2)*.012);traveler(c,x,y,S*(.065+(j%2)*.012),u*.13)}
+  beloved(c,W*.79,H*.66,S*.12,-u,false);
+  // Ripples from the distant face spread through the sand: the sweet lips stir everyone.
+  for(let i=0;i<4;i++){const v=ss(4+i*1.4,8+i*1.4,t),x=W*(.77-i*.12);c.strokeStyle=rgba(PALE,v*(1-v)*.35);c.lineWidth=1.5;c.beginPath();c.arc(x,H*.58,S*(.012+v*.035),-.8,.8);c.stroke()}
+}
+// 5. With nothing to offer or build with, the lover tries repeatedly to climb the crumbling bank.
+function r5(c,t,W,H){const S=Math.min(W,H),attempt=(t%5)/5,fall=ss(.57,.95,attempt);land(c,t,W,H,.36,.3);
+  c.fillStyle="#795259";c.beginPath();c.moveTo(W*.61,H*.65);c.lineTo(W*.69,H*.51);c.quadraticCurveTo(W*.81,H*.49,W,H*.52);c.lineTo(W,H);c.lineTo(W*.61,H);c.fill();
+  c.strokeStyle="rgba(248,204,165,.3)";c.beginPath();c.moveTo(W*.61,H*.65);c.lineTo(W*.69,H*.51);c.stroke();
+  beloved(c,W*.81,H*.54,S*.09,0,true);
+  const climb=attempt<.57?ss(0,.57,attempt):1-fall;
+  traveler(c,W*(.56+.09*climb),H*(.65-.11*climb),S*.11,-.2);
+  // An open, empty pouch: without means, there is no shortcut to the other side.
+  c.fillStyle="#442b3a";c.beginPath();c.ellipse(W*.48,H*.677,S*.025,S*.008,0,0,TAU);c.fill();c.strokeStyle="rgba(239,188,137,.6)";c.stroke()}
+// 6. Both an invitation and a dismissal; another flees, the lover stays.
+function r6(c,t,W,H){const S=Math.min(W,H),away=ss(9,13,t);land(c,t,W,H,.44);footway(c,W,H);
+  beloved(c,W*.74,H*.66,S*.13,away,true);c.strokeStyle=INK;c.lineCap="round";c.lineWidth=S*.007;
+  const ax=W*.74,ay=H*.66-S*.13*.53;
+  c.beginPath();c.moveTo(ax,ay);c.lineTo(ax+S*.13*lerp(-.3,.38,away),ay-S*.13*.12);c.stroke();
+  traveler(c,W*.48,H*.67,S*.12,.05);traveler(c,W*(.4-.23*away),H*.665,S*.09,away*.2);
+  sandwind(c,t,W,H,.15+away*.6)}
+// 7. The lover closes the roads behind; the beloved sits still as commotion grows around them.
+function gate(c,x,y,s,closed){c.save();c.fillStyle="#251f30";c.beginPath();archPath(c,x,y,s*.6,s*.72);c.fill();c.strokeStyle="#3b2c3a";c.lineWidth=Math.max(2,s*.06);c.lineCap="round";c.beginPath();c.moveTo(x-s*.3,y);c.lineTo(x-s*.3,y-s*.65);c.moveTo(x+s*.3,y);c.lineTo(x+s*.3,y-s*.65);c.moveTo(x-s*.3,y-s*.65);c.quadraticCurveTo(x,y-s*.85,x+s*.3,y-s*.65);c.stroke();
+  const w=s*.25*closed;c.fillStyle="#382b3a";c.fillRect(x-s*.3,y-s*.59,w,s*.59);c.fillRect(x+s*.3-w,y-s*.59,w,s*.59);
+  c.strokeStyle="rgba(234,180,141,.18)";c.lineWidth=1;for(let j=1;j<3;j++){c.beginPath();c.moveTo(x-s*.3+w*j/3,y-s*.59);c.lineTo(x-s*.3+w*j/3,y);c.moveTo(x+s*.3-w*j/3,y-s*.59);c.lineTo(x+s*.3-w*j/3,y);c.stroke()}c.restore()}
+function r7(c,t,W,H){const S=Math.min(W,H),u=ss(3,11,t);land(c,t,W,H,.56,u);footway(c,W,H);
+  // Three doorways belong to one low roadside wall, not freestanding arches in a desert.
+  c.fillStyle="#403241";c.fillRect(0,H*.62-S*.18,W*.51,S*.18);
+  c.fillStyle="#674d58";c.fillRect(0,H*.62-S*.18,W*.51,S*.008);
+  for(let i=0;i<3;i++){let x=W*(.15+i*.14),y=H*.62;gate(c,x,y,S*.22,ss(3+i,9+i,t))}
+  beloved(c,W*.77,H*.66,S*.13,0,true);traveler(c,W*(.51+.13*u),H*.68,S*.11,.18);
+  for(let i=0;i<4;i++){const a=i*1.8+t*.45,x=W*.77+Math.cos(a)*S*(.08+u*.07),y=H*.58+Math.sin(a)*S*.06;c.strokeStyle=rgba(PALE,u*.25);c.beginPath();c.moveTo(x,y);c.lineTo(x+S*.018,y-S*.015);c.stroke()}
+  sandwind(c,t,W,H,u*.8)}
+// 8. The beloved turns. The lover holds only the real trailing edge of the cloak: no reconciliation.
+function r8(c,t,W,H){const S=Math.min(W,H),u=ss(4,12,t);land(c,t,W,H,.25);footway(c,W,H,.15,.84);
+  const bx=W*(.72+.12*u),by=H*.66,bh=S*.15;
+  beloved(c,bx,by,bh,u,false);
+  // The cloth runs from the cloak to its low hem, which the lover can actually reach.
+  c.fillStyle=rgb(CLOTH);c.beginPath();c.moveTo(bx-bh*.14,by-bh*.47);
+  c.quadraticCurveTo(bx-bh*.42,by-bh*.2,bx-bh*(.3+.68*u),by-bh*.12);
+  c.quadraticCurveTo(bx-bh*(.29+.63*u),by+bh*.015,bx-bh*.11,by-bh*.04);c.closePath();c.fill();
+  const hx=bx-bh*(.3+.68*u),hy=by-bh*.1;
+  traveler(c,hx-bh*.18,by,S*.115,.32);
+  c.strokeStyle=INK;c.lineCap="round";c.lineWidth=S*.006;c.beginPath();c.moveTo(hx-bh*.16,by-S*.043);c.lineTo(hx,hy);c.stroke();
+  c.fillStyle=INK;c.beginPath();c.arc(hx,hy,S*.007,0,TAU);c.fill();
+  sandwind(c,t,W,H,.08+u*.2)}
+const SCENES=[r1,r2,r3,r4,r5,r6,r7,r8];
+
+/* ---------- music events: Nava on D; one quiet ney phrase for each couplet ---------- */
+const SEG=["D4","Ek4","F4","G4","A4","Bk4","C5","D5"];
+const PHR=[
+ [[0,1.6],[1,1.1],[2,1.4],[3,1.7],[2,1.2],[1,1.3],[0,2.5]],
+ [[2,1.2],[3,1.4],[4,1.7],[5,1.1],[4,1.3],[2,1.4],[1,2.3]],
+ [[0,1.8],[1,1.2],[3,1.5],[4,1.6],[3,1.1],[2,1.4],[0,2.5]],
+ [[1,1.1],[2,1.2],[3,1.1],[4,1.3],[5,1.3],[4,1.2],[3,2.6]],
+ [[0,1.8],[2,1.2],[1,1.6],[3,1.2],[2,1.5],[1,1.1],[0,2.6]],
+ [[2,1.4],[3,1.5],[4,1.3],[2,1.3],[1,1.4],[2,1.1],[0,2.8]],
+ [[0,1.2],[1,1.2],[3,1.4],[4,1.2],[5,1.4],[4,1.1],[3,1.2],[2,2.2]],
+ [[3,1.8],[2,1.4],[1,1.5],[0,1.6],[1,1.2],[0,3.4]]
+];
+const CH={D:["D3","A3","D4"],F:["F3","C4","F4"],G:["G3","D4","G4"],C:["C3","G3","C4"]};
+const PADS=[["D","F"],["F","C"],["D","G"],["G","F"],["D","C"],["F","D"],["G","C"],["D","D"]];
+const EVENTS=[];
+for(let b=0;b<NB;b++){
+  let tt=1.2;for(const [n,d] of PHR[b]){const f=NT[SEG[n]];EVENTS.push({t:b*BD+tt,fn:()=>ney(f,d)});tt+=d+.17}
+  PADS[b].forEach((ch,h)=>EVENTS.push({t:b*BD+.2+h*BD/2,fn:()=>pad(CH[ch].map(n=>NT[n]),BD/2+.4,.012)}));
+  EVENTS.push({t:b*BD+.8,fn:()=>strike(NT.D4,.07)});
+  EVENTS.push({t:b*BD+14.4,fn:cadence});
+}
+EVENTS.push({t:2*BD+3,fn:()=>hiss(180,90,5,.065,"lowpass")});
+EVENTS.push({t:2*BD+6,fn:()=>hiss(1200,1900,6,.02)});
+EVENTS.push({t:3*BD+9,fn:()=>hiss(260,680,3,.025)});
+EVENTS.push({t:4*BD+4,fn:()=>hiss(320,110,2,.025,"lowpass")});
+EVENTS.push({t:6*BD+7,fn:()=>hiss(380,650,4,.023)});
+function fire(a,b){for(const e of EVENTS)if(e.t>a&&e.t<=b)try{e.fn()}catch(_){}}
+
+/* ---------- canvas ---------- */
+const cvs=document.getElementById("cv"),ctx=cvs.getContext("2d");
+const off=document.createElement("canvas"),octx=off.getContext("2d");
+let W=0,H=0,dpr=1;
+function resize(){W=innerWidth;H=innerHeight;dpr=Math.min(window.devicePixelRatio||1,W*H>1.4e6?1.25:1.75);for(const cv of[cvs,off]){cv.width=Math.round(W*dpr);cv.height=Math.round(H*dpr)}}
+addEventListener("resize",resize);resize();
+function sceneFrame(c,Hs){const g=c.createRadialGradient(W/2,Hs*.45,Math.min(W,Hs)*.3,W/2,Hs*.5,Math.max(W,Hs)*.78);g.addColorStop(0,"rgba(0,0,0,0)");g.addColorStop(1,"rgba(2,3,8,.5)");c.fillStyle=g;c.fillRect(0,0,W,Hs);
+  const f=c.createLinearGradient(0,Hs-40,0,Hs);f.addColorStop(0,"rgba(7,9,26,0)");f.addColorStop(1,"rgba(7,9,26,1)");c.fillStyle=f;c.fillRect(0,Hs-40,W,40);c.fillStyle="#07091A";c.fillRect(0,Hs,W,H-Hs);c.fillStyle="rgba(230,190,99,.4)";c.fillRect(W/2-36,Hs+8,72,1)}
+// the scene gets the top of the screen; the caption sits on its own band below it
+let CAPH=0;const sceneH=()=>H-clamp(CAPH+76+34,H*.24,H*.56);
+function vignette(c){const g=c.createRadialGradient(W/2,H*.42,Math.min(W,H)*.3,W/2,H*.5,Math.max(W,H)*.78);g.addColorStop(0,"rgba(0,0,0,0)");g.addColorStop(1,"rgba(2,3,8,.55)");c.fillStyle=g;c.fillRect(0,0,W,H);const b=c.createLinearGradient(0,H*.52,0,H);b.addColorStop(0,"rgba(3,4,10,0)");b.addColorStop(1,"rgba(3,4,10,.8)");c.fillStyle=b;c.fillRect(0,H*.52,W,H*.48)}
+
+/* ---------- UI ---------- */
+const $=id=>document.getElementById(id);
+// anonymous, cookie-free stats (Umami): how far people get into the poem
+const track=e=>{try{window.umami&&umami.track(e,{poem:"saadi-ghazal-187"})}catch(_){}};const seen=new Set();let finished=false;
+const intro=$("intro"),cap=$("caption"),bar=$("bar"),outro=$("outro"),mark=$("mark");
+const verse=$("verse"),gloss=$("gloss"),label=$("label"),segs=$("segs"),pp=$("pp"),snd=$("snd"),clockEl=$("clock"),markLabel=$("markLabel");
+if(GALLERY_URL){["galleryLink","galleryLink2"].forEach(id=>{const a=$(id);a.href=GALLERY_URL;a.hidden=false})}
+const segEls=POEM.map((P,i)=>{const b=document.createElement("button");b.className="seg";b.setAttribute("aria-label",`Couplet ${i+1}: ${P[3]}`);b.innerHTML="<i></i>";b.addEventListener("click",()=>jump(i));segs.appendChild(b);return b.firstChild});
+POEM.forEach((P,b)=>{const row=document.createElement("button");row.className="bayt";row.title=P[2];row.innerHTML=`<span></span><span></span>`;row.children[0].textContent=P[0];row.children[1].textContent=P[1];row.addEventListener("click",()=>jump(b));$("poem").appendChild(row)});
+let mode="intro",playing=false,time=0,clock=0,outroStart=0,last=performance.now(),capS=-1,capState="";
+function build(b){verse.textContent="";const dl=wordDelays(b);let n=0;[0,1].forEach(k=>{const m=document.createElement("span");m.className="m";const ws=POEM[b][k].split(" ");ws.forEach((w,i)=>{const sp=document.createElement("span");sp.className="w"+(isRf(b,k,i)?" rf":"");sp.textContent=w;sp.style.setProperty("--d",dl[n++].toFixed(2)+"s");m.appendChild(sp);if(i<ws.length-1)m.appendChild(document.createTextNode(" "))});verse.appendChild(m)});
+  gloss.textContent=POEM[b][2];label.textContent=POEM[b][3];markLabel.textContent=`${b+1} / ${NB}`;cap.classList.remove("on","out")}
+function updateCaption(b,t){if(t>3&&!seen.has(b)){seen.add(b);track("couplet-"+(b+1))}if(b!==capS){capS=b;build(b);capState=""}const st=t<.7?"pre":t<BD-.8?"on":"out";if(st!==capState){capState=st;cap.classList.toggle("on",st==="on");cap.classList.toggle("out",st==="out")}}
+const fmt=x=>{x=Math.max(0,Math.floor(x));return`${Math.floor(x/60)}:${String(x%60).padStart(2,"0")}`};
+function updateBar(){segEls.forEach((el,i)=>{el.style.transform=`scaleX(${clamp((time-i*BD)/BD).toFixed(4)})`});clockEl.textContent=fmt(time)}
+function setPlaying(p){playing=p;pp.textContent=p?"Pause":"Play";if(AC){try{p?AC.resume():AC.suspend()}catch(_){}}}
+function measureCaps(){if(cap.hidden)return;let m=0;for(let b=0;b<NB;b++){build(b);m=Math.max(m,cap.offsetHeight)}CAPH=m;capS=-1;capState=""}
+addEventListener("resize",()=>{if(mode==="play")measureCaps()});
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>{if(mode==="play")measureCaps()}).catch(()=>{});
+function start(at=0){initAudio();mode="play";time=at;capS=-1;intro.classList.add("gone");setTimeout(()=>{if(mode!=="intro")intro.hidden=true},1000);outro.classList.remove("show");outro.hidden=true;cap.hidden=false;bar.hidden=false;mark.hidden=false;measureCaps();setPlaying(true)}
+function toOutro(){if(mode==="play"&&!finished){finished=true;track("finish")}mode="outro";outroStart=clock;setPlaying(false);cap.hidden=true;bar.hidden=true;mark.hidden=true;intro.hidden=true;outro.hidden=false;requestAnimationFrame(()=>outro.classList.add("show"))}
+function jump(i){if(mode!=="play"){start(i*BD);return}time=i*BD;capS=-1;if(!playing)setPlaying(true)}
+$("begin").addEventListener("click",()=>{track("begin");start(0)});
+$("again").addEventListener("click",()=>start(0));
+$("readBtn").addEventListener("click",()=>{track("read-text");intro.classList.add("gone");setTimeout(()=>{intro.hidden=true},900);toOutro()});
+pp.addEventListener("click",()=>setPlaying(!playing));
+$("prev").addEventListener("click",()=>{const s=Math.floor(time/BD);jump(time-s*BD>2?s:Math.max(0,s-1))});
+$("next").addEventListener("click",()=>{const s=Math.floor(time/BD);if(s+1<NB)jump(s+1);else toOutro()});
+snd.addEventListener("click",()=>{soundOn=!soundOn;if(!soundOn)track("sound-off");snd.textContent=soundOn?"Sound on":"Sound off";if(master)master.gain.setTargetAtTime(soundOn?1:0,AC.currentTime,.1)});
+addEventListener("keydown",e=>{if(mode!=="play")return;if(e.code==="Space"){e.preventDefault();setPlaying(!playing)}else if(e.key==="ArrowRight")$("next").click();else if(e.key==="ArrowLeft")$("prev").click()});
+function frame(now){
+  const dt=Math.min(.05,(now-last)/1000);last=now;clock+=dt;
+  if(mode==="play"&&playing){const p=time;time+=dt;fire(p,time);if(time>=TOTAL){time=TOTAL;toOutro()}}
+  ctx.setTransform(dpr,0,0,dpr,0,0);
+  if(mode==="intro"){ctx.save();rAmbient(ctx,clock,W,H);ctx.restore()}
+  else if(mode==="outro"){ctx.save();r8(ctx,17,W,H);ctx.restore();ctx.fillStyle="rgba(3,4,10,.3)";ctx.fillRect(0,0,W,H)}
+  else{const s=Math.min(NB-1,Math.floor(time/BD)),t=time-s*BD,Hs=sceneH(),Hv=Hs/.7;
+    ctx.save();ctx.beginPath();ctx.rect(0,0,W,Hs);ctx.clip();SCENES[s](ctx,t,W,Hv);ctx.restore();
+    if(s>0&&t<F){octx.setTransform(1,0,0,1,0,0);octx.clearRect(0,0,off.width,off.height);octx.setTransform(dpr,0,0,dpr,0,0);octx.save();octx.beginPath();octx.rect(0,0,W,Hs);octx.clip();SCENES[s-1](octx,t+BD,W,Hv);octx.restore();ctx.save();ctx.setTransform(1,0,0,1,0,0);ctx.globalAlpha=1-ss(0,F,t);ctx.drawImage(off,0,0);ctx.restore()}
+    ctx.setTransform(dpr,0,0,dpr,0,0);sceneFrame(ctx,Hs);updateCaption(s,t);updateBar()}
+  if(mode!=="play")vignette(ctx);requestAnimationFrame(frame)}
+window.__seek=x=>{if(mode!=="play")start(x);time=x;capS=-1;setPlaying(false)};
+requestAnimationFrame(frame);
+
+})();
+</script>
+</body>
+</html>

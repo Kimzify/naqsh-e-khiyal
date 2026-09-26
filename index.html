@@ -88,7 +88,8 @@ const POEMS=[
   {url:"hafez/ghazal-1/",poet:"Hafez",poetFa:"حافظ",first:"اَلا یا اَیُّهَا السّاقی",en:"O cupbearer, bring round the cup",source:"Divan · Ghazal 1",couplets:7,secs:126,mode:"Shur",cover:"cup"},
   {url:"hafez/ghazal-179/",poet:"Hafez",poetFa:"حافظ",first:"رسید مژده",en:"Good news has come",source:"Divan · Ghazal 179",couplets:9,secs:162,mode:"Esfahan",cover:"portico"},
   {url:"hafez/ghazal-255/",poet:"Hafez",poetFa:"حافظ",first:"یوسفِ گم‌گشته",en:"Lost Joseph will return",source:"Divan · Ghazal 255",couplets:10,secs:180,mode:"Segah",cover:"shirt"},
-  {url:"saadi/ghazal-268/",poet:"Saadi",poetFa:"سعدی",first:"ای ساربان",en:"Camel driver, go slowly",source:"Divan · Ghazal 268",couplets:13,secs:234,mode:"Homayoun",cover:"caravan"}
+  {url:"saadi/ghazal-268/",poet:"Saadi",poetFa:"سعدی",first:"ای ساربان",en:"Camel driver, go slowly",source:"Divan · Ghazal 268",couplets:13,secs:234,mode:"Homayoun",cover:"caravan"},
+  {url:"saadi/ghazal-187/",poet:"Saadi",poetFa:"سعدی",first:"هشیار کسی باید",en:"Only the sober can avoid love",source:"Divan · Ghazal 187",couplets:8,secs:144,mode:"Nava",cover:"trail"}
 ];
 const TAU=Math.PI*2;
 const fmt=s=>`${Math.floor(s/60)}:${String(s%60).padStart(2,"0")}`;
@@ -122,6 +123,13 @@ const COVERS={
     const p=path(q),s=S*.07;c.save();c.translate(p[0],p[1]);c.rotate(Math.sin(t*1.3)*.2);c.globalAlpha=Math.sin(q*Math.PI);
     const P=[[-.07,-.56],[-.3,-.5],[-.62,-.34],[-.8,-.12],[-.68,-.06],[-.46,-.24],[-.3,-.26],[-.36,.2],[-.44,.66],[.44,.66],[.36,.2],[.3,-.26],[.46,-.24],[.68,-.06],[.8,-.12],[.62,-.34],[.3,-.5],[.07,-.56],[0,-.42]];
     c.beginPath();P.forEach(([u,v],i)=>{const x=u*s+Math.sin(v*4+t*4)*s*.05,y=v*s+Math.sin(u*5+t*3)*s*.06;i?c.lineTo(x,y):c.moveTo(x,y)});c.closePath();c.fillStyle="#F2EADA";c.fill();c.restore()},
+  // Saadi, Ghazal 187: the beloved stays ahead on the road, the lover does not turn away
+  trail(c,W,H,t){const S=Math.min(W,H),g=c.createLinearGradient(0,0,0,H);g.addColorStop(0,"#101828");g.addColorStop(.6,"#68485a");g.addColorStop(1,"#46303d");c.fillStyle=g;c.fillRect(0,0,W,H);starfield(c,W,H*.56,t,55,187);
+    glow(c,W*.79,H*.37,S*.35,"250,214,161",.28);c.fillStyle="#eac69f";c.beginPath();c.arc(W*.79,H*.37,S*.023,0,TAU);c.fill();
+    c.fillStyle="#342937";c.beginPath();c.moveTo(0,H);c.lineTo(0,H*.68);c.quadraticCurveTo(W*.5,H*.51,W,H*.69);c.lineTo(W,H);c.fill();
+    c.strokeStyle="rgba(252,212,161,.46)";c.lineWidth=1.5;c.beginPath();c.moveTo(W*.18,H*.69);c.quadraticCurveTo(W*.46,H*.59,W*.78,H*.68);c.stroke();
+    const x=W*.23,y=H*.68,h=S*.18;c.fillStyle="#13141e";c.beginPath();c.moveTo(x-h*.17,y);c.lineTo(x-h*.09,y-h*.57);c.lineTo(x+h*.09,y-h*.57);c.lineTo(x+h*.18,y);c.fill();c.beginPath();c.arc(x,y-h*.8,h*.08,0,TAU);c.fill();
+    const bx=W*.79,by=H*.68,bh=S*.14;c.fillStyle="#16121c";c.beginPath();c.moveTo(bx-bh*.16,by);c.lineTo(bx-bh*.08,by-bh*.69);c.lineTo(bx+bh*.08,by-bh*.69);c.lineTo(bx+bh*.2,by);c.fill();c.beginPath();c.arc(bx,by-bh*.82,bh*.08,0,TAU);c.fill();c.fillStyle="#b35053";c.beginPath();c.moveTo(bx-bh*.1,by-bh*.65);c.quadraticCurveTo(bx-bh*.3,by-bh*.38,bx-bh*.28,by);c.lineTo(bx+bh*.12,by);c.lineTo(bx+bh*.09,by-bh*.65);c.fill()},
   // Saadi, Ghazal 268: a caravan crossing a dune crest at dawn, one light in the mahmal
   caravan(c,W,H,t){const S=Math.min(W,H),g=c.createLinearGradient(0,0,0,H);g.addColorStop(0,"#141A3E");g.addColorStop(.45,"#7A4E66");g.addColorStop(.7,"#E8A070");g.addColorStop(1,"#2A1A1C");c.fillStyle=g;c.fillRect(0,0,W,H);starfield(c,W,H*.35,t,40,31);
     const px=W*.62,py=H*.52,Y=x=>x<px?py+(H*.66-py)*Math.pow((px-x)/px,1.4):py+(H*.7-py)*Math.pow(Math.min(1,(x-px)/(W-px)),.8);glow(c,px,py,S*.9,"255,196,130",.45);

@@ -2,7 +2,7 @@
 // and fails if any page throws a JavaScript error. Usage: node tests/smoke.mjs [baseURL]
 import { chromium } from 'playwright';
 const base = process.argv[2] || 'http://localhost:8000/';
-const pages = ['', 'hafez/ghazal-1/', 'hafez/ghazal-179/', 'hafez/ghazal-255/', 'saadi/ghazal-268/'];
+const pages = ['', 'hafez/ghazal-1/', 'hafez/ghazal-179/', 'hafez/ghazal-255/', 'saadi/ghazal-268/', 'saadi/ghazal-187/'];
 const browser = await chromium.launch();
 let failed = false;
 for (const p of pages) {
